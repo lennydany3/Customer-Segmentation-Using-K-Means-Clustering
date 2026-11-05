@@ -24,23 +24,33 @@ MALE = ["Arun", "Karthik", "Vignesh", "Suresh", "Prakash", "Dinesh", "Bala", "Se
         "Hari", "Manikandan", "Naveen", "Ramesh", "Sathish", "Tamilselvan", "Vasanth", "Ajith", "Surya",
         "Murugan", "Saravanan", "Ashwin", "Pranav", "Kishore", "Elango", "Raghav"]
 INITIALS = list("ABCDEGJKMNPRSTV")
-PRODUCTS = ["Key Chains", "Bouquet"]
+PRODUCTS = ["Key Chains", "Bouquet", "Miniature Toys"]
 
-# segment name: (mean age, sd age, mean repeats, sd repeats, share buying Key Chains)
+# segment name: (mean age, sd age, mean repeats, sd repeats, (share Key Chains, Bouquet, Miniature Toys))
 SEGMENTS = {
-    "Loyal Young Fans": (21, 2.5, 15, 2.0, 0.75),
-    "Occasional Young Buyers": (23, 3.0, 3, 1.3, 0.60),
-    "Regular Adult Customers": (37, 3.5, 9, 1.8, 0.35),
-    "Occasional Senior Buyers": (56, 4.0, 3, 1.3, 0.15),
-    "Loyal Senior Gifters": (55, 4.0, 15, 2.0, 0.10),
+    "Loyal Young Fans": (21, 2.5, 15, 2.0, (0.50, 0.10, 0.40)),
+    "Occasional Young Buyers": (23, 3.0, 3, 1.3, (0.45, 0.20, 0.35)),
+    "Regular Adult Customers": (37, 3.5, 9, 1.8, (0.25, 0.45, 0.30)),
+    "Occasional Senior Buyers": (56, 4.0, 3, 1.3, (0.10, 0.70, 0.20)),
+    "Loyal Senior Gifters": (55, 4.0, 15, 2.0, (0.05, 0.60, 0.35)),
 }
+
+
+def pick_product(u, shares):
+    """Maps one uniform random number to a product, so every customer still uses one draw."""
+    cumulative = 0.0
+    for product, share in zip(PRODUCTS, shares):
+        cumulative += share
+        if u < cumulative:
+            return product
+    return PRODUCTS[-1]
 
 
 def make(seed, sizes):
     rng = np.random.default_rng(seed)
     rows = []
     for name, n in sizes.items():
-        a_mu, a_sd, r_mu, r_sd, p_key = SEGMENTS[name]
+        a_mu, a_sd, r_mu, r_sd, shares = SEGMENTS[name]
         for _ in range(n):
             gender = rng.choice(["Female", "Male"])
             first = rng.choice(FEMALE if gender == "Female" else MALE)
@@ -49,7 +59,7 @@ def make(seed, sizes):
                 "Age": int(np.clip(round(rng.normal(a_mu, a_sd)), 16, 75)),
                 "Gender": gender,
                 "District": rng.choice(DISTRICTS),
-                "Product_Type": "Key Chains" if rng.random() < p_key else "Bouquet",
+                "Product_Type": pick_product(rng.random(), shares),
                 "Repeat_Purchases": int(np.clip(round(rng.normal(r_mu, r_sd)), 0, 25)),
                 "True_Segment": name,
             })

@@ -1,46 +1,46 @@
 Name,Age,Gender,District,Product_Type,Repeat_Purchases
-Murugan K,20,Male,Madurai,Bouquet,2
-Surya D,35,Male,Sivaganga,Key Chains,7
+Murugan K,20,Male,Madurai,Miniature Toys,2
+Surya D,35,Male,Sivaganga,Bouquet,7
 Lakshmi S,54,Female,Tirunelveli,Bouquet,2
 Lakshmi G,57,Female,Chennai,Bouquet,1
-Saranya S,33,Female,Thanjavur,Bouquet,10
+Saranya S,33,Female,Thanjavur,Miniature Toys,10
 Kalaivani T,58,Female,Sivaganga,Bouquet,4
-Bhuvana N,51,Female,Madurai,Bouquet,3
+Bhuvana N,51,Female,Madurai,Miniature Toys,3
 Revathi P,19,Female,Madurai,Key Chains,4
 Naveen P,22,Male,Salem,Key Chains,13
 Abinaya K,26,Female,Coimbatore,Key Chains,18
 Pavithra R,40,Female,Tiruppur,Key Chains,9
-Divya P,25,Female,Karur,Bouquet,3
+Divya P,25,Female,Karur,Miniature Toys,3
 Malathi P,27,Female,Erode,Key Chains,5
 Pranav E,46,Male,Karur,Bouquet,10
 Vasanth B,60,Male,Coimbatore,Key Chains,2
-Pranav K,60,Male,Chennai,Bouquet,2
+Pranav K,60,Male,Chennai,Miniature Toys,2
 Vignesh B,34,Male,Dindigul,Bouquet,8
 Ashwin G,24,Male,Tiruppur,Key Chains,2
 Surya J,22,Male,Sivaganga,Key Chains,12
 Priya N,49,Female,Villupuram,Bouquet,1
-Malathi G,23,Female,Tiruchirappalli,Bouquet,2
+Malathi G,23,Female,Tiruchirappalli,Miniature Toys,2
 Manikandan B,50,Male,Sivaganga,Bouquet,4
 Murugan M,20,Male,Coimbatore,Key Chains,2
-Senthil G,20,Male,Tirunelveli,Key Chains,16
+Senthil G,20,Male,Tirunelveli,Miniature Toys,16
 Harini C,52,Female,Vellore,Bouquet,2
 Anitha N,19,Female,Tiruppur,Key Chains,3
 Vaishnavi C,59,Female,Kanniyakumari,Bouquet,3
-Hari N,18,Male,Tiruchirappalli,Key Chains,18
+Hari N,18,Male,Tiruchirappalli,Miniature Toys,18
 Pavithra V,22,Female,Cuddalore,Key Chains,16
-Tamilselvan V,24,Male,Thoothukudi,Key Chains,10
+Tamilselvan V,24,Male,Thoothukudi,Miniature Toys,10
 Harini P,21,Female,Coimbatore,Key Chains,1
-Saravanan D,25,Male,Coimbatore,Key Chains,2
-Suresh T,57,Male,Erode,Bouquet,6
-Kishore D,23,Male,Madurai,Bouquet,3
+Saravanan D,25,Male,Coimbatore,Bouquet,2
+Suresh T,57,Male,Erode,Miniature Toys,6
+Kishore D,23,Male,Madurai,Miniature Toys,3
 Pranav G,31,Male,Vellore,Bouquet,8
 Kalaivani M,34,Female,The Nilgiris,Bouquet,10
 Pavithra G,17,Female,Thoothukudi,Key Chains,14
 Kavya R,21,Female,Sivaganga,Key Chains,16
 Karthik J,23,Male,Salem,Key Chains,3
 Raghav A,26,Male,Kancheepuram,Key Chains,16
-Shalini V,25,Female,Kanniyakumari,Key Chains,4
-Dinesh T,36,Male,Chennai,Key Chains,8
+Shalini V,25,Female,Kanniyakumari,Bouquet,4
+Dinesh T,36,Male,Chennai,Bouquet,8
 Lakshmi N,37,Female,Thanjavur,Key Chains,10
 Hari G,55,Male,Chennai,Bouquet,3
 Yamuna B,61,Female,Erode,Bouquet,5
@@ -51,36 +51,36 @@ Shalini E,24,Female,Villupuram,Key Chains,14
 Keerthana P,36,Female,Tirunelveli,Key Chains,8
 Tamilselvan P,39,Male,Chennai,Bouquet,10
 Indhu C,37,Female,Chennai,Key Chains,8
-Swetha P,32,Female,Dindigul,Bouquet,6
-Saranya C,40,Female,Tiruchirappalli,Key Chains,10
-Naveen B,36,Male,Namakkal,Bouquet,8
-Ajith P,20,Male,Cuddalore,Key Chains,18
+Swetha P,32,Female,Dindigul,Miniature Toys,6
+Saranya C,40,Female,Tiruchirappalli,Bouquet,10
+Naveen B,36,Male,Namakkal,Miniature Toys,8
+Ajith P,20,Male,Cuddalore,Bouquet,18
 Anitha N,21,Female,Kancheepuram,Bouquet,2
-Indhu C,16,Female,Thoothukudi,Key Chains,18
+Indhu C,16,Female,Thoothukudi,Bouquet,18
 Nandhini A,55,Female,Madurai,Bouquet,2
 Vaishnavi P,43,Female,Karur,Bouquet,8
 Sathish A,36,Male,Coimbatore,Key Chains,8
 Malathi S,35,Female,Vellore,Bouquet,7
 Hari S,25,Male,Vellore,Key Chains,3
 Karthik J,55,Male,Sivaganga,Key Chains,4
-Vignesh B,61,Male,Madurai,Key Chains,2
+Vignesh B,61,Male,Madurai,Bouquet,2
 Yamuna S,18,Female,Thoothukudi,Key Chains,16
 Manikandan P,58,Male,Sivaganga,Bouquet,2
 Suresh J,24,Male,Karur,Key Chains,17
 Pavithra B,21,Female,Villupuram,Bouquet,3
 Raghav S,23,Male,Tiruchirappalli,Key Chains,3
 Indhu C,52,Female,Cuddalore,Bouquet,2
-Harini P,22,Female,Thoothukudi,Bouquet,4
-Manikandan V,21,Male,Cuddalore,Bouquet,13
-Deepa M,23,Female,Coimbatore,Key Chains,3
+Harini P,22,Female,Thoothukudi,Miniature Toys,4
+Manikandan V,21,Male,Cuddalore,Miniature Toys,13
+Deepa M,23,Female,Coimbatore,Bouquet,3
 Vaishnavi V,52,Female,Karur,Bouquet,3
-Gokul T,22,Male,Kanniyakumari,Bouquet,4
+Gokul T,22,Male,Kanniyakumari,Miniature Toys,4
 Lakshmi T,24,Female,Vellore,Key Chains,3
-Dinesh R,24,Male,Namakkal,Bouquet,4
+Dinesh R,24,Male,Namakkal,Miniature Toys,4
 Sangeetha G,44,Female,Madurai,Bouquet,12
-Meena T,23,Female,Sivaganga,Key Chains,16
+Meena T,23,Female,Sivaganga,Miniature Toys,16
 Vignesh V,21,Male,Erode,Key Chains,15
-Ajith P,19,Male,Chennai,Key Chains,18
+Ajith P,19,Male,Chennai,Miniature Toys,18
 Prakash T,36,Male,Chennai,Key Chains,6
 Pavithra D,36,Female,Salem,Bouquet,9
-Nandhini J,23,Female,Tiruchirappalli,Key Chains,14
+Nandhini J,23,Female,Tiruchirappalli,Bouquet,14

@@ -32,9 +32,9 @@ const MAX_FILE_BYTES = 5 * 1024 * 1024;
 
 const TEMPLATE_CSV =
   "Name,Age,Gender,District,Product_Type,Repeat_Purchases\n" +
-  "Priya S,21,Female,Chennai,Key Chains,15\nArun K,56,Male,Madurai,Bouquet,3\nKavya R,36,Female,Coimbatore,Bouquet,9\n" +
+  "Priya S,21,Female,Chennai,Key Chains,15\nArun K,56,Male,Madurai,Miniature Toys,3\nKavya R,36,Female,Coimbatore,Bouquet,9\n" +
   "Vignesh M,22,Male,Salem,Key Chains,14\nLakshmi T,58,Female,Tirunelveli,Bouquet,2\nKarthik P,38,Male,Erode,Key Chains,8\n" +
-  "Divya N,20,Female,Vellore,Key Chains,16\nSenthil A,54,Male,Thanjavur,Bouquet,4\nMeena G,35,Female,Karur,Bouquet,10\n" +
+  "Divya N,20,Female,Vellore,Miniature Toys,16\nSenthil A,54,Male,Thanjavur,Bouquet,4\nMeena G,35,Female,Karur,Bouquet,10\n" +
   "Gokul V,23,Male,Dindigul,Key Chains,13\n";
 
 const formatBytes = (bytes: number) =>
