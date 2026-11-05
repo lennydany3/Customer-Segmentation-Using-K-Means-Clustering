@@ -1,10 +1,10 @@
 """
 Generates the synthetic Tamil Nadu gift-shop customer datasets in this folder.
 
-Columns: Name, Age, Gender, District, Product_Type, Repeat_Purchases, True_Segment
+Columns: Name, Age, Gender, District, Product_Type, Repeat_Purchases
   - Age and Repeat_Purchases are the clustering features.
-  - True_Segment is the segment each customer was generated from. The app never clusters on it;
-    it is used only to score the clusters (accuracy). Delete the column to hide accuracy.
+  - Each customer is drawn from one of the SEGMENTS below, but the segment is not written to the
+    file: the app has to discover the groups on its own.
 
 Run:  python dataset/generate_datasets.py
 """
@@ -67,5 +67,6 @@ DATASETS = {
 if __name__ == "__main__":
     for file, (seed, sizes) in DATASETS.items():
         df = make(seed, sizes)
-        df.to_csv(OUT / file, index=False)
-        print(f"{file}: {len(df)} customers, {df['True_Segment'].nunique()} segments")
+        segments = df["True_Segment"].nunique()
+        df.drop(columns="True_Segment").to_csv(OUT / file, index=False)
+        print(f"{file}: {len(df)} customers, {segments} hidden segments")

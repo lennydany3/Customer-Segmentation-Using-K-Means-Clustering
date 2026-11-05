@@ -104,18 +104,20 @@ def test_accuracy_with_true_segment_column():
 
 
 def test_bundled_datasets():
-    """Every CSV in dataset/ uploads cleanly, has 70 to 100 customers and gets the right K."""
+    """Every CSV in dataset/ uploads cleanly, has 70 to 100 customers and gets the expected K."""
+    expected_k = {"tn_gift_shop_70.csv": 3, "tn_gift_shop_85.csv": 4, "tn_gift_shop_100.csv": 5}
     files = sorted(DATASET_DIR.glob("*.csv"))
-    assert files, "no datasets found"
+    assert {f.name for f in files} == set(expected_k)
     for f in files:
         r = post_csv(f.read_text())
         assert r.status_code == 200, (f.name, r.text)
+        assert r.json()["detected_columns"]["label"] is None  # no answer column in the files
         n = r.json()["processed_rows"]
         assert 70 <= n <= 100, (f.name, n)
         k = client.get("/api/elbow").json()["recommended_k"]
+        assert k == expected_k[f.name], (f.name, k)
         res = client.post("/api/cluster", json={"k": k}).json()
-        assert k == res["true_segments"], (f.name, k)
-        assert res["accuracy"] >= 0.95, (f.name, res["accuracy"])
+        assert res["accuracy"] is None and res["silhouette_score"] > 0.6, (f.name, res["silhouette_score"])
 
 
 if __name__ == "__main__":

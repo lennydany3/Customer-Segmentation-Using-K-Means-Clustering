@@ -1,101 +1,101 @@
-Name,Age,Gender,District,Product_Type,Repeat_Purchases,True_Segment
-Hari G,36,Male,Tirunelveli,Bouquet,6,Regular Adult Customers
-Karthik R,56,Male,Coimbatore,Bouquet,17,Loyal Senior Gifters
-Harini B,53,Female,Tiruchirappalli,Bouquet,14,Loyal Senior Gifters
-Harini B,57,Female,Salem,Bouquet,12,Loyal Senior Gifters
-Deepa J,35,Female,Thanjavur,Bouquet,8,Regular Adult Customers
-Arun J,58,Male,Thanjavur,Bouquet,3,Occasional Senior Buyers
-Malathi N,21,Female,Cuddalore,Key Chains,14,Loyal Young Fans
-Kishore S,56,Male,Coimbatore,Bouquet,14,Loyal Senior Gifters
-Revathi K,24,Female,Chennai,Key Chains,16,Loyal Young Fans
-Lakshmi K,59,Female,Thanjavur,Bouquet,3,Occasional Senior Buyers
-Bala M,52,Male,Tiruchirappalli,Bouquet,19,Loyal Senior Gifters
-Abinaya D,54,Female,Karur,Bouquet,2,Occasional Senior Buyers
-Anitha A,33,Female,Karur,Bouquet,8,Regular Adult Customers
-Kavya T,50,Female,Vellore,Bouquet,13,Loyal Senior Gifters
-Keerthana T,38,Female,Villupuram,Bouquet,8,Regular Adult Customers
-Dinesh B,26,Male,Erode,Key Chains,3,Occasional Young Buyers
-Deepa S,18,Female,Coimbatore,Key Chains,17,Loyal Young Fans
-Murugan J,26,Male,Kanniyakumari,Bouquet,5,Occasional Young Buyers
-Shalini R,51,Female,Madurai,Bouquet,17,Loyal Senior Gifters
-Revathi R,53,Female,Dindigul,Key Chains,4,Occasional Senior Buyers
-Kalaivani B,61,Female,Tiruchirappalli,Bouquet,2,Occasional Senior Buyers
-Deepa K,53,Female,Karur,Bouquet,15,Loyal Senior Gifters
-Saravanan D,19,Male,Kanniyakumari,Key Chains,4,Occasional Young Buyers
-Pavithra A,51,Female,Vellore,Bouquet,17,Loyal Senior Gifters
-Deepa D,25,Female,Tiruchirappalli,Bouquet,5,Occasional Young Buyers
-Pavithra E,33,Female,Villupuram,Bouquet,10,Regular Adult Customers
-Bhuvana D,40,Female,Kanniyakumari,Key Chains,11,Regular Adult Customers
-Manikandan B,21,Male,Salem,Key Chains,12,Loyal Young Fans
-Kavya D,55,Female,Salem,Bouquet,14,Loyal Senior Gifters
-Karthik T,35,Male,Erode,Bouquet,10,Regular Adult Customers
-Deepa M,26,Female,Chennai,Bouquet,5,Occasional Young Buyers
-Hari M,23,Male,The Nilgiris,Bouquet,16,Loyal Young Fans
-Abinaya D,23,Female,Tiruppur,Key Chains,17,Loyal Young Fans
-Murugan R,54,Male,Erode,Bouquet,3,Occasional Senior Buyers
-Nandhini P,20,Female,Kancheepuram,Key Chains,1,Occasional Young Buyers
-Dinesh B,61,Male,Madurai,Bouquet,4,Occasional Senior Buyers
-Deepa R,24,Female,Vellore,Key Chains,13,Loyal Young Fans
-Deepa E,54,Female,Kancheepuram,Bouquet,1,Occasional Senior Buyers
-Naveen G,22,Male,Dindigul,Key Chains,12,Loyal Young Fans
-Surya B,18,Male,Karur,Bouquet,14,Loyal Young Fans
-Meena G,23,Female,Namakkal,Key Chains,4,Occasional Young Buyers
-Gayathri D,62,Female,Chennai,Bouquet,16,Loyal Senior Gifters
-Kishore D,24,Male,Erode,Bouquet,2,Occasional Young Buyers
-Indhu S,57,Female,Chennai,Bouquet,3,Occasional Senior Buyers
-Ramesh D,43,Male,Tiruchirappalli,Bouquet,13,Regular Adult Customers
-Saranya J,25,Female,Thanjavur,Key Chains,2,Occasional Young Buyers
-Pranav T,38,Male,Tirunelveli,Key Chains,11,Regular Adult Customers
-Vignesh T,51,Male,Kancheepuram,Bouquet,5,Occasional Senior Buyers
-Revathi R,36,Female,Madurai,Bouquet,9,Regular Adult Customers
-Elango G,36,Male,Chennai,Bouquet,9,Regular Adult Customers
-Saravanan T,58,Male,Coimbatore,Bouquet,2,Occasional Senior Buyers
-Naveen T,58,Male,Tiruchirappalli,Bouquet,17,Loyal Senior Gifters
-Gokul C,52,Male,The Nilgiris,Bouquet,18,Loyal Senior Gifters
-Murugan S,26,Male,Tiruchirappalli,Key Chains,4,Occasional Young Buyers
-Swetha D,18,Female,Madurai,Key Chains,15,Loyal Young Fans
-Prakash E,38,Male,Sivaganga,Key Chains,10,Regular Adult Customers
-Keerthana T,23,Female,Karur,Key Chains,16,Loyal Young Fans
-Deepa B,53,Female,Tiruchirappalli,Bouquet,1,Occasional Senior Buyers
-Vasanth S,38,Male,Namakkal,Key Chains,9,Regular Adult Customers
-Deepa T,60,Female,Chennai,Bouquet,3,Occasional Senior Buyers
-Sangeetha T,41,Female,Tiruchirappalli,Bouquet,9,Regular Adult Customers
-Keerthana A,20,Female,The Nilgiris,Key Chains,3,Occasional Young Buyers
-Ramesh P,38,Male,Dindigul,Bouquet,9,Regular Adult Customers
-Arun J,54,Male,Erode,Bouquet,14,Loyal Senior Gifters
-Keerthana J,24,Female,Salem,Key Chains,1,Occasional Young Buyers
-Kavya S,30,Female,Dindigul,Key Chains,12,Regular Adult Customers
-Arun S,39,Male,Erode,Key Chains,7,Regular Adult Customers
-Meena A,16,Female,Cuddalore,Bouquet,3,Occasional Young Buyers
-Nandhini J,32,Female,Villupuram,Bouquet,2,Occasional Young Buyers
-Suresh M,58,Male,Vellore,Bouquet,2,Occasional Senior Buyers
-Saravanan C,21,Male,Cuddalore,Key Chains,13,Loyal Young Fans
-Kavya B,57,Female,Dindigul,Bouquet,2,Occasional Senior Buyers
-Vignesh G,46,Male,Dindigul,Bouquet,14,Loyal Senior Gifters
-Senthil V,25,Male,Madurai,Key Chains,14,Loyal Young Fans
-Gokul N,58,Male,Chennai,Bouquet,14,Loyal Senior Gifters
-Murugan S,53,Male,Sivaganga,Bouquet,15,Loyal Senior Gifters
-Elango E,21,Male,Thoothukudi,Key Chains,3,Occasional Young Buyers
-Sathish G,23,Male,Chennai,Key Chains,15,Loyal Young Fans
-Ramesh N,23,Male,Tirunelveli,Key Chains,12,Loyal Young Fans
-Tamilselvan T,21,Male,Kancheepuram,Key Chains,4,Occasional Young Buyers
-Manikandan A,24,Male,Tiruchirappalli,Key Chains,18,Loyal Young Fans
-Surya M,24,Male,Thanjavur,Bouquet,17,Loyal Young Fans
-Malathi C,42,Female,Salem,Bouquet,11,Regular Adult Customers
-Naveen V,19,Male,Tirunelveli,Key Chains,3,Occasional Young Buyers
-Naveen K,59,Male,Kanniyakumari,Bouquet,2,Occasional Senior Buyers
-Sangeetha N,21,Female,Cuddalore,Bouquet,4,Occasional Young Buyers
-Abinaya M,28,Female,Villupuram,Bouquet,3,Occasional Young Buyers
-Gayathri M,37,Female,Namakkal,Key Chains,4,Regular Adult Customers
-Lakshmi A,33,Female,Dindigul,Bouquet,9,Regular Adult Customers
-Meena D,21,Female,Thoothukudi,Key Chains,15,Loyal Young Fans
-Anitha D,56,Female,Tirunelveli,Bouquet,15,Loyal Senior Gifters
-Shalini B,43,Female,Thanjavur,Key Chains,11,Regular Adult Customers
-Sangeetha M,50,Female,Salem,Bouquet,2,Occasional Senior Buyers
-Ashwin T,34,Male,Thanjavur,Bouquet,6,Regular Adult Customers
-Ajith D,62,Male,Erode,Bouquet,4,Occasional Senior Buyers
-Swetha J,20,Female,Villupuram,Key Chains,14,Loyal Young Fans
-Manikandan S,60,Male,Tiruppur,Bouquet,4,Occasional Senior Buyers
-Surya A,56,Male,Vellore,Bouquet,18,Loyal Senior Gifters
-Surya R,19,Male,Namakkal,Bouquet,15,Loyal Young Fans
-Prakash S,21,Male,Chennai,Bouquet,3,Occasional Young Buyers
+Name,Age,Gender,District,Product_Type,Repeat_Purchases
+Hari G,36,Male,Tirunelveli,Bouquet,6
+Karthik R,56,Male,Coimbatore,Bouquet,17
+Harini B,53,Female,Tiruchirappalli,Bouquet,14
+Harini B,57,Female,Salem,Bouquet,12
+Deepa J,35,Female,Thanjavur,Bouquet,8
+Arun J,58,Male,Thanjavur,Bouquet,3
+Malathi N,21,Female,Cuddalore,Key Chains,14
+Kishore S,56,Male,Coimbatore,Bouquet,14
+Revathi K,24,Female,Chennai,Key Chains,16
+Lakshmi K,59,Female,Thanjavur,Bouquet,3
+Bala M,52,Male,Tiruchirappalli,Bouquet,19
+Abinaya D,54,Female,Karur,Bouquet,2
+Anitha A,33,Female,Karur,Bouquet,8
+Kavya T,50,Female,Vellore,Bouquet,13
+Keerthana T,38,Female,Villupuram,Bouquet,8
+Dinesh B,26,Male,Erode,Key Chains,3
+Deepa S,18,Female,Coimbatore,Key Chains,17
+Murugan J,26,Male,Kanniyakumari,Bouquet,5
+Shalini R,51,Female,Madurai,Bouquet,17
+Revathi R,53,Female,Dindigul,Key Chains,4
+Kalaivani B,61,Female,Tiruchirappalli,Bouquet,2
+Deepa K,53,Female,Karur,Bouquet,15
+Saravanan D,19,Male,Kanniyakumari,Key Chains,4
+Pavithra A,51,Female,Vellore,Bouquet,17
+Deepa D,25,Female,Tiruchirappalli,Bouquet,5
+Pavithra E,33,Female,Villupuram,Bouquet,10
+Bhuvana D,40,Female,Kanniyakumari,Key Chains,11
+Manikandan B,21,Male,Salem,Key Chains,12
+Kavya D,55,Female,Salem,Bouquet,14
+Karthik T,35,Male,Erode,Bouquet,10
+Deepa M,26,Female,Chennai,Bouquet,5
+Hari M,23,Male,The Nilgiris,Bouquet,16
+Abinaya D,23,Female,Tiruppur,Key Chains,17
+Murugan R,54,Male,Erode,Bouquet,3
+Nandhini P,20,Female,Kancheepuram,Key Chains,1
+Dinesh B,61,Male,Madurai,Bouquet,4
+Deepa R,24,Female,Vellore,Key Chains,13
+Deepa E,54,Female,Kancheepuram,Bouquet,1
+Naveen G,22,Male,Dindigul,Key Chains,12
+Surya B,18,Male,Karur,Bouquet,14
+Meena G,23,Female,Namakkal,Key Chains,4
+Gayathri D,62,Female,Chennai,Bouquet,16
+Kishore D,24,Male,Erode,Bouquet,2
+Indhu S,57,Female,Chennai,Bouquet,3
+Ramesh D,43,Male,Tiruchirappalli,Bouquet,13
+Saranya J,25,Female,Thanjavur,Key Chains,2
+Pranav T,38,Male,Tirunelveli,Key Chains,11
+Vignesh T,51,Male,Kancheepuram,Bouquet,5
+Revathi R,36,Female,Madurai,Bouquet,9
+Elango G,36,Male,Chennai,Bouquet,9
+Saravanan T,58,Male,Coimbatore,Bouquet,2
+Naveen T,58,Male,Tiruchirappalli,Bouquet,17
+Gokul C,52,Male,The Nilgiris,Bouquet,18
+Murugan S,26,Male,Tiruchirappalli,Key Chains,4
+Swetha D,18,Female,Madurai,Key Chains,15
+Prakash E,38,Male,Sivaganga,Key Chains,10
+Keerthana T,23,Female,Karur,Key Chains,16
+Deepa B,53,Female,Tiruchirappalli,Bouquet,1
+Vasanth S,38,Male,Namakkal,Key Chains,9
+Deepa T,60,Female,Chennai,Bouquet,3
+Sangeetha T,41,Female,Tiruchirappalli,Bouquet,9
+Keerthana A,20,Female,The Nilgiris,Key Chains,3
+Ramesh P,38,Male,Dindigul,Bouquet,9
+Arun J,54,Male,Erode,Bouquet,14
+Keerthana J,24,Female,Salem,Key Chains,1
+Kavya S,30,Female,Dindigul,Key Chains,12
+Arun S,39,Male,Erode,Key Chains,7
+Meena A,16,Female,Cuddalore,Bouquet,3
+Nandhini J,32,Female,Villupuram,Bouquet,2
+Suresh M,58,Male,Vellore,Bouquet,2
+Saravanan C,21,Male,Cuddalore,Key Chains,13
+Kavya B,57,Female,Dindigul,Bouquet,2
+Vignesh G,46,Male,Dindigul,Bouquet,14
+Senthil V,25,Male,Madurai,Key Chains,14
+Gokul N,58,Male,Chennai,Bouquet,14
+Murugan S,53,Male,Sivaganga,Bouquet,15
+Elango E,21,Male,Thoothukudi,Key Chains,3
+Sathish G,23,Male,Chennai,Key Chains,15
+Ramesh N,23,Male,Tirunelveli,Key Chains,12
+Tamilselvan T,21,Male,Kancheepuram,Key Chains,4
+Manikandan A,24,Male,Tiruchirappalli,Key Chains,18
+Surya M,24,Male,Thanjavur,Bouquet,17
+Malathi C,42,Female,Salem,Bouquet,11
+Naveen V,19,Male,Tirunelveli,Key Chains,3
+Naveen K,59,Male,Kanniyakumari,Bouquet,2
+Sangeetha N,21,Female,Cuddalore,Bouquet,4
+Abinaya M,28,Female,Villupuram,Bouquet,3
+Gayathri M,37,Female,Namakkal,Key Chains,4
+Lakshmi A,33,Female,Dindigul,Bouquet,9
+Meena D,21,Female,Thoothukudi,Key Chains,15
+Anitha D,56,Female,Tirunelveli,Bouquet,15
+Shalini B,43,Female,Thanjavur,Key Chains,11
+Sangeetha M,50,Female,Salem,Bouquet,2
+Ashwin T,34,Male,Thanjavur,Bouquet,6
+Ajith D,62,Male,Erode,Bouquet,4
+Swetha J,20,Female,Villupuram,Key Chains,14
+Manikandan S,60,Male,Tiruppur,Bouquet,4
+Surya A,56,Male,Vellore,Bouquet,18
+Surya R,19,Male,Namakkal,Bouquet,15
+Prakash S,21,Male,Chennai,Bouquet,3
