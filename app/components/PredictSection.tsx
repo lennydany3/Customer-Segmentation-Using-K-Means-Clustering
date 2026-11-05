@@ -5,15 +5,15 @@ import { UserCheck, Sparkles, Send, CheckCircle2, AlertCircle } from "lucide-rea
 import { PredictResponse } from "../lib/types";
 
 export interface PredictBounds {
-  incomeMin: number;
-  incomeMax: number;
-  spendingMin: number;
-  spendingMax: number;
+  ageMin: number;
+  ageMax: number;
+  repeatsMin: number;
+  repeatsMax: number;
 }
 
 interface PredictSectionProps {
   bounds: PredictBounds;
-  onPredict: (data: { age: number; income: number; spending_score: number }) => Promise<PredictResponse | null>;
+  onPredict: (data: { age: number; repeat_purchases: number }) => Promise<PredictResponse | null>;
   isPredicting: boolean;
   predictionResult: PredictResponse | null;
   error: string | null;
@@ -26,25 +26,18 @@ export const PredictSection: React.FC<PredictSectionProps> = ({
   predictionResult,
   error,
 }) => {
-  // Slider ranges follow the uploaded data so any dataset's scale works
-  const incomeMin = Math.floor(bounds.incomeMin);
-  const incomeMax = Math.max(incomeMin + 1, Math.ceil(bounds.incomeMax));
-  const spendingMin = Math.floor(bounds.spendingMin);
-  const spendingMax = Math.max(spendingMin + 1, Math.ceil(bounds.spendingMax));
-  const incomeStep = incomeMax - incomeMin > 20 ? 1 : 0.1;
-  const spendingStep = spendingMax - spendingMin > 20 ? 1 : 0.1;
+  // Slider ranges follow the uploaded data
+  const ageMin = Math.floor(bounds.ageMin);
+  const ageMax = Math.max(ageMin + 1, Math.ceil(bounds.ageMax));
+  const repeatsMin = Math.floor(bounds.repeatsMin);
+  const repeatsMax = Math.max(repeatsMin + 1, Math.ceil(bounds.repeatsMax));
 
-  const [age, setAge] = useState<number>(30);
-  const [income, setIncome] = useState<number>(Math.round((incomeMin + incomeMax) / 2));
-  const [spending, setSpending] = useState<number>(Math.round((spendingMin + spendingMax) / 2));
+  const [age, setAge] = useState<number>(Math.round((ageMin + ageMax) / 2));
+  const [repeats, setRepeats] = useState<number>(Math.round((repeatsMin + repeatsMax) / 2));
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await onPredict({
-      age: Number(age),
-      income: Number(income),
-      spending_score: Number(spending),
-    });
+    await onPredict({ age: Number(age), repeat_purchases: Number(repeats) });
   };
 
   return (
@@ -57,7 +50,7 @@ export const PredictSection: React.FC<PredictSectionProps> = ({
         Predict New Customer Segment
       </h2>
       <p className="text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-2xl mb-8">
-        Enter a customer&apos;s income and spending score. The system normalizes their features with the trained StandardScaler and assigns them to the closest cluster centroid via Euclidean distance.
+        Enter a customer&apos;s age and number of repeat purchases. The system normalizes their features with the trained StandardScaler and assigns them to the closest cluster centroid via Euclidean distance.
       </p>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -70,74 +63,47 @@ export const PredictSection: React.FC<PredictSectionProps> = ({
                 <label className="text-xs font-semibold text-slate-700 dark:text-slate-300">
                   Customer Age (Years)
                 </label>
-                <span className="text-xs font-mono font-bold text-slate-900 dark:text-slate-100">
+                <span className="text-xs font-mono font-bold text-blue-600 dark:text-blue-400">
                   {age} years
                 </span>
               </div>
               <input
                 type="range"
-                min={18}
-                max={75}
+                min={ageMin}
+                max={ageMax}
                 value={age}
                 onChange={(e) => setAge(Number(e.target.value))}
                 className="w-full accent-blue-600 cursor-pointer"
               />
               <div className="flex justify-between text-[11px] text-slate-400 mt-1">
-                <span>18 yrs</span>
-                <span>45 yrs</span>
-                <span>75 yrs</span>
+                <span>{ageMin} yrs</span>
+                <span>{Math.round((ageMin + ageMax) / 2)} yrs</span>
+                <span>{ageMax} yrs</span>
               </div>
             </div>
 
-            {/* Annual Income Input */}
+            {/* Repeat Purchases Input */}
             <div>
               <div className="flex justify-between items-center mb-1.5">
                 <label className="text-xs font-semibold text-slate-700 dark:text-slate-300">
-                  Annual Income ($k / year)
-                </label>
-                <span className="text-xs font-mono font-bold text-blue-600 dark:text-blue-400">
-                  ${income}k
-                </span>
-              </div>
-              <input
-                type="range"
-                min={incomeMin}
-                max={incomeMax}
-                step={incomeStep}
-                value={income}
-                onChange={(e) => setIncome(Number(e.target.value))}
-                className="w-full accent-blue-600 cursor-pointer"
-              />
-              <div className="flex justify-between text-[11px] text-slate-400 mt-1">
-                <span>${incomeMin}k</span>
-                <span>${Math.round((incomeMin + incomeMax) / 2)}k</span>
-                <span>${incomeMax}k</span>
-              </div>
-            </div>
-
-            {/* Spending Score Input */}
-            <div>
-              <div className="flex justify-between items-center mb-1.5">
-                <label className="text-xs font-semibold text-slate-700 dark:text-slate-300">
-                  Spending Score
+                  Number of Repeat Purchases
                 </label>
                 <span className="text-xs font-mono font-bold text-indigo-600 dark:text-indigo-400">
-                  {spending}
+                  {repeats} times
                 </span>
               </div>
               <input
                 type="range"
-                min={spendingMin}
-                max={spendingMax}
-                step={spendingStep}
-                value={spending}
-                onChange={(e) => setSpending(Number(e.target.value))}
+                min={repeatsMin}
+                max={repeatsMax}
+                value={repeats}
+                onChange={(e) => setRepeats(Number(e.target.value))}
                 className="w-full accent-indigo-600 cursor-pointer"
               />
               <div className="flex justify-between text-[11px] text-slate-400 mt-1">
-                <span>{spendingMin} (Low)</span>
-                <span>{Math.round((spendingMin + spendingMax) / 2)}</span>
-                <span>{spendingMax} (High)</span>
+                <span>{repeatsMin} (Rare)</span>
+                <span>{Math.round((repeatsMin + repeatsMax) / 2)}</span>
+                <span>{repeatsMax} (Loyal)</span>
               </div>
             </div>
 
@@ -174,7 +140,7 @@ export const PredictSection: React.FC<PredictSectionProps> = ({
                   Cluster {predictionResult.cluster_id} Assigned
                 </span>
                 <span className="text-xs text-slate-400 font-mono">
-                  {predictionResult.age !== null ? `Age ${predictionResult.age} | ` : ""}${predictionResult.income}k | {predictionResult.spending_score}
+                  Age {predictionResult.age} | {predictionResult.repeat_purchases} repeats
                 </span>
               </div>
 
@@ -193,7 +159,7 @@ export const PredictSection: React.FC<PredictSectionProps> = ({
                   Nearest Cluster Centroid:
                 </span>
                 <p className="text-slate-500">
-                  Income: <strong>${predictionResult.nearest_centroid[0]}k</strong> | Spending:{" "}
+                  Age: <strong>{predictionResult.nearest_centroid[0]} yrs</strong> | Repeat purchases:{" "}
                   <strong>{predictionResult.nearest_centroid[1]}</strong>
                 </p>
               </div>

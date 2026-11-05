@@ -51,11 +51,10 @@ export default function Home() {
   const [predictionResult, setPredictionResult] = useState<PredictResponse | null>(null);
   const [predictionError, setPredictionError] = useState<string | null>(null);
   const [predictedScatterPoint, setPredictedScatterPoint] = useState<{
-    income: number;
-    spending: number;
+    age: number;
+    repeats: number;
     label: string;
     cluster_id: number;
-    age: number | null;
   } | null>(null);
 
   const hasDataset = uploadSummary !== null && clusteringData !== null && elbowData !== null;
@@ -83,13 +82,13 @@ export default function Home() {
 
   // Value ranges of the uploaded data, used by the prediction sliders
   const predictBounds = useMemo(() => {
-    const incomes = customers.map((c) => c.annual_income);
-    const spendings = customers.map((c) => c.spending_score);
+    const ages = customers.map((c) => c.age);
+    const repeats = customers.map((c) => c.repeat_purchases);
     return {
-      incomeMin: incomes.length ? Math.min(...incomes) : 0,
-      incomeMax: incomes.length ? Math.max(...incomes) : 100,
-      spendingMin: spendings.length ? Math.min(...spendings) : 0,
-      spendingMax: spendings.length ? Math.max(...spendings) : 100,
+      ageMin: ages.length ? Math.min(...ages) : 18,
+      ageMax: ages.length ? Math.max(...ages) : 75,
+      repeatsMin: repeats.length ? Math.min(...repeats) : 0,
+      repeatsMax: repeats.length ? Math.max(...repeats) : 20,
     };
   }, [customers]);
 
@@ -160,16 +159,14 @@ export default function Home() {
         try {
           const rePred = await predictCustomer({
             age: predictedScatterPoint.age,
-            income: predictedScatterPoint.income,
-            spending_score: predictedScatterPoint.spending,
+            repeat_purchases: predictedScatterPoint.repeats,
           });
           setPredictionResult(rePred);
           setPredictedScatterPoint({
-            income: rePred.income,
-            spending: rePred.spending_score,
+            age: rePred.age,
+            repeats: rePred.repeat_purchases,
             label: rePred.label,
             cluster_id: rePred.cluster_id,
-            age: rePred.age,
           });
         } catch {
           // Keep previous or clear
@@ -196,8 +193,7 @@ export default function Home() {
   // Handle customer prediction
   const handlePredict = async (data: {
     age: number;
-    income: number;
-    spending_score: number;
+    repeat_purchases: number;
   }): Promise<PredictResponse | null> => {
     setIsPredicting(true);
     setPredictionError(null);
@@ -205,11 +201,10 @@ export default function Home() {
       const res = await predictCustomer(data);
       setPredictionResult(res);
       setPredictedScatterPoint({
-        income: res.income,
-        spending: res.spending_score,
+        age: res.age,
+        repeats: res.repeat_purchases,
         label: res.label,
         cluster_id: res.cluster_id,
-        age: res.age,
       });
       setIsBackendHealthy(true);
 
@@ -357,7 +352,7 @@ export default function Home() {
               <div className="bg-white/5 border border-white/10 rounded-xl p-4">
                 <h4 className="font-bold text-white mb-1.5 text-sm">2. Why StandardScaler?</h4>
                 <p className="leading-relaxed text-slate-300 text-xs">
-                  Income usually has a much larger numeric scale than Spending Score. Without z-score normalization, income would dominate Euclidean distance computations.
+                  Age (about 16 to 75) has a much larger numeric range than Repeat Purchases (about 0 to 20). Without z-score normalization, age would dominate Euclidean distance computations.
                 </p>
               </div>
 

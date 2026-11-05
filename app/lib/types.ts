@@ -1,8 +1,11 @@
 export interface Customer {
   customer_id: string;
-  age: number | null;
-  annual_income: number;
-  spending_score: number;
+  name: string;
+  age: number;
+  gender: string | null;
+  district: string | null;
+  product_type: string | null;
+  repeat_purchases: number;
   cluster?: number | null;
 }
 
@@ -22,26 +25,30 @@ export interface ClusterSummary {
   label: string;
   customer_count: number;
   percentage: number;
-  avg_age: number | null;
-  avg_income: number;
-  avg_spending: number;
+  avg_age: number;
+  avg_repeats: number;
+  /** [age, repeat_purchases] */
   centroid: [number, number];
+  top_product: string | null;
+  top_product_share: number;
+  top_district: string | null;
+  female_share: number | null;
   description: string;
   strategy: string;
 }
 
 export interface Point {
   id: string;
-  age: number | null;
-  income: number;
-  spending: number;
+  age: number;
+  repeats: number;
+  product: string | null;
   cluster: number;
 }
 
 export interface CentroidPoint {
   cluster: number;
-  income: number;
-  spending: number;
+  age: number;
+  repeats: number;
   label: string;
 }
 
@@ -61,9 +68,8 @@ export interface ClusterResponse {
 }
 
 export interface PredictRequest {
-  age?: number | null;
-  income: number;
-  spending_score: number;
+  age: number;
+  repeat_purchases: number;
 }
 
 export interface PredictResponse {
@@ -71,9 +77,8 @@ export interface PredictResponse {
   label: string;
   description: string;
   strategy: string;
-  income: number;
-  spending_score: number;
-  age: number | null;
+  age: number;
+  repeat_purchases: number;
   nearest_centroid: [number, number];
 }
 
@@ -82,11 +87,13 @@ export interface UploadResponse {
   processed_rows: number;
   skipped_rows: number;
   detected_columns: {
-    id: string | null;
+    name: string | null;
     age: string | null;
-    income: string | null;
-    spending: string | null;
-    label?: string | null;
+    gender: string | null;
+    district: string | null;
+    product: string | null;
+    repeats: string | null;
+    label: string | null;
   };
 }
 

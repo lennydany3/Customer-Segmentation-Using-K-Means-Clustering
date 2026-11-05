@@ -67,7 +67,7 @@ async def upload_dataset(request: Request):
     """
     Uploads a customer CSV file and makes it the active dataset (replacing any previous one).
     The request body is the raw CSV text (Content-Type: text/csv). Required columns are
-    Annual Income and Spending Score; Customer ID and Age are optional.
+    Age and Repeat_Purchases; Name, Gender, District and Product_Type are optional.
     """
     body = await request.body()
     if not body:
@@ -105,9 +105,12 @@ def get_dataset(limit: Optional[int] = Query(None, ge=1, le=10000, description="
     records = [
         Customer(
             customer_id=str(row["Customer_ID"]),
-            age=None if pd.isna(row["Age"]) else int(row["Age"]),
-            annual_income=float(row["Annual_Income"]),
-            spending_score=float(row["Spending_Score"]),
+            name=str(row["Name"]),
+            age=float(row["Age"]),
+            gender=row["Gender"],
+            district=row["District"],
+            product_type=row["Product_Type"],
+            repeat_purchases=float(row["Repeat_Purchases"]),
             cluster=int(row["Cluster"]) if has_cluster and pd.notna(row["Cluster"]) else None,
         )
         for _, row in df.iterrows()
@@ -159,14 +162,13 @@ def run_kmeans_clustering(payload: ClusterRequest):
 @app.post("/api/predict", response_model=PredictResponse, tags=["Prediction"], dependencies=[Depends(require_dataset)])
 def predict_customer_segment(payload: PredictRequest):
     """
-    Predicts the market segment for a single customer given their Annual Income and Spending Score.
+    Predicts the market segment for a single customer given their Age and Repeat_Purchases.
     Uses the currently fitted StandardScaler and KMeans model.
     """
     try:
         prediction = ml_model.predict(
             age=payload.age,
-            income=payload.income,
-            spending=payload.spending_score
+            repeats=payload.repeat_purchases
         )
         return PredictResponse(**prediction)
     except Exception as e:

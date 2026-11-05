@@ -3,10 +3,12 @@ from pydantic import BaseModel, Field
 
 # --- Upload / Dataset Schemas ---
 class DetectedColumns(BaseModel):
-    id: Optional[str] = None
+    name: Optional[str] = None
     age: Optional[str] = None
-    income: Optional[str] = None
-    spending: Optional[str] = None
+    gender: Optional[str] = None
+    district: Optional[str] = None
+    product: Optional[str] = None
+    repeats: Optional[str] = None
     label: Optional[str] = None
 
 class UploadResponse(BaseModel):
@@ -16,10 +18,13 @@ class UploadResponse(BaseModel):
     detected_columns: DetectedColumns
 
 class Customer(BaseModel):
-    customer_id: str = Field(..., description="Customer ID from the uploaded file (or the row number)")
-    age: Optional[int] = Field(None, description="Customer age, if the file has an Age column")
-    annual_income: float = Field(..., description="Annual Income")
-    spending_score: float = Field(..., description="Spending Score")
+    customer_id: str = Field(..., description="Row number in the uploaded file")
+    name: str = Field(..., description="Customer name (or 'Customer N' if the file has none)")
+    age: float = Field(..., description="Customer age")
+    gender: Optional[str] = None
+    district: Optional[str] = None
+    product_type: Optional[str] = None
+    repeat_purchases: float = Field(..., description="Number of repeat purchases")
     cluster: Optional[int] = Field(None, description="Assigned cluster ID if clustered")
 
 class DatasetResponse(BaseModel):
@@ -41,24 +46,27 @@ class ClusterSummary(BaseModel):
     label: str
     customer_count: int
     percentage: float
-    avg_age: Optional[float] = None
-    avg_income: float
-    avg_spending: float
-    centroid: List[float] = Field(..., description="Centroid coordinates [income, spending] in original units")
+    avg_age: float
+    avg_repeats: float
+    centroid: List[float] = Field(..., description="Centroid [age, repeat_purchases] in original units")
+    top_product: Optional[str] = None
+    top_product_share: float = 0.0
+    top_district: Optional[str] = None
+    female_share: Optional[float] = None
     description: str
     strategy: str
 
 class Point(BaseModel):
     id: str
-    age: Optional[int] = None
-    income: float
-    spending: float
+    age: float
+    repeats: float
+    product: Optional[str] = None
     cluster: int
 
 class CentroidPoint(BaseModel):
     cluster: int
-    income: float
-    spending: float
+    age: float
+    repeats: float
     label: str
 
 class ClusterResponse(BaseModel):
@@ -76,18 +84,16 @@ class ClusterResponse(BaseModel):
 
 # --- Prediction Schemas ---
 class PredictRequest(BaseModel):
-    age: Optional[int] = Field(None, ge=0, le=120, description="Customer age (optional, not used for clustering)")
-    income: float = Field(..., description="Annual Income, in the same unit as the uploaded dataset")
-    spending_score: float = Field(..., description="Spending score, in the same unit as the uploaded dataset")
+    age: float = Field(..., ge=0, le=120, description="Customer age")
+    repeat_purchases: float = Field(..., ge=0, description="Number of repeat purchases")
 
 class PredictResponse(BaseModel):
     cluster_id: int
     label: str
     description: str
     strategy: str
-    income: float
-    spending_score: float
-    age: Optional[int] = None
+    age: float
+    repeat_purchases: float
     nearest_centroid: List[float]
 
 # --- Health Check ---

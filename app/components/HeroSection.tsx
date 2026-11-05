@@ -30,7 +30,7 @@ const PIPELINE_STEPS = [
     href: "#upload",
     icon: FileUp,
     title: "Upload CSV",
-    detail: "Upload your customer dataset: income & spending score",
+    detail: "Upload your customer dataset: age & repeat purchases",
     tone: "text-violet-600 dark:text-violet-400 bg-violet-50 dark:bg-violet-950/60 border-violet-200 dark:border-violet-800",
   },
   {
@@ -129,8 +129,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </h1>
 
             <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
-              Upload your customer CSV and the model groups every customer by <strong>Annual Income</strong> and{" "}
-              <strong>Spending Score</strong> into actionable market segments, each with a marketing strategy.
+              Upload your customer CSV and the model groups every customer by <strong>Age</strong> and{" "}
+              <strong>Repeat Purchases</strong> into actionable market segments, each with a marketing strategy.
             </p>
 
             {/* Calls to action */}

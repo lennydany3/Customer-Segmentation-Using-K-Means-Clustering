@@ -38,20 +38,19 @@ interface ResultsSectionProps {
   clusteringData: ClusterResponse | null;
   recommendedK?: number | null;
   predictedPoint?: {
-    income: number;
-    spending: number;
+    age: number;
+    repeats: number;
     label: string;
     cluster_id: number;
-    age: number | null;
   } | null;
 }
 
 interface ScatterPayloadItem {
   payload: {
     id?: string;
-    age?: number | null;
-    income: number;
-    spending: number;
+    age: number;
+    repeats: number;
+    product?: string | null;
     cluster?: number;
     clusterName?: string;
     label?: string;
@@ -80,9 +79,8 @@ const CustomScatterTooltip: React.FC<CustomScatterTooltipProps> = ({ active, pay
             ★ Predicted Customer
           </div>
           <p><span className="text-slate-400">Assigned Segment:</span> {data.label}</p>
-          <p><span className="text-slate-400">Income:</span> ${data.income}k</p>
-          <p><span className="text-slate-400">Spending Score:</span> {data.spending}</p>
-          {data.age != null && <p><span className="text-slate-400">Age:</span> {data.age} yrs</p>}
+          <p><span className="text-slate-400">Age:</span> {data.age} yrs</p>
+          <p><span className="text-slate-400">Repeat Purchases:</span> {data.repeats}</p>
         </div>
       );
     }
@@ -93,8 +91,8 @@ const CustomScatterTooltip: React.FC<CustomScatterTooltipProps> = ({ active, pay
           <div className="font-bold text-yellow-400 mb-1">
             ◆ Cluster Centroid ({data.label})
           </div>
-          <p><span className="text-slate-400">Mean Income:</span> ${data.income}k</p>
-          <p><span className="text-slate-400">Mean Spending:</span> {data.spending}</p>
+          <p><span className="text-slate-400">Mean Age:</span> {data.age} yrs</p>
+          <p><span className="text-slate-400">Mean Repeats:</span> {data.repeats}</p>
         </div>
       );
     }
@@ -102,12 +100,12 @@ const CustomScatterTooltip: React.FC<CustomScatterTooltipProps> = ({ active, pay
     return (
       <div className="bg-slate-900 text-white p-2.5 rounded-lg shadow-xl text-xs border border-slate-700">
         <div className="font-semibold text-slate-200 mb-1">
-          Customer {data.id}
+          {data.id}
         </div>
         <p><span className="text-slate-400">Cluster:</span> {data.clusterName || `Cluster ${data.cluster}`}</p>
-        <p><span className="text-slate-400">Annual Income:</span> ${data.income}k</p>
-        <p><span className="text-slate-400">Spending Score:</span> {data.spending}</p>
-        {data.age != null && <p><span className="text-slate-400">Age:</span> {data.age} yrs</p>}
+        <p><span className="text-slate-400">Age:</span> {data.age} yrs</p>
+        <p><span className="text-slate-400">Repeat Purchases:</span> {data.repeats}</p>
+        {data.product && <p><span className="text-slate-400">Product:</span> {data.product}</p>}
       </div>
     );
   }
@@ -148,7 +146,6 @@ export const ResultsSection: React.FC<ResultsSectionProps> = ({
       ...c,
       isCentroid: true,
       id: `Centroid-${c.cluster}`,
-      age: 0,
     }));
   }, [centroids]);
 
@@ -253,7 +250,7 @@ export const ResultsSection: React.FC<ResultsSectionProps> = ({
         )}
       </div>
 
-      {/* 2. Scatter Plot: Annual Income vs Spending Score */}
+      {/* 2. Scatter Plot: Age vs Repeat Purchases */}
       <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-xs">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
           <div>
@@ -262,7 +259,7 @@ export const ResultsSection: React.FC<ResultsSectionProps> = ({
               Customer Segments Scatter Plot
             </h3>
             <p className="text-xs text-slate-500">
-              Annual Income ($k) vs Spending Score. Diamonds (◆) denote cluster centroids.
+              Age vs Repeat Purchases. Diamonds (◆) denote cluster centroids.
               {predictedPoint && (
                 <span className="text-pink-600 font-semibold ml-1">
                   ★ Highlighted star denotes newly predicted customer!
@@ -289,15 +286,15 @@ export const ResultsSection: React.FC<ResultsSectionProps> = ({
               <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
               <XAxis
                 type="number"
-                dataKey="income"
-                name="Annual Income"
-                unit="k$"
+                dataKey="age"
+                name="Age"
+                unit=" yrs"
                 domain={["auto", "auto"]}
                 tickLine={false}
                 stroke="#64748b"
                 fontSize={12}
                 label={{
-                  value: "Annual Income ($k)",
+                  value: "Age (years)",
                   position: "insideBottom",
                   offset: -10,
                   fontSize: 12,
@@ -306,14 +303,14 @@ export const ResultsSection: React.FC<ResultsSectionProps> = ({
               />
               <YAxis
                 type="number"
-                dataKey="spending"
-                name="Spending Score"
+                dataKey="repeats"
+                name="Repeat Purchases"
                 domain={[0, "auto"]}
                 tickLine={false}
                 stroke="#64748b"
                 fontSize={12}
                 label={{
-                  value: "Spending Score",
+                  value: "Repeat Purchases",
                   angle: -90,
                   position: "insideLeft",
                   fontSize: 12,
@@ -407,23 +404,32 @@ export const ResultsSection: React.FC<ResultsSectionProps> = ({
                   </p>
 
                   {/* Numerical averages */}
-                  <div className="grid grid-cols-3 gap-2 bg-slate-50 dark:bg-slate-800/60 p-3 rounded-lg text-center mb-4 border border-slate-100 dark:border-slate-800">
-                    <div>
-                      <span className="text-[11px] text-slate-400 block">Avg Income</span>
-                      <span className="text-sm font-bold text-slate-800 dark:text-slate-200">
-                        ${cluster.avg_income}k
-                      </span>
-                    </div>
-                    <div>
-                      <span className="text-[11px] text-slate-400 block">Avg Spending</span>
-                      <span className="text-sm font-bold text-slate-800 dark:text-slate-200">
-                        {cluster.avg_spending}
-                      </span>
-                    </div>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 bg-slate-50 dark:bg-slate-800/60 p-3 rounded-lg text-center mb-4 border border-slate-100 dark:border-slate-800">
                     <div>
                       <span className="text-[11px] text-slate-400 block">Avg Age</span>
                       <span className="text-sm font-bold text-slate-800 dark:text-slate-200">
-                        {cluster.avg_age !== null ? `${cluster.avg_age} yrs` : "—"}
+                        {cluster.avg_age} yrs
+                      </span>
+                    </div>
+                    <div>
+                      <span className="text-[11px] text-slate-400 block">Avg Repeats</span>
+                      <span className="text-sm font-bold text-slate-800 dark:text-slate-200">
+                        {cluster.avg_repeats}
+                      </span>
+                    </div>
+                    <div>
+                      <span className="text-[11px] text-slate-400 block">Top Product</span>
+                      <span className="text-sm font-bold text-slate-800 dark:text-slate-200">
+                        {cluster.top_product ?? "-"}
+                        {cluster.top_product && (
+                          <span className="block text-[10px] font-medium text-slate-400">{cluster.top_product_share}%</span>
+                        )}
+                      </span>
+                    </div>
+                    <div>
+                      <span className="text-[11px] text-slate-400 block">Top District</span>
+                      <span className="text-sm font-bold text-slate-800 dark:text-slate-200">
+                        {cluster.top_district ?? "-"}
                       </span>
                     </div>
                   </div>

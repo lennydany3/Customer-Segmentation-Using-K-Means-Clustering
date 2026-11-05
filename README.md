@@ -53,11 +53,11 @@ npm run dev
 
 The app starts empty: **there is no built-in dataset.** Upload a customer CSV and the dashboard builds everything from it:
 
-1. **Upload CSV**: drag in a file with `Annual_Income` and `Spending_Score` columns (`Customer_ID` and `Age` optional; Kaggle `Mall_Customers.csv` headers also work; 10 to 5,000 customers, max 5 MB). A loader shows the processing stages.
+1. **Upload CSV**: drag in a file with `Age` and `Repeat_Purchases` columns (`Name`, `Gender`, `District`, `Product_Type` optional; 10 to 5,000 customers, max 5 MB). Ready-made files are in [`dataset/`](dataset/). A loader shows the processing stages.
 2. **Dataset / Elbow / K-Means / Predict** sections then appear, all computed on your file. K is picked automatically with the silhouette score and can be changed afterwards.
 3. Download the segmented customers as a CSV.
 
-Income is treated as thousands ($k).
+If the file has a `True_Segment` column, the dashboard also shows **accuracy** (plus ARI and NMI) against it.
 
 ---
 
@@ -97,11 +97,11 @@ heshly_ml_project/
 ## 🧠 Machine Learning Pipeline Overview
 
 1. **Dataset Upload (`POST /api/upload`)**:
-   - The user uploads a CSV. Columns are detected case-insensitively (`Annual_Income` / `Annual Income (k$)`, `Spending_Score` / `Spending Score (1-100)`, optional `Customer_ID`, `Age`).
-   - Rows with missing or non-numeric income/spending are skipped and counted.
+   - The user uploads a CSV. Columns are detected case-insensitively (`Age`, `Repeat_Purchases` / `Repeats`, optional `Name`, `Gender`, `District`, `Product_Type`, `True_Segment`).
+   - Rows with missing, negative or non-numeric age/repeat purchases are skipped and counted.
 
 2. **Feature Preprocessing (`StandardScaler`)**:
-   - `Annual_Income` and `Spending_Score` are standardized using z-score normalization ($z = \frac{x - \mu}{\sigma}$) so features with large numeric variance do not artificially dominate Euclidean distances.
+   - `Age` and `Repeat_Purchases` are standardized using z-score normalization ($z = \frac{x - \mu}{\sigma}$) so the feature with the larger numeric range does not dominate Euclidean distances.
 
 3. **Hyperparameter Selection (Elbow Method)**:
    - Calculates **Within-Cluster Sum of Squares (WCSS / Inertia)** for $K \in [2, 8]$ on the uploaded data.
@@ -114,7 +114,7 @@ heshly_ml_project/
    - Automatically generates persona labels, descriptions, and actionable marketing strategies.
 
 5. **Inference / Prediction**:
-   - Accepts a new customer's Income and Spending Score (Age optional).
+   - Accepts a new customer's Age and Repeat Purchases.
    - Scales the input using the fitted `StandardScaler` and assigns the nearest centroid.
    - Displays segment details and highlights the new customer point on the 2D Scatter plot in real-time.
 
@@ -142,7 +142,7 @@ The K-Means algorithm partitions $N$ observations into $K$ clusters through an i
 ### 3. Why is Feature Scaling (`StandardScaler`) essential for K-Means?
 - K-Means relies entirely on **Euclidean distance**:
   $$d(p, q) = \sqrt{(p_1 - q_1)^2 + (p_2 - q_2)^2}$$
-- If `Annual_Income` is measured in thousands (e.g., $15,000 to $140,000) while `Spending_Score` ranges from $1$ to $100$, the income feature will dominate the distance calculation simply due to scale difference.
+- `Age` ranges from about 16 to 75 while `Repeat_Purchases` ranges from about 0 to 20, so without scaling the age feature would dominate the distance calculation simply due to scale difference.
 - `StandardScaler` normalizes each feature to have a **mean of 0** and a **standard deviation of 1**, ensuring every feature contributes proportionally.
 
 ---
@@ -151,7 +151,7 @@ The K-Means algorithm partitions $N$ observations into $K$ clusters through an i
 - **WCSS (Within-Cluster Sum of Squares)**, also known as **Inertia**, measures cluster compactness:
   $$\text{WCSS} = \sum_{j=1}^{K} \sum_{x_i \in C_j} ||x_i - \mu_j||^2$$
 - As $K$ increases, WCSS monotonically decreases (reaching 0 when $K = N$).
-- The **Elbow Method** plots WCSS against $K$. The point where the rate of decrease abruptly slows down (forming an &quot;elbow&quot; bend) represents the point of diminishing returns. In this project, the elbow clearly appears at **$K = 4$**.
+- The **Elbow Method** plots WCSS against $K$. The point where the rate of decrease abruptly slows down (forming an &quot;elbow&quot; bend) represents the point of diminishing returns. On `dataset/tn_gift_shop_100.csv` the elbow appears at **$K = 5$**.
 
 ---
 
@@ -162,7 +162,7 @@ The K-Means algorithm partitions $N$ observations into $K$ clusters through an i
   - **$+1$**: Points are well clustered and far from neighboring clusters.
   - **$0$**: Points are on or very close to the decision boundary between two clusters.
   - **$-1$**: Points may have been assigned to the incorrect cluster.
-- Our baseline model achieves **$\approx 0.714$**, signifying distinct, well-separated market segments.
+- On `dataset/tn_gift_shop_100.csv` the model achieves **$\approx 0.665$** with **99% accuracy** against the true segments.
 
 ---
 
@@ -183,7 +183,7 @@ The K-Means algorithm partitions $N$ observations into $K$ clusters through an i
 | `GET` | `/api/dataset` | Returns the uploaded customer records (supports `?limit=`) |
 | `GET` | `/api/elbow` | Computes WCSS values for $K \in [2, 8]$ plus the silhouette-optimal `recommended_k` |
 | `POST` | `/api/cluster` | Trains KMeans with `{ k: int }` (2-8), returns metrics & centroids |
-| `POST` | `/api/predict` | Classifies a customer from `{ income, spending_score, age? }` |
+| `POST` | `/api/predict` | Classifies a customer from `{ age, repeat_purchases }` |
 
 Every endpoint except `health` and `upload` returns `409` until a dataset has been uploaded.
 

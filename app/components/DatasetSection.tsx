@@ -19,10 +19,11 @@ export const DatasetSection: React.FC<DatasetSectionProps> = ({
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 10;
 
-  // Filter customers by Customer ID
+  // Filter customers by name, district or product
   const filteredCustomers = useMemo(() => {
+    const q = searchTerm.toLowerCase();
     return customers.filter((c) =>
-      c.customer_id.toLowerCase().includes(searchTerm.toLowerCase())
+      [c.name, c.district ?? "", c.product_type ?? ""].some((v) => v.toLowerCase().includes(q))
     );
   }, [customers, searchTerm]);
 
@@ -33,13 +34,13 @@ export const DatasetSection: React.FC<DatasetSectionProps> = ({
     return filteredCustomers.slice(start, start + pageSize);
   }, [filteredCustomers, currentPage, pageSize]);
 
-  // Overall statistics + the largest spending score (scales the little bars in the table)
+  // Overall statistics + the largest repeat count (scales the little bars in the table)
   const stats = useMemo(() => {
-    if (customers.length === 0) return { avgIncome: 0, avgSpending: 0, maxSpending: 1 };
-    const avgIncome = customers.reduce((acc, c) => acc + c.annual_income, 0) / customers.length;
-    const avgSpending = customers.reduce((acc, c) => acc + c.spending_score, 0) / customers.length;
-    const maxSpending = Math.max(1, ...customers.map((c) => c.spending_score));
-    return { avgIncome: Math.round(avgIncome), avgSpending: Math.round(avgSpending), maxSpending };
+    if (customers.length === 0) return { avgAge: 0, avgRepeats: 0, maxRepeats: 1 };
+    const avgAge = customers.reduce((acc, c) => acc + c.age, 0) / customers.length;
+    const avgRepeats = customers.reduce((acc, c) => acc + c.repeat_purchases, 0) / customers.length;
+    const maxRepeats = Math.max(1, ...customers.map((c) => c.repeat_purchases));
+    return { avgAge: Math.round(avgAge), avgRepeats: Math.round(avgRepeats * 10) / 10, maxRepeats };
   }, [customers]);
 
   return (
@@ -66,12 +67,12 @@ export const DatasetSection: React.FC<DatasetSectionProps> = ({
             <span className="text-lg font-bold text-slate-900 dark:text-white">{totalCount}</span>
           </div>
           <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-2.5 px-4 shadow-xs">
-            <span className="text-xs text-slate-500 block">Avg Income</span>
-            <span className="text-lg font-bold text-blue-600 dark:text-blue-400">${stats.avgIncome}k</span>
+            <span className="text-xs text-slate-500 block">Avg Age</span>
+            <span className="text-lg font-bold text-blue-600 dark:text-blue-400">{stats.avgAge} yrs</span>
           </div>
           <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-2.5 px-4 shadow-xs">
-            <span className="text-xs text-slate-500 block">Avg Spending</span>
-            <span className="text-lg font-bold text-indigo-600 dark:text-indigo-400">{stats.avgSpending}</span>
+            <span className="text-xs text-slate-500 block">Avg Repeats</span>
+            <span className="text-lg font-bold text-indigo-600 dark:text-indigo-400">{stats.avgRepeats}</span>
           </div>
         </div>
       </div>
@@ -84,7 +85,7 @@ export const DatasetSection: React.FC<DatasetSectionProps> = ({
             <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
             <input
               type="text"
-              placeholder="Search by customer ID..."
+              placeholder="Search name, district or product..."
               value={searchTerm}
               onChange={(e) => {
                 setSearchTerm(e.target.value);
@@ -104,37 +105,39 @@ export const DatasetSection: React.FC<DatasetSectionProps> = ({
           <table className="w-full text-left text-sm">
             <thead className="bg-slate-50 dark:bg-slate-800/60 text-slate-700 dark:text-slate-300 font-semibold border-b border-slate-200 dark:border-slate-800">
               <tr>
-                <th className="py-3 px-4">Customer ID</th>
+                <th className="py-3 px-4">Name</th>
                 <th className="py-3 px-4">Age</th>
-                <th className="py-3 px-4">Annual Income ($k)</th>
-                <th className="py-3 px-4">Spending Score</th>
+                <th className="py-3 px-4">Gender</th>
+                <th className="py-3 px-4">District</th>
+                <th className="py-3 px-4">Product Type</th>
+                <th className="py-3 px-4">Repeat Purchases</th>
                 <th className="py-3 px-4">Cluster Assigned</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-slate-600 dark:text-slate-300">
               {paginatedData.length === 0 ? (
                 <tr>
-                  <td colSpan={5} className="py-8 text-center text-slate-400">
+                  <td colSpan={7} className="py-8 text-center text-slate-400">
                     No customers found matching &quot;{searchTerm}&quot;
                   </td>
                 </tr>
               ) : (
                 paginatedData.map((c, idx) => (
                   <tr key={`${c.customer_id}-${idx}`} className="hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition">
-                    <td className="py-3 px-4 font-mono font-medium text-slate-900 dark:text-white">
-                      {c.customer_id}
+                    <td className="py-3 px-4 font-medium text-slate-900 dark:text-white">
+                      {c.name}
                     </td>
-                    <td className="py-3 px-4">{c.age !== null ? `${c.age} yrs` : "—"}</td>
-                    <td className="py-3 px-4 font-medium text-slate-800 dark:text-slate-200">
-                      ${c.annual_income.toFixed(1)}k
-                    </td>
+                    <td className="py-3 px-4">{c.age} yrs</td>
+                    <td className="py-3 px-4">{c.gender ?? "-"}</td>
+                    <td className="py-3 px-4">{c.district ?? "-"}</td>
+                    <td className="py-3 px-4">{c.product_type ?? "-"}</td>
                     <td className="py-3 px-4">
                       <div className="flex items-center gap-2">
-                        <span className="w-10 font-medium">{c.spending_score}</span>
+                        <span className="w-10 font-medium">{c.repeat_purchases}</span>
                         <div className="w-20 bg-slate-200 dark:bg-slate-700 rounded-full h-1.5 overflow-hidden">
                           <div
                             className="bg-blue-600 h-1.5 rounded-full"
-                            style={{ width: `${Math.min(100, Math.max(0, (c.spending_score / stats.maxSpending) * 100))}%` }}
+                            style={{ width: `${Math.min(100, Math.max(0, (c.repeat_purchases / stats.maxRepeats) * 100))}%` }}
                           />
                         </div>
                       </div>

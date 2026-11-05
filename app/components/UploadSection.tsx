@@ -31,9 +31,11 @@ const STEP_MS = 500; // minimum time each stage stays visible so the progress is
 const MAX_FILE_BYTES = 5 * 1024 * 1024;
 
 const TEMPLATE_CSV =
-  "Customer_ID,Age,Annual_Income,Spending_Score\n" +
-  "U001,30,95,85\nU002,48,90,20\nU003,24,28,80\nU004,52,30,18\nU005,35,72,55\n" +
-  "U006,29,88,78\nU007,44,92,25\nU008,23,31,84\nU009,57,26,15\nU010,38,68,50\n";
+  "Name,Age,Gender,District,Product_Type,Repeat_Purchases\n" +
+  "Priya S,21,Female,Chennai,Key Chains,15\nArun K,56,Male,Madurai,Bouquet,3\nKavya R,36,Female,Coimbatore,Bouquet,9\n" +
+  "Vignesh M,22,Male,Salem,Key Chains,14\nLakshmi T,58,Female,Tirunelveli,Bouquet,2\nKarthik P,38,Male,Erode,Key Chains,8\n" +
+  "Divya N,20,Female,Vellore,Key Chains,16\nSenthil A,54,Male,Thanjavur,Bouquet,4\nMeena G,35,Female,Karur,Bouquet,10\n" +
+  "Gokul V,23,Male,Dindigul,Key Chains,13\n";
 
 const formatBytes = (bytes: number) =>
   bytes < 1024 ? `${bytes} B` : bytes < 1024 * 1024 ? `${(bytes / 1024).toFixed(1)} KB` : `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
@@ -142,9 +144,9 @@ export const UploadSection: React.FC<UploadSectionProps> = ({
   const handleDownloadResults = () => {
     if (!clusteringData) return;
     const labels = new Map(clusteringData.clusters.map((c) => [c.cluster_id, c.label]));
-    const header = "Customer_ID,Age,Annual_Income,Spending_Score,Cluster,Segment";
+    const header = "Name,Age,Product_Type,Repeat_Purchases,Cluster,Segment";
     const lines = clusteringData.points.map((p) =>
-      [p.id, p.age, p.income, p.spending, p.cluster, labels.get(p.cluster) ?? ""].map(csvCell).join(",")
+      [p.id, p.age, p.product ?? "", p.repeats, p.cluster, labels.get(p.cluster) ?? ""].map(csvCell).join(",")
     );
     const baseName = (fileName ?? "customers").replace(/\.csv$/i, "");
     downloadText(`${baseName}_segmented.csv`, [header, ...lines].join("\n"));
@@ -164,10 +166,10 @@ export const UploadSection: React.FC<UploadSectionProps> = ({
       </h2>
       <p className="text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-2xl mb-8">
         Upload a CSV of customers. The model scales the data, finds the best number of clusters, trains K-Means and
-        segments every customer. Required columns: <span className="font-mono font-semibold">Annual_Income</span> and{" "}
-        <span className="font-mono font-semibold">Spending_Score</span> (Kaggle&apos;s{" "}
-        <span className="font-mono">Mall_Customers.csv</span> headers also work). <span className="font-mono">Customer_ID</span>{" "}
-        and <span className="font-mono">Age</span> are optional. Income is treated as thousands ($k).
+        segments every customer by age and repeat purchases. Required columns: <span className="font-mono font-semibold">Age</span> and{" "}
+        <span className="font-mono font-semibold">Repeat_Purchases</span>. <span className="font-mono">Name</span>,{" "}
+        <span className="font-mono">Gender</span>, <span className="font-mono">District</span> and{" "}
+        <span className="font-mono">Product_Type</span> are optional and describe each segment.
       </p>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -360,12 +362,13 @@ export const UploadSection: React.FC<UploadSectionProps> = ({
               <div className="bg-slate-50 dark:bg-slate-800/80 p-3 rounded-lg text-xs space-y-1 border border-slate-100 dark:border-slate-800">
                 <span className="font-semibold text-slate-700 dark:text-slate-200 block">Detected Columns:</span>
                 <p className="text-slate-500">
-                  Income: <strong className="font-mono">{summary.detected_columns.income}</strong> · Spending:{" "}
-                  <strong className="font-mono">{summary.detected_columns.spending}</strong>
+                  Age: <strong className="font-mono">{summary.detected_columns.age}</strong> · Repeats:{" "}
+                  <strong className="font-mono">{summary.detected_columns.repeats}</strong>
                 </p>
                 <p className="text-slate-500">
-                  ID: <strong className="font-mono">{summary.detected_columns.id ?? "—"}</strong> · Age:{" "}
-                  <strong className="font-mono">{summary.detected_columns.age ?? "—"}</strong>
+                  Name: <strong className="font-mono">{summary.detected_columns.name ?? "-"}</strong> · District:{" "}
+                  <strong className="font-mono">{summary.detected_columns.district ?? "-"}</strong> · Product:{" "}
+                  <strong className="font-mono">{summary.detected_columns.product ?? "-"}</strong>
                 </p>
                 {summary.detected_columns.label && (
                   <p className="text-slate-500">
@@ -376,7 +379,7 @@ export const UploadSection: React.FC<UploadSectionProps> = ({
               </div>
               {summary.skipped_rows > 0 && (
                 <p className="text-xs text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 rounded-lg p-2.5">
-                  {summary.skipped_rows} row(s) skipped because Income or Spending Score was missing or non-numeric.
+                  {summary.skipped_rows} row(s) skipped because Age or Repeat_Purchases was missing, negative or non-numeric.
                 </p>
               )}
               <div className="flex flex-col sm:flex-row gap-2 pt-1">

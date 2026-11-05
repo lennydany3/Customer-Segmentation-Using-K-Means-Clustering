@@ -1,0 +1,86 @@
+Name,Age,Gender,District,Product_Type,Repeat_Purchases,True_Segment
+Murugan K,20,Male,Madurai,Bouquet,2,Occasional Young Buyers
+Surya D,35,Male,Sivaganga,Key Chains,7,Regular Adult Customers
+Lakshmi S,54,Female,Tirunelveli,Bouquet,2,Occasional Senior Buyers
+Lakshmi G,57,Female,Chennai,Bouquet,1,Occasional Senior Buyers
+Saranya S,33,Female,Thanjavur,Bouquet,10,Regular Adult Customers
+Kalaivani T,58,Female,Sivaganga,Bouquet,4,Occasional Senior Buyers
+Bhuvana N,51,Female,Madurai,Bouquet,3,Occasional Senior Buyers
+Revathi P,19,Female,Madurai,Key Chains,4,Occasional Young Buyers
+Naveen P,22,Male,Salem,Key Chains,13,Loyal Young Fans
+Abinaya K,26,Female,Coimbatore,Key Chains,18,Loyal Young Fans
+Pavithra R,40,Female,Tiruppur,Key Chains,9,Regular Adult Customers
+Divya P,25,Female,Karur,Bouquet,3,Occasional Young Buyers
+Malathi P,27,Female,Erode,Key Chains,5,Occasional Young Buyers
+Pranav E,46,Male,Karur,Bouquet,10,Regular Adult Customers
+Vasanth B,60,Male,Coimbatore,Key Chains,2,Occasional Senior Buyers
+Pranav K,60,Male,Chennai,Bouquet,2,Occasional Senior Buyers
+Vignesh B,34,Male,Dindigul,Bouquet,8,Regular Adult Customers
+Ashwin G,24,Male,Tiruppur,Key Chains,2,Occasional Young Buyers
+Surya J,22,Male,Sivaganga,Key Chains,12,Loyal Young Fans
+Priya N,49,Female,Villupuram,Bouquet,1,Occasional Senior Buyers
+Malathi G,23,Female,Tiruchirappalli,Bouquet,2,Occasional Young Buyers
+Manikandan B,50,Male,Sivaganga,Bouquet,4,Occasional Senior Buyers
+Murugan M,20,Male,Coimbatore,Key Chains,2,Occasional Young Buyers
+Senthil G,20,Male,Tirunelveli,Key Chains,16,Loyal Young Fans
+Harini C,52,Female,Vellore,Bouquet,2,Occasional Senior Buyers
+Anitha N,19,Female,Tiruppur,Key Chains,3,Occasional Young Buyers
+Vaishnavi C,59,Female,Kanniyakumari,Bouquet,3,Occasional Senior Buyers
+Hari N,18,Male,Tiruchirappalli,Key Chains,18,Loyal Young Fans
+Pavithra V,22,Female,Cuddalore,Key Chains,16,Loyal Young Fans
+Tamilselvan V,24,Male,Thoothukudi,Key Chains,10,Loyal Young Fans
+Harini P,21,Female,Coimbatore,Key Chains,1,Occasional Young Buyers
+Saravanan D,25,Male,Coimbatore,Key Chains,2,Occasional Young Buyers
+Suresh T,57,Male,Erode,Bouquet,6,Occasional Senior Buyers
+Kishore D,23,Male,Madurai,Bouquet,3,Occasional Young Buyers
+Pranav G,31,Male,Vellore,Bouquet,8,Regular Adult Customers
+Kalaivani M,34,Female,The Nilgiris,Bouquet,10,Regular Adult Customers
+Pavithra G,17,Female,Thoothukudi,Key Chains,14,Loyal Young Fans
+Kavya R,21,Female,Sivaganga,Key Chains,16,Loyal Young Fans
+Karthik J,23,Male,Salem,Key Chains,3,Occasional Young Buyers
+Raghav A,26,Male,Kancheepuram,Key Chains,16,Loyal Young Fans
+Shalini V,25,Female,Kanniyakumari,Key Chains,4,Occasional Young Buyers
+Dinesh T,36,Male,Chennai,Key Chains,8,Regular Adult Customers
+Lakshmi N,37,Female,Thanjavur,Key Chains,10,Regular Adult Customers
+Hari G,55,Male,Chennai,Bouquet,3,Occasional Senior Buyers
+Yamuna B,61,Female,Erode,Bouquet,5,Occasional Senior Buyers
+Ajith E,61,Male,Chennai,Bouquet,3,Occasional Senior Buyers
+Vasanth D,33,Male,Madurai,Bouquet,10,Regular Adult Customers
+Kishore M,36,Male,Chennai,Key Chains,7,Regular Adult Customers
+Shalini E,24,Female,Villupuram,Key Chains,14,Loyal Young Fans
+Keerthana P,36,Female,Tirunelveli,Key Chains,8,Regular Adult Customers
+Tamilselvan P,39,Male,Chennai,Bouquet,10,Regular Adult Customers
+Indhu C,37,Female,Chennai,Key Chains,8,Regular Adult Customers
+Swetha P,32,Female,Dindigul,Bouquet,6,Regular Adult Customers
+Saranya C,40,Female,Tiruchirappalli,Key Chains,10,Regular Adult Customers
+Naveen B,36,Male,Namakkal,Bouquet,8,Regular Adult Customers
+Ajith P,20,Male,Cuddalore,Key Chains,18,Loyal Young Fans
+Anitha N,21,Female,Kancheepuram,Bouquet,2,Occasional Young Buyers
+Indhu C,16,Female,Thoothukudi,Key Chains,18,Loyal Young Fans
+Nandhini A,55,Female,Madurai,Bouquet,2,Occasional Senior Buyers
+Vaishnavi P,43,Female,Karur,Bouquet,8,Regular Adult Customers
+Sathish A,36,Male,Coimbatore,Key Chains,8,Regular Adult Customers
+Malathi S,35,Female,Vellore,Bouquet,7,Regular Adult Customers
+Hari S,25,Male,Vellore,Key Chains,3,Occasional Young Buyers
+Karthik J,55,Male,Sivaganga,Key Chains,4,Occasional Senior Buyers
+Vignesh B,61,Male,Madurai,Key Chains,2,Occasional Senior Buyers
+Yamuna S,18,Female,Thoothukudi,Key Chains,16,Loyal Young Fans
+Manikandan P,58,Male,Sivaganga,Bouquet,2,Occasional Senior Buyers
+Suresh J,24,Male,Karur,Key Chains,17,Loyal Young Fans
+Pavithra B,21,Female,Villupuram,Bouquet,3,Occasional Young Buyers
+Raghav S,23,Male,Tiruchirappalli,Key Chains,3,Occasional Young Buyers
+Indhu C,52,Female,Cuddalore,Bouquet,2,Occasional Senior Buyers
+Harini P,22,Female,Thoothukudi,Bouquet,4,Occasional Young Buyers
+Manikandan V,21,Male,Cuddalore,Bouquet,13,Loyal Young Fans
+Deepa M,23,Female,Coimbatore,Key Chains,3,Occasional Young Buyers
+Vaishnavi V,52,Female,Karur,Bouquet,3,Occasional Senior Buyers
+Gokul T,22,Male,Kanniyakumari,Bouquet,4,Occasional Young Buyers
+Lakshmi T,24,Female,Vellore,Key Chains,3,Occasional Young Buyers
+Dinesh R,24,Male,Namakkal,Bouquet,4,Occasional Young Buyers
+Sangeetha G,44,Female,Madurai,Bouquet,12,Regular Adult Customers
+Meena T,23,Female,Sivaganga,Key Chains,16,Loyal Young Fans
+Vignesh V,21,Male,Erode,Key Chains,15,Loyal Young Fans
+Ajith P,19,Male,Chennai,Key Chains,18,Loyal Young Fans
+Prakash T,36,Male,Chennai,Key Chains,6,Regular Adult Customers
+Pavithra D,36,Female,Salem,Bouquet,9,Regular Adult Customers
+Nandhini J,23,Female,Tiruchirappalli,Key Chains,14,Loyal Young Fans

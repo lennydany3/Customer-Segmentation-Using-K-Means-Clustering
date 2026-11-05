@@ -1,29 +1,30 @@
-# Synthetic customer datasets
+# Tamil Nadu gift-shop customer datasets
 
-Five artificial customer files (1,000 to 1,470 rows each) for testing the app. Upload any of them on the website.
+Three synthetic customer files (70, 85 and 100 customers) for a shop that sells **Key Chains** and **Bouquets**. Upload any of them on the website.
 
-Each file has these columns:
+| Column | Meaning | Used for clustering? |
+|---|---|---|
+| Name | Customer name | No |
+| Age | Age in years | **Yes** |
+| Gender | Female / Male | No (shown in the table) |
+| District | One of 20 Tamil Nadu districts | No (top district shown per cluster) |
+| Product_Type | Key Chains or Bouquet | No (top product shown per cluster) |
+| Repeat_Purchases | Number of times the customer came back and bought again | **Yes** |
+| True_Segment | The real group each customer was generated from | No. Used only to calculate **accuracy** |
 
-| Column | Used for clustering? |
-|---|---|
-| Customer_ID, Name, Gender, Age, City | No (Age is shown in cluster profiles) |
-| **Annual_Income** (k$), **Spending_Score** (1 to 100) | **Yes** |
-| Visits_Per_Month, Membership_Years, Preferred_Channel | No (extra realistic columns) |
-| **True_Segment** | No. Used only to calculate **accuracy** |
-
-Because every customer was generated from a known segment, the website compares its clusters with `True_Segment` and shows **Accuracy**, **ARI** and **NMI**. Cluster numbers are arbitrary, so each cluster is first matched to the true segment it overlaps most (Hungarian matching) before counting correct customers.
+Because every customer was generated from a known group, the website compares its clusters with `True_Segment` and shows **Accuracy**, **ARI** and **NMI**. Delete the `True_Segment` column if you want to upload a file without accuracy.
 
 ## Results with the app's recommended K
 
-| File | Rows | True segments | What makes it hard | Recommended K | Silhouette | Accuracy |
-|---|---|---|---|---|---|---|
-| 01_mall_customers_1200.csv | 1200 | 5 | Large central group, moderate overlap | 5 | 0.671 | 99.6% |
-| 02_retail_chain_1470.csv | 1470 | 6 | Unequal sizes and spreads, 30 outliers | 6 | 0.666 | 97.7% |
-| 03_ecommerce_1000.csv | 1000 | 4 | Stretched, tilted (correlated) segments | 4 | 0.735 | 99.7% |
-| 04_supermarket_messy_1340.csv | 1340 (1300 valid) | 5 | Imbalanced, overlapping, 40 dirty rows to skip | 5 | 0.632 | 98.8% |
-| 05_fashion_boutique_1050.csv | 1050 | 3 | Fewest segments (easy benchmark) | 3 | 0.759 | 100% |
+| File | Customers | True segments | Recommended K | Silhouette | Accuracy |
+|---|---|---|---|---|---|
+| tn_gift_shop_70.csv | 70 | 3 | 3 | 0.698 | 100% |
+| tn_gift_shop_85.csv | 85 | 4 | 4 | 0.705 | 98.8% |
+| tn_gift_shop_100.csv | 100 | 5 | 5 | 0.665 | 99.0% |
 
-If you move the K slider away from the true number of segments, accuracy drops. That is expected and is a good way to show why choosing K matters.
+Segments used: Loyal Young Fans, Occasional Young Buyers, Regular Adult Customers, Occasional Senior Buyers and Loyal Senior Gifters. Young customers mostly buy Key Chains and older customers mostly buy Bouquets.
+
+If you move the K slider away from the true number of segments, accuracy drops. That shows why choosing K matters.
 
 ## Regenerate
 
