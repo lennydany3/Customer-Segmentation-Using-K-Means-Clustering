@@ -1,14 +1,15 @@
 "use client";
 
 import React from "react";
-import { Activity, Database, LineChart, Cpu, UserCheck } from "lucide-react";
+import { Activity, Database, LineChart, Cpu, UserCheck, FileUp } from "lucide-react";
 
 interface NavbarProps {
   isBackendHealthy: boolean | null;
+  hasDataset: boolean;
   onRefreshHealth: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ isBackendHealthy, onRefreshHealth }) => {
+export const Navbar: React.FC<NavbarProps> = ({ isBackendHealthy, hasDataset, onRefreshHealth }) => {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/80 backdrop-blur-md dark:border-slate-800 dark:bg-slate-900/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
@@ -28,18 +29,25 @@ export const Navbar: React.FC<NavbarProps> = ({ isBackendHealthy, onRefreshHealt
 
         {/* Navigation links */}
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-300">
-          <a href="#dataset" className="hover:text-blue-600 dark:hover:text-blue-400 transition flex items-center gap-1.5">
-            <Database className="w-4 h-4" /> Dataset
+          <a href="#upload" className="hover:text-blue-600 dark:hover:text-blue-400 transition flex items-center gap-1.5">
+            <FileUp className="w-4 h-4" /> Upload CSV
           </a>
-          <a href="#elbow" className="hover:text-blue-600 dark:hover:text-blue-400 transition flex items-center gap-1.5">
-            <LineChart className="w-4 h-4" /> Elbow Method
-          </a>
-          <a href="#clustering" className="hover:text-blue-600 dark:hover:text-blue-400 transition flex items-center gap-1.5">
-            <Activity className="w-4 h-4" /> K-Means Model
-          </a>
-          <a href="#predict" className="hover:text-blue-600 dark:hover:text-blue-400 transition flex items-center gap-1.5">
-            <UserCheck className="w-4 h-4" /> Predict
-          </a>
+          {hasDataset && (
+            <>
+              <a href="#dataset" className="hover:text-blue-600 dark:hover:text-blue-400 transition flex items-center gap-1.5">
+                <Database className="w-4 h-4" /> Dataset
+              </a>
+              <a href="#elbow" className="hover:text-blue-600 dark:hover:text-blue-400 transition flex items-center gap-1.5">
+                <LineChart className="w-4 h-4" /> Elbow Method
+              </a>
+              <a href="#clustering" className="hover:text-blue-600 dark:hover:text-blue-400 transition flex items-center gap-1.5">
+                <Activity className="w-4 h-4" /> K-Means Model
+              </a>
+              <a href="#predict" className="hover:text-blue-600 dark:hover:text-blue-400 transition flex items-center gap-1.5">
+                <UserCheck className="w-4 h-4" /> Predict
+              </a>
+            </>
+          )}
         </nav>
 
         {/* Backend status badge */}

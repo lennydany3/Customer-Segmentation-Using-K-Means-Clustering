@@ -35,19 +35,20 @@ export const CLUSTER_PALETTE = [
 
 interface ResultsSectionProps {
   clusteringData: ClusterResponse | null;
+  recommendedK?: number | null;
   predictedPoint?: {
     income: number;
     spending: number;
     label: string;
     cluster_id: number;
-    age: number;
+    age: number | null;
   } | null;
 }
 
 interface ScatterPayloadItem {
   payload: {
     id?: string;
-    age?: number;
+    age?: number | null;
     income: number;
     spending: number;
     cluster?: number;
@@ -79,8 +80,8 @@ const CustomScatterTooltip: React.FC<CustomScatterTooltipProps> = ({ active, pay
           </div>
           <p><span className="text-slate-400">Assigned Segment:</span> {data.label}</p>
           <p><span className="text-slate-400">Income:</span> ${data.income}k</p>
-          <p><span className="text-slate-400">Spending Score:</span> {data.spending}/100</p>
-          <p><span className="text-slate-400">Age:</span> {data.age} yrs</p>
+          <p><span className="text-slate-400">Spending Score:</span> {data.spending}</p>
+          {data.age != null && <p><span className="text-slate-400">Age:</span> {data.age} yrs</p>}
         </div>
       );
     }
@@ -92,7 +93,7 @@ const CustomScatterTooltip: React.FC<CustomScatterTooltipProps> = ({ active, pay
             ◆ Cluster Centroid ({data.label})
           </div>
           <p><span className="text-slate-400">Mean Income:</span> ${data.income}k</p>
-          <p><span className="text-slate-400">Mean Spending:</span> {data.spending}/100</p>
+          <p><span className="text-slate-400">Mean Spending:</span> {data.spending}</p>
         </div>
       );
     }
@@ -104,8 +105,8 @@ const CustomScatterTooltip: React.FC<CustomScatterTooltipProps> = ({ active, pay
         </div>
         <p><span className="text-slate-400">Cluster:</span> {data.clusterName || `Cluster ${data.cluster}`}</p>
         <p><span className="text-slate-400">Annual Income:</span> ${data.income}k</p>
-        <p><span className="text-slate-400">Spending Score:</span> {data.spending}/100</p>
-        <p><span className="text-slate-400">Age:</span> {data.age} yrs</p>
+        <p><span className="text-slate-400">Spending Score:</span> {data.spending}</p>
+        {data.age != null && <p><span className="text-slate-400">Age:</span> {data.age} yrs</p>}
       </div>
     );
   }
@@ -114,6 +115,7 @@ const CustomScatterTooltip: React.FC<CustomScatterTooltipProps> = ({ active, pay
 
 export const ResultsSection: React.FC<ResultsSectionProps> = ({
   clusteringData,
+  recommendedK,
   predictedPoint,
 }) => {
   const clusters = useMemo(() => clusteringData?.clusters ?? [], [clusteringData]);
@@ -195,7 +197,7 @@ export const ResultsSection: React.FC<ResultsSectionProps> = ({
               {k} Clusters
             </span>
             <span className="text-xs text-slate-400">
-              {k === 4 ? "Optimal Elbow configuration" : "User-defined hyperparameter"}
+              {k === recommendedK ? "Recommended by elbow & silhouette" : "User-defined hyperparameter"}
             </span>
           </div>
           <div className="w-12 h-12 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
@@ -235,7 +237,7 @@ export const ResultsSection: React.FC<ResultsSectionProps> = ({
               Customer Segments Scatter Plot
             </h3>
             <p className="text-xs text-slate-500">
-              Annual Income ($k) vs Spending Score (1-100). Diamonds (◆) denote cluster centroids.
+              Annual Income ($k) vs Spending Score. Diamonds (◆) denote cluster centroids.
               {predictedPoint && (
                 <span className="text-pink-600 font-semibold ml-1">
                   ★ Highlighted star denotes newly predicted customer!
@@ -265,7 +267,7 @@ export const ResultsSection: React.FC<ResultsSectionProps> = ({
                 dataKey="income"
                 name="Annual Income"
                 unit="k$"
-                domain={[10, 140]}
+                domain={["auto", "auto"]}
                 tickLine={false}
                 stroke="#64748b"
                 fontSize={12}
@@ -281,12 +283,12 @@ export const ResultsSection: React.FC<ResultsSectionProps> = ({
                 type="number"
                 dataKey="spending"
                 name="Spending Score"
-                domain={[0, 105]}
+                domain={[0, "auto"]}
                 tickLine={false}
                 stroke="#64748b"
                 fontSize={12}
                 label={{
-                  value: "Spending Score (1-100)",
+                  value: "Spending Score",
                   angle: -90,
                   position: "insideLeft",
                   fontSize: 12,
@@ -390,13 +392,13 @@ export const ResultsSection: React.FC<ResultsSectionProps> = ({
                     <div>
                       <span className="text-[11px] text-slate-400 block">Avg Spending</span>
                       <span className="text-sm font-bold text-slate-800 dark:text-slate-200">
-                        {cluster.avg_spending}/100
+                        {cluster.avg_spending}
                       </span>
                     </div>
                     <div>
                       <span className="text-[11px] text-slate-400 block">Avg Age</span>
                       <span className="text-sm font-bold text-slate-800 dark:text-slate-200">
-                        {cluster.avg_age} yrs
+                        {cluster.avg_age !== null ? `${cluster.avg_age} yrs` : "—"}
                       </span>
                     </div>
                   </div>

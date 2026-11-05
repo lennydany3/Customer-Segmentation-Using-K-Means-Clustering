@@ -27,6 +27,9 @@ export const ElbowSection: React.FC<ElbowSectionProps> = ({
   error,
   onSelectK,
 }) => {
+  const recommendedK = data?.recommended_k ?? null;
+  const recIdx = data && recommendedK !== null ? data.k_values.indexOf(recommendedK) : -1;
+
   // Format data for Recharts
   const chartData = data
     ? data.k_values.map((k, idx) => ({
@@ -37,16 +40,16 @@ export const ElbowSection: React.FC<ElbowSectionProps> = ({
     : [];
 
   return (
-    <section id="elbow" className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-200 dark:border-slate-800">
+    <section id="elbow" className="py-12 scroll-mt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-200 dark:border-slate-800">
       <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-semibold text-sm mb-1">
         <LineChartIcon className="w-4 h-4" />
-        <span>Hyperparameter Tuning</span>
+        <span>Step 3 · Hyperparameter Tuning</span>
       </div>
       <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">
         The Elbow Method (Finding Optimal K)
       </h2>
       <p className="text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-2xl mb-8">
-        Plotting Within-Cluster Sum of Squares (WCSS / Inertia) against candidate values of K (2 through 8). The optimal K is selected at the &quot;elbow&quot; bend.
+        Plotting Within-Cluster Sum of Squares (WCSS / Inertia) against candidate values of K on your dataset. Look for the &quot;elbow&quot; bend, where adding more clusters stops paying off. The recommended K is the one with the highest silhouette score.
       </p>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
@@ -58,11 +61,11 @@ export const ElbowSection: React.FC<ElbowSectionProps> = ({
                 WCSS (Inertia) vs Number of Clusters (K)
               </h3>
               <span className="text-xs text-slate-500">
-                Notice the distinct drop flattening out right after K = 4
+                Look for the point where the drop starts to flatten out
               </span>
             </div>
             <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 dark:bg-emerald-900/60 dark:text-emerald-300">
-              Optimal Elbow: K = 4
+              {recommendedK !== null ? `Recommended: K = ${recommendedK}` : "Recommended K"}
             </span>
           </div>
 
@@ -118,11 +121,11 @@ export const ElbowSection: React.FC<ElbowSectionProps> = ({
                     dot={{ fill: "#4f46e5", r: 5 }}
                     activeDot={{ r: 8, stroke: "#818cf8", strokeWidth: 2 }}
                   />
-                  {/* Highlight the elbow at K=4 */}
-                  {data && data.k_values.includes(4) && (
+                  {/* Highlight the recommended K */}
+                  {data && recIdx >= 0 && (
                     <ReferenceDot
-                      x="K = 4"
-                      y={data.wcss[data.k_values.indexOf(4)]}
+                      x={`K = ${recommendedK}`}
+                      y={data.wcss[recIdx]}
                       r={9}
                       fill="#10b981"
                       stroke="#ffffff"
@@ -150,12 +153,12 @@ export const ElbowSection: React.FC<ElbowSectionProps> = ({
                     key={k}
                     onClick={() => onSelectK(k)}
                     className={`px-2.5 py-1 rounded text-xs font-semibold cursor-pointer transition ${
-                      k === 4
+                      k === recommendedK
                         ? "bg-emerald-600 text-white hover:bg-emerald-700"
                         : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200"
                     }`}
                   >
-                    K={k} {k === 4 && "★"}
+                    K={k} {k === recommendedK && "★"}
                   </button>
                 ))}
               </div>
@@ -188,9 +191,18 @@ export const ElbowSection: React.FC<ElbowSectionProps> = ({
             <div className="bg-emerald-50 dark:bg-emerald-950/40 p-3 rounded-lg border border-emerald-200 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200">
               <div className="flex items-center gap-1.5 font-bold mb-1">
                 <CheckCircle className="w-4 h-4 text-emerald-600" />
-                Why K = 4 is Optimal Here
+                {recommendedK !== null ? `Why K = ${recommendedK} is Recommended Here` : "Recommended K"}
               </div>
-              From K=2 to K=4, WCSS plunges steeply from <strong>215.2</strong> to <strong>31.58</strong>. Beyond K=4, the curve flattens out, proving 4 clusters naturally capture the underlying demographic groups.
+              {data && recIdx >= 0 ? (
+                <>
+                  WCSS falls from <strong>{data.wcss[0]}</strong> at K={data.k_values[0]} to{" "}
+                  <strong>{data.wcss[recIdx]}</strong> at K={recommendedK}. The silhouette score (cluster
+                  cohesion vs. separation) is highest at K={recommendedK}, so that many clusters best
+                  separates the customers in your file.
+                </>
+              ) : (
+                "Upload a dataset to see the recommendation."
+              )}
             </div>
           </div>
         </div>

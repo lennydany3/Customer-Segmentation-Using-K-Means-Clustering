@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { Navbar } from "./components/Navbar";
 import { HeroSection } from "./components/HeroSection";
+import { UploadSection } from "./components/UploadSection";
 import { DatasetSection } from "./components/DatasetSection";
 import { ElbowSection } from "./components/ElbowSection";
 import { ClusteringControl } from "./components/ClusteringControl";
@@ -10,6 +11,7 @@ import { ResultsSection } from "./components/ResultsSection";
 import { PredictSection } from "./components/PredictSection";
 import {
   getHealth,
+  uploadDataset,
   getDataset,
   getElbowCurve,
   runKMeans,
@@ -20,6 +22,7 @@ import {
   ElbowResponse,
   ClusterResponse,
   PredictResponse,
+  UploadResponse,
 } from "./lib/types";
 import { AlertTriangle, RefreshCw, BookOpen } from "lucide-react";
 
@@ -27,15 +30,15 @@ export default function Home() {
   // Backend health status
   const [isBackendHealthy, setIsBackendHealthy] = useState<boolean | null>(null);
 
-  // Dataset state
+  // Uploaded dataset state (nothing exists until the user uploads a CSV)
+  const [fileName, setFileName] = useState<string | null>(null);
+  const [uploadSummary, setUploadSummary] = useState<UploadResponse | null>(null);
   const [customers, setCustomers] = useState<Customer[]>([]);
   const [totalCount, setTotalCount] = useState<number>(0);
-  const [isDatasetLoading, setIsDatasetLoading] = useState<boolean>(true);
+  const [datasetVersion, setDatasetVersion] = useState<number>(0);
 
   // Elbow method state
   const [elbowData, setElbowData] = useState<ElbowResponse | null>(null);
-  const [isElbowLoading, setIsElbowLoading] = useState<boolean>(true);
-  const [elbowError, setElbowError] = useState<string | null>(null);
 
   // Clustering state
   const [k, setK] = useState<number>(4);
@@ -52,83 +55,87 @@ export default function Home() {
     spending: number;
     label: string;
     cluster_id: number;
-    age: number;
+    age: number | null;
   } | null>(null);
 
-  // Reload data triggered by user actions
-  const handleReloadData = useCallback(async () => {
-    setIsDatasetLoading(true);
-    setIsElbowLoading(true);
-    setIsClusteringLoading(true);
+  const hasDataset = uploadSummary !== null && clusteringData !== null && elbowData !== null;
 
+  // Check whether the FastAPI backend is reachable
+  const handleRefreshHealth = useCallback(async () => {
     try {
       await getHealth();
       setIsBackendHealthy(true);
-
-      const [ds, elbow, clusters] = await Promise.all([
-        getDataset(),
-        getElbowCurve(),
-        runKMeans(k),
-      ]);
-
-      setCustomers(ds.customers);
-      setTotalCount(ds.total_customers);
-      setElbowData(elbow);
-      setClusteringData(clusters);
-    } catch (err: unknown) {
+    } catch {
       setIsBackendHealthy(false);
-      const msg = err instanceof Error ? err.message : "Failed to connect to backend.";
-      setElbowError(msg);
-      setClusteringError(msg);
-    } finally {
-      setIsDatasetLoading(false);
-      setIsElbowLoading(false);
-      setIsClusteringLoading(false);
     }
-  }, [k]);
+  }, []);
 
-  // Initial load on mount
+  // Initial backend connectivity check on mount
   useEffect(() => {
     let isMounted = true;
-
-    const init = async () => {
-      try {
-        await getHealth();
-        if (!isMounted) return;
-        setIsBackendHealthy(true);
-
-        const [ds, elbow, clusters] = await Promise.all([
-          getDataset(),
-          getElbowCurve(),
-          runKMeans(4),
-        ]);
-
-        if (!isMounted) return;
-        setCustomers(ds.customers);
-        setTotalCount(ds.total_customers);
-        setElbowData(elbow);
-        setClusteringData(clusters);
-      } catch (err: unknown) {
-        if (!isMounted) return;
-        setIsBackendHealthy(false);
-        const msg = err instanceof Error ? err.message : "Failed to connect to backend.";
-        setElbowError(msg);
-        setClusteringError(msg);
-      } finally {
-        if (isMounted) {
-          setIsDatasetLoading(false);
-          setIsElbowLoading(false);
-          setIsClusteringLoading(false);
-        }
-      }
-    };
-
-    init();
-
+    getHealth()
+      .then(() => isMounted && setIsBackendHealthy(true))
+      .catch(() => isMounted && setIsBackendHealthy(false));
     return () => {
       isMounted = false;
     };
   }, []);
+
+  // Value ranges of the uploaded data, used by the prediction sliders
+  const predictBounds = useMemo(() => {
+    const incomes = customers.map((c) => c.annual_income);
+    const spendings = customers.map((c) => c.spending_score);
+    return {
+      incomeMin: incomes.length ? Math.min(...incomes) : 0,
+      incomeMax: incomes.length ? Math.max(...incomes) : 100,
+      spendingMin: spendings.length ? Math.min(...spendings) : 0,
+      spendingMax: spendings.length ? Math.max(...spendings) : 100,
+    };
+  }, [customers]);
+
+  // Full pipeline for an uploaded file: upload -> elbow -> K-Means with the recommended K -> segmented dataset.
+  // `step` drives the loader and resolves after a minimum display time per stage.
+  const handleProcessDataset = async (file: File, step: (stage: number) => Promise<void>) => {
+    try {
+      const [summary] = await Promise.all([uploadDataset(file), step(0)]);
+      const [elbow] = await Promise.all([getElbowCurve(), step(1)]);
+      const [clusters] = await Promise.all([runKMeans(elbow.recommended_k), step(2)]);
+      // Fetch the table after training so every customer already carries its cluster
+      const [ds] = await Promise.all([getDataset(), step(3)]);
+      await step(4);
+
+      setFileName(file.name);
+      setUploadSummary(summary);
+      setCustomers(ds.customers);
+      setTotalCount(ds.total_customers);
+      setElbowData(elbow);
+      setK(elbow.recommended_k);
+      setClusteringData(clusters);
+      setClusteringError(null);
+      setPredictionResult(null);
+      setPredictionError(null);
+      setPredictedScatterPoint(null);
+      setDatasetVersion((v) => v + 1);
+      setIsBackendHealthy(true);
+
+      setTimeout(() => document.getElementById("dataset")?.scrollIntoView({ behavior: "smooth" }), 100);
+    } catch (err: unknown) {
+      if (err instanceof Error && err.message.includes("Unable to connect")) setIsBackendHealthy(false);
+      throw err;
+    }
+  };
+
+  // Go back to the empty "upload a dataset" state
+  const handleClearDataset = () => {
+    setFileName(null);
+    setUploadSummary(null);
+    setCustomers([]);
+    setTotalCount(0);
+    setElbowData(null);
+    setClusteringData(null);
+    setPredictionResult(null);
+    setPredictedScatterPoint(null);
+  };
 
   // Handle re-training K-Means
   const handleRunKMeans = async (selectedK?: number) => {
@@ -139,6 +146,14 @@ export default function Home() {
       const result = await runKMeans(targetK);
       setClusteringData(result);
       setIsBackendHealthy(true);
+
+      // The dataset table shows each customer's cluster, so refresh it for the new K
+      try {
+        const ds = await getDataset();
+        setCustomers(ds.customers);
+      } catch {
+        // Keep the previous table if the refresh fails
+      }
 
       // If user had a predicted point, re-classify it under new clusters
       if (predictedScatterPoint) {
@@ -219,11 +234,17 @@ export default function Home() {
       {/* Navigation */}
       <Navbar
         isBackendHealthy={isBackendHealthy}
-        onRefreshHealth={handleReloadData}
+        hasDataset={hasDataset}
+        onRefreshHealth={handleRefreshHealth}
       />
 
       {/* Hero Section */}
-      <HeroSection />
+      <HeroSection
+        isBackendHealthy={isBackendHealthy}
+        hasDataset={hasDataset}
+        totalCustomers={totalCount}
+        clusteringData={clusteringData}
+      />
 
       {/* Offline Alert Banner */}
       {isBackendHealthy === false && (
@@ -239,7 +260,7 @@ export default function Home() {
               </span>
             </div>
             <button
-              onClick={handleReloadData}
+              onClick={handleRefreshHealth}
               className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-amber-600 text-white font-medium hover:bg-amber-700 transition cursor-pointer text-xs"
             >
               <RefreshCw className="w-3.5 h-3.5" /> Retry Connection
@@ -250,59 +271,71 @@ export default function Home() {
 
       {/* Main Content Area */}
       <main className="flex-1 space-y-12">
-        {/* Section 1: Dataset */}
-        <DatasetSection
-          customers={customers}
-          totalCount={totalCount}
-          isLoading={isDatasetLoading}
-          onRefresh={handleReloadData}
+        {/* Section 1: Upload & process the dataset */}
+        <UploadSection
+          onProcess={handleProcessDataset}
+          summary={uploadSummary}
+          clusteringData={clusteringData}
+          fileName={fileName}
+          onClear={handleClearDataset}
         />
 
-        {/* Section 2: Elbow Method */}
-        <ElbowSection
-          data={elbowData}
-          isLoading={isElbowLoading}
-          error={elbowError}
-          onSelectK={handleSelectKFromElbow}
-        />
+        {/* Everything below is built from the uploaded dataset */}
+        {hasDataset && (
+          <>
+            {/* Section 2: Uploaded dataset */}
+            <DatasetSection customers={customers} totalCount={totalCount} fileName={fileName} />
 
-        {/* Section 3: Run K-Means & Visual Results */}
-        <section id="clustering" className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-200 dark:border-slate-800 space-y-8">
-          <div>
-            <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold text-sm mb-1">
-              <span>Cluster Analysis</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">
-              K-Means Model Execution &amp; Results
-            </h2>
-            <p className="text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-2xl">
-              Adjust K to re-partition the feature space. Review the scatter distribution, centroid positions, silhouette cohesion score, and targeted marketing strategies.
-            </p>
-          </div>
+            {/* Section 3: Elbow Method */}
+            <ElbowSection
+              data={elbowData}
+              isLoading={false}
+              error={null}
+              onSelectK={handleSelectKFromElbow}
+            />
 
-          <ClusteringControl
-            k={k}
-            onKChange={(val) => setK(val)}
-            onRunKMeans={() => handleRunKMeans()}
-            isLoading={isClusteringLoading}
-            error={clusteringError}
-          />
+            {/* Section 4: Run K-Means & Visual Results */}
+            <section id="clustering" className="py-12 scroll-mt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-200 dark:border-slate-800 space-y-8">
+              <div>
+                <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold text-sm mb-1">
+                  <span>Step 4 · Cluster Analysis</span>
+                </div>
+                <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">
+                  K-Means Model Execution &amp; Results
+                </h2>
+                <p className="text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-2xl">
+                  Your dataset was clustered with the recommended K. Adjust K to re-partition the feature space and review the scatter distribution, centroid positions, silhouette cohesion score, and targeted marketing strategies.
+                </p>
+              </div>
 
-          <ResultsSection
-            clusteringData={clusteringData}
-            predictedPoint={predictedScatterPoint}
-          />
-        </section>
+              <ClusteringControl
+                k={k}
+                onKChange={(val) => setK(val)}
+                onRunKMeans={() => handleRunKMeans()}
+                isLoading={isClusteringLoading}
+                error={clusteringError}
+              />
 
-        {/* Section 4: Real-time Prediction */}
-        <PredictSection
-          onPredict={handlePredict}
-          isPredicting={isPredicting}
-          predictionResult={predictionResult}
-          error={predictionError}
-        />
+              <ResultsSection
+                clusteringData={clusteringData}
+                recommendedK={elbowData?.recommended_k}
+                predictedPoint={predictedScatterPoint}
+              />
+            </section>
 
-        {/* Section 5: College Viva Quick Reference Card */}
+            {/* Section 5: Real-time Prediction (remounted per dataset so slider ranges reset) */}
+            <PredictSection
+              key={datasetVersion}
+              bounds={predictBounds}
+              onPredict={handlePredict}
+              isPredicting={isPredicting}
+              predictionResult={predictionResult}
+              error={predictionError}
+            />
+          </>
+        )}
+
+        {/* College Viva Quick Reference Card */}
         <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-200 dark:border-slate-800">
           <div className="bg-gradient-to-br from-indigo-900 via-slate-900 to-slate-950 text-white rounded-2xl p-6 sm:p-8 shadow-xl">
             <div className="flex items-center gap-2 text-indigo-400 font-semibold text-sm mb-2">
@@ -317,21 +350,21 @@ export default function Home() {
               <div className="bg-white/5 border border-white/10 rounded-xl p-4">
                 <h4 className="font-bold text-white mb-1.5 text-sm">1. What is K-Means?</h4>
                 <p className="leading-relaxed text-slate-300 text-xs">
-                  An unsupervised partitioning algorithm that divides $N$ samples into $K$ disjoint clusters, minimizing within-cluster inertia (sum of squared Euclidean distances to centroids).
+                  An unsupervised partitioning algorithm that divides N samples into K disjoint clusters, minimizing within-cluster inertia (sum of squared Euclidean distances to centroids).
                 </p>
               </div>
 
               <div className="bg-white/5 border border-white/10 rounded-xl p-4">
                 <h4 className="font-bold text-white mb-1.5 text-sm">2. Why StandardScaler?</h4>
                 <p className="leading-relaxed text-slate-300 text-xs">
-                  Income ($15k-$140k) has a much larger scale than Spending Score (1-100). Without z-score normalization, income would dominate Euclidean distance computations.
+                  Income usually has a much larger numeric scale than Spending Score. Without z-score normalization, income would dominate Euclidean distance computations.
                 </p>
               </div>
 
               <div className="bg-white/5 border border-white/10 rounded-xl p-4">
                 <h4 className="font-bold text-white mb-1.5 text-sm">3. The Elbow Method</h4>
                 <p className="leading-relaxed text-slate-300 text-xs">
-                  We plot WCSS vs K. At the optimal $K=4$, adding further clusters only produces incremental diminishing returns, indicating natural underlying group structure.
+                  We plot WCSS vs K. At the elbow, adding further clusters only produces diminishing returns, indicating the natural group structure. The silhouette score confirms the best K.
                 </p>
               </div>
 

@@ -7,15 +7,13 @@ import { Database, Search, ChevronLeft, ChevronRight } from "lucide-react";
 interface DatasetSectionProps {
   customers: Customer[];
   totalCount: number;
-  isLoading: boolean;
-  onRefresh: () => void;
+  fileName: string | null;
 }
 
 export const DatasetSection: React.FC<DatasetSectionProps> = ({
   customers,
   totalCount,
-  isLoading,
-  onRefresh,
+  fileName,
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -35,28 +33,29 @@ export const DatasetSection: React.FC<DatasetSectionProps> = ({
     return filteredCustomers.slice(start, start + pageSize);
   }, [filteredCustomers, currentPage, pageSize]);
 
-  // Overall statistics
+  // Overall statistics + the largest spending score (scales the little bars in the table)
   const stats = useMemo(() => {
-    if (customers.length === 0) return { avgAge: 0, avgIncome: 0, avgSpending: 0 };
-    const avgAge = Math.round(customers.reduce((acc, c) => acc + c.age, 0) / customers.length);
-    const avgIncome = Math.round(customers.reduce((acc, c) => acc + c.annual_income, 0) / customers.length);
-    const avgSpending = Math.round(customers.reduce((acc, c) => acc + c.spending_score, 0) / customers.length);
-    return { avgAge, avgIncome, avgSpending };
+    if (customers.length === 0) return { avgIncome: 0, avgSpending: 0, maxSpending: 1 };
+    const avgIncome = customers.reduce((acc, c) => acc + c.annual_income, 0) / customers.length;
+    const avgSpending = customers.reduce((acc, c) => acc + c.spending_score, 0) / customers.length;
+    const maxSpending = Math.max(1, ...customers.map((c) => c.spending_score));
+    return { avgIncome: Math.round(avgIncome), avgSpending: Math.round(avgSpending), maxSpending };
   }, [customers]);
 
   return (
-    <section id="dataset" className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="dataset" className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-200 dark:border-slate-800 scroll-mt-16">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
         <div>
           <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold text-sm">
             <Database className="w-4 h-4" />
-            <span>Dataset Overview</span>
+            <span>Step 2 · Your Dataset</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mt-1">
-            Artificial Customer Data
+            Uploaded Customer Data
           </h2>
           <p className="text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-2xl">
-            Synthetically synthesized dataset of {totalCount} records representing diverse consumer spending behaviors across 4 realistic demographic quadrants.
+            {totalCount} customers loaded{fileName ? <> from <span className="font-mono font-semibold">{fileName}</span></> : null}.
+            The Cluster column shows the segment the model assigned to each one.
           </p>
         </div>
 
@@ -72,20 +71,20 @@ export const DatasetSection: React.FC<DatasetSectionProps> = ({
           </div>
           <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-2.5 px-4 shadow-xs">
             <span className="text-xs text-slate-500 block">Avg Spending</span>
-            <span className="text-lg font-bold text-indigo-600 dark:text-indigo-400">{stats.avgSpending}/100</span>
+            <span className="text-lg font-bold text-indigo-600 dark:text-indigo-400">{stats.avgSpending}</span>
           </div>
         </div>
       </div>
 
       {/* Table Card */}
       <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-xs overflow-hidden">
-        {/* Search and filter toolbar */}
+        {/* Search toolbar */}
         <div className="p-4 border-b border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3 bg-slate-50/50 dark:bg-slate-900/50">
           <div className="relative w-full sm:w-64">
             <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
             <input
               type="text"
-              placeholder="Search by ID (e.g. C015)..."
+              placeholder="Search by customer ID..."
               value={searchTerm}
               onChange={(e) => {
                 setSearchTerm(e.target.value);
@@ -95,16 +94,9 @@ export const DatasetSection: React.FC<DatasetSectionProps> = ({
             />
           </div>
 
-          <div className="flex items-center gap-2 self-end sm:self-auto text-xs text-slate-500 dark:text-slate-400">
-            <span>Showing {paginatedData.length} of {filteredCustomers.length} customers</span>
-            <button
-              onClick={onRefresh}
-              disabled={isLoading}
-              className="px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-medium transition cursor-pointer"
-            >
-              {isLoading ? "Refreshing..." : "Reload"}
-            </button>
-          </div>
+          <span className="self-end sm:self-auto text-xs text-slate-500 dark:text-slate-400">
+            Showing {paginatedData.length} of {filteredCustomers.length} customers
+          </span>
         </div>
 
         {/* Table */}
@@ -115,40 +107,34 @@ export const DatasetSection: React.FC<DatasetSectionProps> = ({
                 <th className="py-3 px-4">Customer ID</th>
                 <th className="py-3 px-4">Age</th>
                 <th className="py-3 px-4">Annual Income ($k)</th>
-                <th className="py-3 px-4">Spending Score (1-100)</th>
+                <th className="py-3 px-4">Spending Score</th>
                 <th className="py-3 px-4">Cluster Assigned</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-slate-600 dark:text-slate-300">
-              {isLoading ? (
-                <tr>
-                  <td colSpan={5} className="py-8 text-center text-slate-400">
-                    Loading dataset...
-                  </td>
-                </tr>
-              ) : paginatedData.length === 0 ? (
+              {paginatedData.length === 0 ? (
                 <tr>
                   <td colSpan={5} className="py-8 text-center text-slate-400">
                     No customers found matching &quot;{searchTerm}&quot;
                   </td>
                 </tr>
               ) : (
-                paginatedData.map((c) => (
-                  <tr key={c.customer_id} className="hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition">
+                paginatedData.map((c, idx) => (
+                  <tr key={`${c.customer_id}-${idx}`} className="hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition">
                     <td className="py-3 px-4 font-mono font-medium text-slate-900 dark:text-white">
                       {c.customer_id}
                     </td>
-                    <td className="py-3 px-4">{c.age} yrs</td>
+                    <td className="py-3 px-4">{c.age !== null ? `${c.age} yrs` : "—"}</td>
                     <td className="py-3 px-4 font-medium text-slate-800 dark:text-slate-200">
                       ${c.annual_income.toFixed(1)}k
                     </td>
                     <td className="py-3 px-4">
                       <div className="flex items-center gap-2">
-                        <span className="w-8 font-medium">{c.spending_score}</span>
+                        <span className="w-10 font-medium">{c.spending_score}</span>
                         <div className="w-20 bg-slate-200 dark:bg-slate-700 rounded-full h-1.5 overflow-hidden">
                           <div
                             className="bg-blue-600 h-1.5 rounded-full"
-                            style={{ width: `${c.spending_score}%` }}
+                            style={{ width: `${Math.min(100, Math.max(0, (c.spending_score / stats.maxSpending) * 100))}%` }}
                           />
                         </div>
                       </div>
@@ -178,6 +164,7 @@ export const DatasetSection: React.FC<DatasetSectionProps> = ({
             <button
               onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
               disabled={currentPage === 1}
+              aria-label="Previous page"
               className="p-1.5 rounded border border-slate-200 dark:border-slate-700 disabled:opacity-40 hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer disabled:cursor-not-allowed"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -185,6 +172,7 @@ export const DatasetSection: React.FC<DatasetSectionProps> = ({
             <button
               onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
               disabled={currentPage === totalPages}
+              aria-label="Next page"
               className="p-1.5 rounded border border-slate-200 dark:border-slate-700 disabled:opacity-40 hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer disabled:cursor-not-allowed"
             >
               <ChevronRight className="w-4 h-4" />

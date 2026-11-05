@@ -1,5 +1,8 @@
+import io
 from typing import Optional
-from fastapi import FastAPI, HTTPException, Query, status
+import pandas as pd
+from fastapi import Depends, FastAPI, HTTPException, Query, Request, status
+from fastapi.concurrency import run_in_threadpool
 from fastapi.middleware.cors import CORSMiddleware
 
 from model import ml_model
@@ -11,13 +14,14 @@ from schemas import (
     ClusterResponse,
     PredictRequest,
     PredictResponse,
+    UploadResponse,
     HealthResponse,
 )
 
 app = FastAPI(
     title="Customer Segmentation ML API",
-    description="FastAPI service for K-Means Customer Clustering on synthetic customer behavioral dataset.",
-    version="1.0.0",
+    description="FastAPI service for K-Means Customer Clustering on an uploaded customer dataset.",
+    version="2.0.0",
 )
 
 # Enable CORS for Next.js frontend running locally
@@ -34,22 +38,22 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.on_event("startup")
-def startup_event():
-    """
-    On server startup, ensure dataset is loaded and initialize default model with K=4.
-    """
-    try:
-        ml_model.load_data()
-        ml_model.train(k=4)
-        print("Backend initialized: Dataset loaded and baseline K=4 model trained.")
-    except Exception as e:
-        print(f"Error during startup initialization: {e}")
+MAX_UPLOAD_BYTES = 5 * 1024 * 1024  # 5 MB
+
+
+def require_dataset():
+    """Dependency: every ML endpoint needs a dataset that was uploaded first."""
+    if ml_model.df.empty:
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail="No dataset uploaded yet. Upload a customer CSV file first."
+        )
+
 
 @app.get("/api/health", response_model=HealthResponse, tags=["Health"])
 def health_check():
     """
-    Health check endpoint returning system status and customer count.
+    Health check endpoint returning system status and the number of uploaded customers.
     """
     return HealthResponse(
         status="healthy",
@@ -57,81 +61,105 @@ def health_check():
         customers_loaded=len(ml_model.df),
     )
 
-@app.get("/api/dataset", response_model=DatasetResponse, tags=["Dataset"])
-def get_dataset(limit: Optional[int] = Query(None, ge=1, le=1000, description="Optional maximum number of records")):
+
+@app.post("/api/upload", response_model=UploadResponse, tags=["Dataset"])
+async def upload_dataset(request: Request):
     """
-    Returns the synthetic customer dataset records.
-    Optionally paginated / limited by query parameter ?limit=
+    Uploads a customer CSV file and makes it the active dataset (replacing any previous one).
+    The request body is the raw CSV text (Content-Type: text/csv). Required columns are
+    Annual Income and Spending Score; Customer ID and Age are optional.
+    """
+    body = await request.body()
+    if not body:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Uploaded file is empty.")
+    if len(body) > MAX_UPLOAD_BYTES:
+        raise HTTPException(
+            status_code=status.HTTP_413_REQUEST_ENTITY_TOO_LARGE,
+            detail="File is too large. Maximum upload size is 5 MB."
+        )
+
+    try:
+        upload_df = pd.read_csv(io.StringIO(body.decode("utf-8-sig")))
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Could not read the file as CSV: {str(e)}"
+        )
+
+    try:
+        summary = await run_in_threadpool(ml_model.load_dataset, upload_df)
+    except ValueError as e:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
+    return UploadResponse(**summary)
+
+
+@app.get("/api/dataset", response_model=DatasetResponse, tags=["Dataset"], dependencies=[Depends(require_dataset)])
+def get_dataset(limit: Optional[int] = Query(None, ge=1, le=10000, description="Optional maximum number of records")):
+    """
+    Returns the uploaded customer records (with their cluster once K-Means has been run).
+    Optionally limited by query parameter ?limit=
     """
     df = ml_model.df
-    if df.empty:
-        df = ml_model.load_data()
-
-    records = []
     has_cluster = "Cluster" in df.columns
 
-    for _, row in df.iterrows():
-        records.append(
-            Customer(
-                customer_id=str(row["Customer_ID"]),
-                age=int(row["Age"]),
-                annual_income=float(row["Annual_Income"]),
-                spending_score=int(row["Spending_Score"]),
-                cluster=int(row["Cluster"]) if has_cluster else None,
-            )
+    records = [
+        Customer(
+            customer_id=str(row["Customer_ID"]),
+            age=None if pd.isna(row["Age"]) else int(row["Age"]),
+            annual_income=float(row["Annual_Income"]),
+            spending_score=float(row["Spending_Score"]),
+            cluster=int(row["Cluster"]) if has_cluster and pd.notna(row["Cluster"]) else None,
         )
+        for _, row in df.iterrows()
+    ]
 
     if limit is not None:
         records = records[:limit]
 
-    return DatasetResponse(
-        total_customers=len(df),
-        customers=records,
-    )
+    return DatasetResponse(total_customers=len(df), customers=records)
 
-@app.get("/api/elbow", response_model=ElbowResponse, tags=["Clustering"])
+
+@app.get("/api/elbow", response_model=ElbowResponse, tags=["Clustering"], dependencies=[Depends(require_dataset)])
 def get_elbow_curve(
     k_min: int = Query(2, ge=2, le=5, description="Minimum K value"),
     k_max: int = Query(8, ge=5, le=10, description="Maximum K value")
 ):
     """
     Computes Within-Cluster Sum of Squares (WCSS / Inertia) across K candidate values (2 to 8)
-    to visually demonstrate the Elbow Method for optimal cluster selection.
+    on the uploaded data to demonstrate the Elbow Method, plus the silhouette-optimal K.
     """
     try:
-        k_values, wcss = ml_model.compute_elbow(k_min=k_min, k_max=k_max)
-        return ElbowResponse(k_values=k_values, wcss=wcss)
+        k_values, wcss, recommended_k = ml_model.compute_elbow(k_min=k_min, k_max=k_max)
+        return ElbowResponse(k_values=k_values, wcss=wcss, recommended_k=recommended_k)
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Failed to calculate elbow curve: {str(e)}"
         )
 
-@app.post("/api/cluster", response_model=ClusterResponse, tags=["Clustering"])
+
+@app.post("/api/cluster", response_model=ClusterResponse, tags=["Clustering"], dependencies=[Depends(require_dataset)])
 def run_kmeans_clustering(payload: ClusterRequest):
     """
-    Trains K-Means clustering on the dataset with the user-selected K (2 <= K <= 8).
+    Trains K-Means clustering on the uploaded dataset with the user-selected K (2 <= K <= 8).
     Returns silhouette score, cluster statistics, marketing personas, centroids, and points.
     """
-    if payload.k < 2 or payload.k > 8:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Parameter K must be between 2 and 8."
-        )
-
     try:
         result = ml_model.train(k=payload.k)
         return ClusterResponse(**result)
+    except ValueError as e:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"K-Means training failed: {str(e)}"
         )
 
-@app.post("/api/predict", response_model=PredictResponse, tags=["Prediction"])
+
+@app.post("/api/predict", response_model=PredictResponse, tags=["Prediction"], dependencies=[Depends(require_dataset)])
 def predict_customer_segment(payload: PredictRequest):
     """
-    Predicts the market segment for a single customer given their Age, Annual Income, and Spending Score.
+    Predicts the market segment for a single customer given their Annual Income and Spending Score.
     Uses the currently fitted StandardScaler and KMeans model.
     """
     try:
@@ -147,7 +175,7 @@ def predict_customer_segment(payload: PredictRequest):
             detail=f"Prediction failed: {str(e)}"
         )
 
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
-

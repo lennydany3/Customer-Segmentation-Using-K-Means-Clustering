@@ -4,7 +4,15 @@ import React, { useState } from "react";
 import { UserCheck, Sparkles, Send, CheckCircle2, AlertCircle } from "lucide-react";
 import { PredictResponse } from "../lib/types";
 
+export interface PredictBounds {
+  incomeMin: number;
+  incomeMax: number;
+  spendingMin: number;
+  spendingMax: number;
+}
+
 interface PredictSectionProps {
+  bounds: PredictBounds;
   onPredict: (data: { age: number; income: number; spending_score: number }) => Promise<PredictResponse | null>;
   isPredicting: boolean;
   predictionResult: PredictResponse | null;
@@ -12,14 +20,23 @@ interface PredictSectionProps {
 }
 
 export const PredictSection: React.FC<PredictSectionProps> = ({
+  bounds,
   onPredict,
   isPredicting,
   predictionResult,
   error,
 }) => {
+  // Slider ranges follow the uploaded data so any dataset's scale works
+  const incomeMin = Math.floor(bounds.incomeMin);
+  const incomeMax = Math.max(incomeMin + 1, Math.ceil(bounds.incomeMax));
+  const spendingMin = Math.floor(bounds.spendingMin);
+  const spendingMax = Math.max(spendingMin + 1, Math.ceil(bounds.spendingMax));
+  const incomeStep = incomeMax - incomeMin > 20 ? 1 : 0.1;
+  const spendingStep = spendingMax - spendingMin > 20 ? 1 : 0.1;
+
   const [age, setAge] = useState<number>(30);
-  const [income, setIncome] = useState<number>(95);
-  const [spending, setSpending] = useState<number>(85);
+  const [income, setIncome] = useState<number>(Math.round((incomeMin + incomeMax) / 2));
+  const [spending, setSpending] = useState<number>(Math.round((spendingMin + spendingMax) / 2));
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,65 +47,22 @@ export const PredictSection: React.FC<PredictSectionProps> = ({
     });
   };
 
-  const applyPreset = (presetAge: number, presetIncome: number, presetSpending: number) => {
-    setAge(presetAge);
-    setIncome(presetIncome);
-    setSpending(presetSpending);
-  };
-
   return (
-    <section id="predict" className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-200 dark:border-slate-800">
+    <section id="predict" className="py-12 scroll-mt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-200 dark:border-slate-800">
       <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-semibold text-sm mb-1">
         <UserCheck className="w-4 h-4" />
-        <span>Real-Time Inference</span>
+        <span>Step 5 · Real-Time Inference</span>
       </div>
       <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">
         Predict New Customer Segment
       </h2>
       <p className="text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-2xl mb-8">
-        Input a customer&apos;s demographic metrics. The system normalizes their features with the trained StandardScaler and assigns them to the closest cluster centroid via Euclidean distance.
+        Enter a customer&apos;s income and spending score. The system normalizes their features with the trained StandardScaler and assigns them to the closest cluster centroid via Euclidean distance.
       </p>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Form Column (7 cols) */}
         <div className="lg:col-span-7 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-xs">
-          {/* Quick presets */}
-          <div className="mb-6">
-            <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-2">
-              Quick Presets for Viva Demo:
-            </span>
-            <div className="flex flex-wrap gap-2">
-              <button
-                type="button"
-                onClick={() => applyPreset(30, 95, 85)}
-                className="px-2.5 py-1.5 rounded-lg text-xs font-medium bg-blue-50 hover:bg-blue-100 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300 border border-blue-200 dark:border-blue-800 transition cursor-pointer"
-              >
-                💎 High Earner VIP ($95k, 85)
-              </button>
-              <button
-                type="button"
-                onClick={() => applyPreset(48, 90, 20)}
-                className="px-2.5 py-1.5 rounded-lg text-xs font-medium bg-emerald-50 hover:bg-emerald-100 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 transition cursor-pointer"
-              >
-                🏦 Careful Saver ($90k, 20)
-              </button>
-              <button
-                type="button"
-                onClick={() => applyPreset(24, 28, 80)}
-                className="px-2.5 py-1.5 rounded-lg text-xs font-medium bg-purple-50 hover:bg-purple-100 text-purple-700 dark:bg-purple-950/60 dark:text-purple-300 border border-purple-200 dark:border-purple-800 transition cursor-pointer"
-              >
-                ⚡ Trendsetter ($28k, 80)
-              </button>
-              <button
-                type="button"
-                onClick={() => applyPreset(50, 28, 22)}
-                className="px-2.5 py-1.5 rounded-lg text-xs font-medium bg-amber-50 hover:bg-amber-100 text-amber-700 dark:bg-amber-950/60 dark:text-amber-300 border border-amber-200 dark:border-amber-800 transition cursor-pointer"
-              >
-                🛒 Budget Shopper ($28k, 22)
-              </button>
-            </div>
-          </div>
-
           <form onSubmit={handleSubmit} className="space-y-5">
             {/* Age Input */}
             <div>
@@ -127,17 +101,17 @@ export const PredictSection: React.FC<PredictSectionProps> = ({
               </div>
               <input
                 type="range"
-                min={15}
-                max={140}
-                step={1}
+                min={incomeMin}
+                max={incomeMax}
+                step={incomeStep}
                 value={income}
                 onChange={(e) => setIncome(Number(e.target.value))}
                 className="w-full accent-blue-600 cursor-pointer"
               />
               <div className="flex justify-between text-[11px] text-slate-400 mt-1">
-                <span>$15k</span>
-                <span>$75k</span>
-                <span>$140k</span>
+                <span>${incomeMin}k</span>
+                <span>${Math.round((incomeMin + incomeMax) / 2)}k</span>
+                <span>${incomeMax}k</span>
               </div>
             </div>
 
@@ -145,24 +119,25 @@ export const PredictSection: React.FC<PredictSectionProps> = ({
             <div>
               <div className="flex justify-between items-center mb-1.5">
                 <label className="text-xs font-semibold text-slate-700 dark:text-slate-300">
-                  Spending Score (1 - 100)
+                  Spending Score
                 </label>
                 <span className="text-xs font-mono font-bold text-indigo-600 dark:text-indigo-400">
-                  {spending} / 100
+                  {spending}
                 </span>
               </div>
               <input
                 type="range"
-                min={1}
-                max={100}
+                min={spendingMin}
+                max={spendingMax}
+                step={spendingStep}
                 value={spending}
                 onChange={(e) => setSpending(Number(e.target.value))}
                 className="w-full accent-indigo-600 cursor-pointer"
               />
               <div className="flex justify-between text-[11px] text-slate-400 mt-1">
-                <span>1 (Frugal)</span>
-                <span>50 (Moderate)</span>
-                <span>100 (Extravagant)</span>
+                <span>{spendingMin} (Low)</span>
+                <span>{Math.round((spendingMin + spendingMax) / 2)}</span>
+                <span>{spendingMax} (High)</span>
               </div>
             </div>
 
@@ -199,7 +174,7 @@ export const PredictSection: React.FC<PredictSectionProps> = ({
                   Cluster {predictionResult.cluster_id} Assigned
                 </span>
                 <span className="text-xs text-slate-400 font-mono">
-                  Age {predictionResult.age} | ${predictionResult.income}k | {predictionResult.spending_score}/100
+                  {predictionResult.age !== null ? `Age ${predictionResult.age} | ` : ""}${predictionResult.income}k | {predictionResult.spending_score}
                 </span>
               </div>
 
@@ -219,7 +194,7 @@ export const PredictSection: React.FC<PredictSectionProps> = ({
                 </span>
                 <p className="text-slate-500">
                   Income: <strong>${predictionResult.nearest_centroid[0]}k</strong> | Spending:{" "}
-                  <strong>{predictionResult.nearest_centroid[1]}/100</strong>
+                  <strong>{predictionResult.nearest_centroid[1]}</strong>
                 </p>
               </div>
 
@@ -247,7 +222,7 @@ export const PredictSection: React.FC<PredictSectionProps> = ({
                 Awaiting Prediction
               </h4>
               <p className="text-xs text-slate-400 max-w-xs mt-1">
-                Adjust the sliders or pick a demo preset on the left, then click &quot;Classify Customer&quot; to see real-time segmentation and strategy!
+                Adjust the sliders on the left, then click &quot;Classify Customer&quot; to see real-time segmentation and strategy!
               </p>
             </div>
           )}

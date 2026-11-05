@@ -1,6 +1,6 @@
-# Customer Segmentation Using K-Means Clustering on an Artificial Dataset
+# Customer Segmentation Using K-Means Clustering on an Uploaded Dataset
 
-A complete, full-stack Machine Learning mini-project built for college submissions and viva voce examinations. The project demonstrates unsupervised market segmentation using **K-Means Clustering** on customer behavioral data with a **FastAPI + scikit-learn** backend and a responsive **Next.js (App Router, TypeScript, Tailwind CSS, Recharts)** dashboard.
+A complete, full-stack Machine Learning mini-project built for college submissions and viva voce examinations. The project demonstrates unsupervised market segmentation using **K-Means Clustering** on a customer CSV that you upload with a **FastAPI + scikit-learn** backend and a responsive **Next.js (App Router, TypeScript, Tailwind CSS, Recharts)** dashboard.
 
 ---
 
@@ -49,6 +49,16 @@ npm run dev
 
 *(Note: The frontend connects to `http://localhost:8000` by default. You can customize this by setting `NEXT_PUBLIC_API_URL` in an `.env.local` file).*
 
+### 3. Using the App
+
+The app starts empty: **there is no built-in dataset.** Upload a customer CSV and the dashboard builds everything from it:
+
+1. **Upload CSV**: drag in a file with `Annual_Income` and `Spending_Score` columns (`Customer_ID` and `Age` optional; Kaggle `Mall_Customers.csv` headers also work; 10 to 5,000 customers, max 5 MB). A loader shows the processing stages.
+2. **Dataset / Elbow / K-Means / Predict** sections then appear, all computed on your file. K is picked automatically with the silhouette score and can be changed afterwards.
+3. Download the segmented customers as a CSV.
+
+Income is treated as thousands ($k).
+
 ---
 
 ## 📁 Repository Structure
@@ -59,7 +69,8 @@ heshly_ml_project/
 │   ├── components/               # Small modular client components
 │   │   ├── Navbar.tsx            # Header with live FastAPI status ping
 │   │   ├── HeroSection.tsx       # Introduction & quick navigation
-│   │   ├── DatasetSection.tsx    # Paginated customer table with search & metrics
+│   │   ├── UploadSection.tsx     # CSV upload, processing loader, results download
+│   │   ├── DatasetSection.tsx    # Paginated uploaded-customer table with search & metrics
 │   │   ├── ElbowSection.tsx      # WCSS vs K line chart & viva notes
 │   │   ├── ClusteringControl.tsx # K parameter slider (2 to 8) & train trigger
 │   │   ├── ResultsSection.tsx    # Stat cards, 2D Scatter plot with centroids, cluster cards
@@ -71,10 +82,7 @@ heshly_ml_project/
 │   ├── layout.tsx                # App layout & meta title
 │   └── page.tsx                  # Main interactive dashboard page
 ├── backend/                      # FastAPI ML Backend
-│   ├── dataset/
-│   │   └── customers.csv         # 200 synthetic customer records
-│   ├── generate_data.py          # Synthetic dataset generator with 4 quadrants
-│   ├── model.py                  # StandardScaler, Elbow (WCSS), KMeans fit, prediction & labels
+│   ├── model.py                  # CSV loading/validation, StandardScaler, Elbow (WCSS), KMeans fit, prediction & labels
 │   ├── schemas.py                # Pydantic request/response validation models
 │   ├── main.py                   # FastAPI application, CORS, endpoints
 │   ├── requirements.txt          # Python ML libraries
@@ -88,29 +96,25 @@ heshly_ml_project/
 
 ## 🧠 Machine Learning Pipeline Overview
 
-1. **Synthetic Dataset Generation (`backend/generate_data.py`)**:
-   - Synthesizes 200 customer samples across 4 distinct demographic quadrants:
-     - *High Income, High Spending* (VIP / Target Shoppers)
-     - *High Income, Low Spending* (Careful Savers)
-     - *Low Income, High Spending* (Trendsetters / Enthusiasts)
-     - *Low Income, Low Spending* (Budget / Value Seekers)
-   - Features: `Customer_ID`, `Age` (18-70), `Annual_Income` ($15k-$140k), `Spending_Score` (1-100).
+1. **Dataset Upload (`POST /api/upload`)**:
+   - The user uploads a CSV. Columns are detected case-insensitively (`Annual_Income` / `Annual Income (k$)`, `Spending_Score` / `Spending Score (1-100)`, optional `Customer_ID`, `Age`).
+   - Rows with missing or non-numeric income/spending are skipped and counted.
 
 2. **Feature Preprocessing (`StandardScaler`)**:
    - `Annual_Income` and `Spending_Score` are standardized using z-score normalization ($z = \frac{x - \mu}{\sigma}$) so features with large numeric variance do not artificially dominate Euclidean distances.
 
 3. **Hyperparameter Selection (Elbow Method)**:
-   - Calculates **Within-Cluster Sum of Squares (WCSS / Inertia)** for $K \in [2, 8]$.
-   - The elbow curve drops sharply until $K=4$ (WCSS drops from 215.2 to 31.58) and flattens thereafter, demonstrating that $K=4$ is the optimal number of clusters.
+   - Calculates **Within-Cluster Sum of Squares (WCSS / Inertia)** for $K \in [2, 8]$ on the uploaded data.
+   - The elbow shows where extra clusters stop paying off; the K with the highest silhouette score is recommended and used for the first training run.
 
 4. **K-Means Clustering & Evaluation**:
    - Clusters data using scikit-learn's `KMeans(n_clusters=k, random_state=42, n_init=10)`.
-   - Evaluates separation using **Silhouette Score** ($\approx 0.714$ for $K=4$, representing excellent cluster cohesion and separation).
+   - Evaluates separation using **Silhouette Score** (closer to 1 means better cohesion and separation).
    - Inverses centroids back to human-readable units (`$k` and score) using `scaler.inverse_transform()`.
    - Automatically generates persona labels, descriptions, and actionable marketing strategies.
 
 5. **Inference / Prediction**:
-   - Accepts a new customer's Age, Income, and Spending Score.
+   - Accepts a new customer's Income and Spending Score (Age optional).
    - Scales the input using the fitted `StandardScaler` and assigns the nearest centroid.
    - Displays segment details and highlights the new customer point on the 2D Scatter plot in real-time.
 
@@ -174,11 +178,14 @@ The K-Means algorithm partitions $N$ observations into $K$ clusters through an i
 
 | Method | Endpoint | Description |
 | :--- | :--- | :--- |
-| `GET` | `/api/health` | Returns backend operational status and customer count |
-| `GET` | `/api/dataset` | Returns customer dataset records (supports `?limit=`) |
-| `GET` | `/api/elbow` | Computes WCSS values for $K \in [2, 8]$ |
+| `GET` | `/api/health` | Returns backend operational status and number of uploaded customers |
+| `POST` | `/api/upload` | Uploads a customer CSV (raw `text/csv` body, max 5 MB) and makes it the active dataset |
+| `GET` | `/api/dataset` | Returns the uploaded customer records (supports `?limit=`) |
+| `GET` | `/api/elbow` | Computes WCSS values for $K \in [2, 8]$ plus the silhouette-optimal `recommended_k` |
 | `POST` | `/api/cluster` | Trains KMeans with `{ k: int }` (2-8), returns metrics & centroids |
-| `POST` | `/api/predict` | Classifies customer from `{ age, income, spending_score }` |
+| `POST` | `/api/predict` | Classifies a customer from `{ income, spending_score, age? }` |
+
+Every endpoint except `health` and `upload` returns `409` until a dataset has been uploaded.
 
 ---
 

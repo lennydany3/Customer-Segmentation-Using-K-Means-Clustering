@@ -4,6 +4,7 @@ import {
   ClusterResponse,
   PredictRequest,
   PredictResponse,
+  UploadResponse,
   HealthResponse,
 } from "./types";
 
@@ -72,6 +73,15 @@ export async function runKMeans(k: number): Promise<ClusterResponse> {
   return request<ClusterResponse>("/api/cluster", {
     method: "POST",
     body: JSON.stringify({ k }),
+  });
+}
+
+/** Upload a customer CSV; it becomes the dataset every other endpoint works on */
+export async function uploadDataset(file: File): Promise<UploadResponse> {
+  return request<UploadResponse>("/api/upload", {
+    method: "POST",
+    headers: { "Content-Type": "text/csv" },
+    body: file,
   });
 }
 

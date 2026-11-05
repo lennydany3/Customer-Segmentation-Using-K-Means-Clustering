@@ -1,12 +1,24 @@
 from typing import List, Optional
 from pydantic import BaseModel, Field
 
-# --- Dataset Schemas ---
+# --- Upload / Dataset Schemas ---
+class DetectedColumns(BaseModel):
+    id: Optional[str] = None
+    age: Optional[str] = None
+    income: Optional[str] = None
+    spending: Optional[str] = None
+
+class UploadResponse(BaseModel):
+    total_rows: int
+    processed_rows: int
+    skipped_rows: int
+    detected_columns: DetectedColumns
+
 class Customer(BaseModel):
-    customer_id: str = Field(..., description="Unique customer ID (e.g. C001)")
-    age: int = Field(..., description="Customer age")
-    annual_income: float = Field(..., description="Annual Income in $k")
-    spending_score: int = Field(..., description="Spending Score between 1 and 100")
+    customer_id: str = Field(..., description="Customer ID from the uploaded file (or the row number)")
+    age: Optional[int] = Field(None, description="Customer age, if the file has an Age column")
+    annual_income: float = Field(..., description="Annual Income")
+    spending_score: float = Field(..., description="Spending Score")
     cluster: Optional[int] = Field(None, description="Assigned cluster ID if clustered")
 
 class DatasetResponse(BaseModel):
@@ -17,6 +29,7 @@ class DatasetResponse(BaseModel):
 class ElbowResponse(BaseModel):
     k_values: List[int] = Field(..., description="List of K candidate values (e.g., 2 to 8)")
     wcss: List[float] = Field(..., description="Within-Cluster Sum of Squares (Inertia) for each K")
+    recommended_k: int = Field(..., description="K with the highest silhouette score")
 
 # --- Clustering Schemas ---
 class ClusterRequest(BaseModel):
@@ -27,7 +40,7 @@ class ClusterSummary(BaseModel):
     label: str
     customer_count: int
     percentage: float
-    avg_age: float
+    avg_age: Optional[float] = None
     avg_income: float
     avg_spending: float
     centroid: List[float] = Field(..., description="Centroid coordinates [income, spending] in original units")
@@ -36,7 +49,7 @@ class ClusterSummary(BaseModel):
 
 class Point(BaseModel):
     id: str
-    age: int
+    age: Optional[int] = None
     income: float
     spending: float
     cluster: int
@@ -57,9 +70,9 @@ class ClusterResponse(BaseModel):
 
 # --- Prediction Schemas ---
 class PredictRequest(BaseModel):
-    age: int = Field(..., ge=18, le=100, description="Customer age (18 - 100)")
-    income: float = Field(..., ge=10.0, le=250.0, description="Annual Income in $k (10 - 250)")
-    spending_score: int = Field(..., ge=1, le=100, description="Spending score (1 - 100)")
+    age: Optional[int] = Field(None, ge=0, le=120, description="Customer age (optional, not used for clustering)")
+    income: float = Field(..., description="Annual Income, in the same unit as the uploaded dataset")
+    spending_score: float = Field(..., description="Spending score, in the same unit as the uploaded dataset")
 
 class PredictResponse(BaseModel):
     cluster_id: int
@@ -67,8 +80,8 @@ class PredictResponse(BaseModel):
     description: str
     strategy: str
     income: float
-    spending_score: int
-    age: int
+    spending_score: float
+    age: Optional[int] = None
     nearest_centroid: List[float]
 
 # --- Health Check ---
@@ -76,4 +89,3 @@ class HealthResponse(BaseModel):
     status: str
     message: str
     customers_loaded: int
-

@@ -1,5 +1,6 @@
 """
 model.py: Machine Learning logic for Customer Segmentation using K-Means.
+- Data: an uploaded customer CSV (nothing is bundled with the backend)
 - Feature Selection: Annual_Income and Spending_Score
 - Normalization: StandardScaler (zero mean, unit variance)
 - Model: KMeans clustering with scikit-learn
@@ -7,7 +8,6 @@ model.py: Machine Learning logic for Customer Segmentation using K-Means.
 - Interpretation: Dynamic cluster labeling and marketing recommendations
 """
 
-import os
 from typing import Dict, Any, List, Tuple, Optional
 import numpy as np
 import pandas as pd
@@ -15,58 +15,148 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
 
-from generate_data import get_or_create_dataset
+MIN_ROWS = 10      # K-Means up to K=8 and the silhouette score need a meaningful number of customers
+MAX_ROWS = 5000    # keeps the scatter plot and the JSON responses responsive
+SILHOUETTE_SAMPLE = 2000  # silhouette is O(n^2): evaluate on a sample for larger datasets
+
+
+class NoDatasetError(Exception):
+    """Raised when a model operation is requested before any CSV has been uploaded."""
+
+
+def _silhouette(X_scaled: np.ndarray, labels: np.ndarray) -> float:
+    if len(set(labels)) < 2:
+        return 0.0
+    sample = SILHOUETTE_SAMPLE if len(X_scaled) > SILHOUETTE_SAMPLE else None
+    return float(silhouette_score(X_scaled, labels, sample_size=sample, random_state=42))
+
+
+def _round_or_none(value: Any, digits: int = 1) -> Optional[float]:
+    return None if pd.isna(value) else float(round(value, digits))
+
 
 class CustomerSegmentationModel:
-    def __init__(self, dataset_path: Optional[str] = None):
-        self.dataset_path = dataset_path
+    def __init__(self):
         self.df: pd.DataFrame = pd.DataFrame()
         self.scaler: StandardScaler = StandardScaler()
         self.model: Optional[KMeans] = None
         self.current_k: int = 4
         self.cluster_metadata: Dict[int, Dict[str, Any]] = {}
-        
-        # Load dataset initially
-        self.load_data()
 
-    def load_data(self) -> pd.DataFrame:
-        """Loads customer dataset from CSV or generates it if missing."""
-        if self.dataset_path:
-            self.df = get_or_create_dataset(self.dataset_path)
-        else:
-            self.df = get_or_create_dataset()
-        return self.df
+    # ------------------------------------------------------------------ data loading
+    @staticmethod
+    def _normalize_column(name: str) -> str:
+        """Lowercases a column name and strips everything except letters and digits."""
+        return "".join(ch for ch in str(name).lower() if ch.isalnum())
+
+    def _resolve_columns(self, columns: List[str]) -> Dict[str, Optional[str]]:
+        """
+        Maps uploaded CSV headers onto the features the model needs. Accepts the headers
+        Customer_ID / Age / Annual_Income / Spending_Score as well as the popular Kaggle
+        Mall_Customers.csv headers ("Annual Income (k$)", "Spending Score (1-100)").
+        """
+        resolved: Dict[str, Optional[str]] = {"id": None, "age": None, "income": None, "spending": None}
+        for col in columns:
+            norm = self._normalize_column(col)
+            if resolved["id"] is None and norm in ("customerid", "id", "custid"):
+                resolved["id"] = col
+            elif resolved["age"] is None and norm == "age":
+                resolved["age"] = col
+            elif resolved["income"] is None and (norm.startswith("annualincome") or norm == "income"):
+                resolved["income"] = col
+            elif resolved["spending"] is None and (norm.startswith("spendingscore") or norm == "spending"):
+                resolved["spending"] = col
+        return resolved
+
+    def load_dataset(self, upload_df: pd.DataFrame) -> Dict[str, Any]:
+        """
+        Validates an uploaded customer table and makes it the active dataset:
+        1. Detects the Annual Income and Spending Score columns (Customer ID and Age optional).
+        2. Drops rows whose features are missing or non-numeric.
+        3. Replaces the current dataset and discards the previously trained model.
+        Raises ValueError (with a user-facing message) if the file cannot be used.
+        """
+        cols = self._resolve_columns(list(upload_df.columns))
+        missing = [
+            label for key, label in (("income", "Annual_Income"), ("spending", "Spending_Score"))
+            if cols[key] is None
+        ]
+        if missing:
+            raise ValueError(
+                f"Missing required column(s): {', '.join(missing)}. "
+                f"Found columns: {', '.join(map(str, upload_df.columns))}"
+            )
+
+        total_rows = len(upload_df)
+        work = pd.DataFrame({
+            "Customer_ID": (
+                upload_df[cols["id"]].astype(str).to_numpy()
+                if cols["id"] else np.arange(1, total_rows + 1).astype(str)
+            ),
+            "Age": (
+                pd.to_numeric(upload_df[cols["age"]], errors="coerce").to_numpy()
+                if cols["age"] else np.full(total_rows, np.nan)
+            ),
+            "Annual_Income": pd.to_numeric(upload_df[cols["income"]], errors="coerce").to_numpy(),
+            "Spending_Score": pd.to_numeric(upload_df[cols["spending"]], errors="coerce").to_numpy(),
+        })
+        work = work.replace([np.inf, -np.inf], np.nan).dropna(subset=["Annual_Income", "Spending_Score"])
+        work = work.reset_index(drop=True)
+
+        if len(work) < MIN_ROWS:
+            raise ValueError(
+                f"At least {MIN_ROWS} customers with numeric Annual Income and Spending Score are "
+                f"required, but only {len(work)} valid row(s) were found."
+            )
+        if len(work) > MAX_ROWS:
+            raise ValueError(f"Too many rows ({len(work)}). The maximum supported is {MAX_ROWS}.")
+
+        self.df = work
+        self.model = None
+        self.cluster_metadata = {}
+
+        return {
+            "total_rows": total_rows,
+            "processed_rows": len(work),
+            "skipped_rows": total_rows - len(work),
+            "detected_columns": {key: (str(val) if val is not None else None) for key, val in cols.items()},
+        }
 
     def get_features(self) -> np.ndarray:
         """
         Extracts features used for clustering:
-        1. Annual_Income ($k)
-        2. Spending_Score (1-100)
+        1. Annual_Income
+        2. Spending_Score
         """
         if self.df.empty:
-            self.load_data()
+            raise NoDatasetError("No dataset uploaded yet.")
         return self.df[["Annual_Income", "Spending_Score"]].values
 
-    def compute_elbow(self, k_min: int = 2, k_max: int = 8) -> Tuple[List[int], List[float]]:
+    # ------------------------------------------------------------------ elbow
+    def compute_elbow(self, k_min: int = 2, k_max: int = 8) -> Tuple[List[int], List[float], int]:
         """
         Calculates Within-Cluster Sum of Squares (WCSS / Inertia) for candidate values of K.
         WCSS = sum of squared Euclidean distances between each point and its cluster centroid.
+        Also returns the K with the highest silhouette score as the recommended K.
         """
         X = self.get_features()
-        # Scale features before computing distances
-        temp_scaler = StandardScaler()
-        X_scaled = temp_scaler.fit_transform(X)
+        X_scaled = StandardScaler().fit_transform(X)
 
+        k_max = min(k_max, len(X) - 1)
         k_values = list(range(k_min, k_max + 1))
-        wcss = []
+        wcss: List[float] = []
+        silhouettes: List[float] = []
 
         for k in k_values:
             km = KMeans(n_clusters=k, random_state=42, n_init=10)
-            km.fit(X_scaled)
+            labels = km.fit_predict(X_scaled)
             wcss.append(float(round(km.inertia_, 2)))
+            silhouettes.append(_silhouette(X_scaled, labels))
 
-        return k_values, wcss
+        recommended_k = k_values[int(np.argmax(silhouettes))]
+        return k_values, wcss, recommended_k
 
+    # ------------------------------------------------------------------ training
     def _generate_cluster_label_and_strategy(
         self,
         avg_income: float,
@@ -78,7 +168,7 @@ class CustomerSegmentationModel:
     ) -> Tuple[str, str, str]:
         """
         Derives an intuitive marketing persona, description, and actionable business strategy
-        based on how the cluster's average income and spending compare with the overall store averages.
+        based on how the cluster's average income and spending compare with the overall averages.
         """
         is_high_income = avg_income >= mean_income
         is_high_spending = avg_spending >= mean_spending
@@ -108,28 +198,30 @@ class CustomerSegmentationModel:
 
     def train(self, k: int = 4) -> Dict[str, Any]:
         """
-        Trains K-Means clustering on the dataset with the chosen K:
+        Trains K-Means clustering on the uploaded dataset with the chosen K:
         1. Scales Annual_Income and Spending_Score using StandardScaler.
         2. Fits KMeans(n_clusters=k, random_state=42, n_init=10).
         3. Computes centroids in original units using inverse_transform.
         4. Calculates per-cluster statistics (count, avg age, avg income, avg spending).
         5. Computes silhouette score to evaluate clustering cohesion and separation.
         """
-        self.current_k = k
         X = self.get_features()
+        if k >= len(X):
+            raise ValueError(f"K must be smaller than the number of customers ({len(X)}).")
 
+        # Fit into local objects and publish them only once fully trained, so concurrent
+        # prediction requests never see a half-built (unfitted) model.
         # Step 1: Scale features (StandardScaler: z = (x - u) / s)
-        self.scaler = StandardScaler()
-        X_scaled = self.scaler.fit_transform(X)
+        scaler = StandardScaler()
+        X_scaled = scaler.fit_transform(X)
 
         # Step 2: Fit KMeans
-        self.model = KMeans(n_clusters=k, random_state=42, n_init=10)
-        labels = self.model.fit_predict(X_scaled)
+        model = KMeans(n_clusters=k, random_state=42, n_init=10)
+        labels = model.fit_predict(X_scaled)
         self.df["Cluster"] = labels
 
-        # Step 3: Compute Centroids in original feature space ($k, score)
-        raw_centroids = self.model.cluster_centers_
-        orig_centroids = self.scaler.inverse_transform(raw_centroids)
+        # Step 3: Compute Centroids in original feature space
+        orig_centroids = scaler.inverse_transform(model.cluster_centers_)
 
         # Step 4: Overall benchmarks for auto-labeling
         mean_income = float(self.df["Annual_Income"].mean())
@@ -137,23 +229,22 @@ class CustomerSegmentationModel:
         total_customers = len(self.df)
 
         # Step 5: Calculate Silhouette Score (ranges from -1 to 1)
-        sil_score = float(round(silhouette_score(X_scaled, labels), 3)) if k > 1 else 0.0
+        sil_score = float(round(_silhouette(X_scaled, labels), 3))
 
         # Step 6: Build per-cluster summaries
-        self.cluster_metadata = {}
+        cluster_metadata: Dict[int, Dict[str, Any]] = {}
         clusters_summary = []
         centroids_summary = []
 
         for cid in range(k):
-            c_mask = self.df["Cluster"] == cid
-            c_df = self.df[c_mask]
+            c_df = self.df[self.df["Cluster"] == cid]
 
             count = int(len(c_df))
             pct = round((count / total_customers) * 100, 1)
-            avg_age = float(round(c_df["Age"].mean(), 1)) if count > 0 else 0.0
+            avg_age = _round_or_none(c_df["Age"].mean()) if count > 0 else None
             avg_inc = float(round(c_df["Annual_Income"].mean(), 1)) if count > 0 else 0.0
             avg_sp = float(round(c_df["Spending_Score"].mean(), 1)) if count > 0 else 0.0
-            
+
             centroid_income = float(round(orig_centroids[cid][0], 1))
             centroid_spending = float(round(orig_centroids[cid][1], 1))
 
@@ -162,7 +253,7 @@ class CustomerSegmentationModel:
             )
 
             # Store metadata for real-time predictions
-            self.cluster_metadata[cid] = {
+            cluster_metadata[cid] = {
                 "label": label,
                 "description": desc,
                 "strategy": strat,
@@ -189,13 +280,16 @@ class CustomerSegmentationModel:
                 "label": label
             })
 
+        # Publish the trained model state together
+        self.scaler, self.model, self.cluster_metadata, self.current_k = scaler, model, cluster_metadata, k
+
         # Format individual customer points for visualization
         points = [
             {
                 "id": str(row["Customer_ID"]),
-                "age": int(row["Age"]),
+                "age": None if pd.isna(row["Age"]) else int(row["Age"]),
                 "income": float(row["Annual_Income"]),
-                "spending": int(row["Spending_Score"]),
+                "spending": float(row["Spending_Score"]),
                 "cluster": int(row["Cluster"])
             }
             for _, row in self.df.iterrows()
@@ -210,7 +304,8 @@ class CustomerSegmentationModel:
             "centroids": centroids_summary
         }
 
-    def predict(self, age: int, income: float, spending: int) -> Dict[str, Any]:
+    # ------------------------------------------------------------------ inference
+    def predict(self, age: Optional[int], income: float, spending: float) -> Dict[str, Any]:
         """
         Classifies a new customer into one of the trained clusters:
         1. Scales [income, spending] using the fitted StandardScaler.
@@ -218,16 +313,13 @@ class CustomerSegmentationModel:
         3. Returns cluster ID, persona label, marketing strategy, and centroid.
         """
         if self.model is None:
-            # If model hasn't been trained yet, train default k=4
+            # Dataset uploaded but not clustered yet: fall back to the default K=4
             self.train(k=4)
+        scaler, model, metadata = self.scaler, self.model, self.cluster_metadata
 
-        # Scale customer input features
-        input_features = np.array([[income, spending]])
-        scaled_input = self.scaler.transform(input_features)
-
-        # Predict cluster index
-        cluster_id = int(self.model.predict(scaled_input)[0])
-        meta = self.cluster_metadata.get(cluster_id, {
+        scaled_input = scaler.transform(np.array([[income, spending]]))
+        cluster_id = int(model.predict(scaled_input)[0])
+        meta = metadata.get(cluster_id, {
             "label": f"Cluster {cluster_id}",
             "description": "Customer segment",
             "strategy": "Engage customer with standard marketing offers.",
@@ -240,23 +332,11 @@ class CustomerSegmentationModel:
             "description": meta["description"],
             "strategy": meta["strategy"],
             "income": float(income),
-            "spending_score": int(spending),
-            "age": int(age),
+            "spending_score": float(spending),
+            "age": age,
             "nearest_centroid": meta["centroid"]
         }
 
-# Global singleton instance for FastAPI backend
+
+# Global singleton instance for FastAPI backend (starts empty until a CSV is uploaded)
 ml_model = CustomerSegmentationModel()
-
-if __name__ == "__main__":
-    print("Testing ML Model...")
-    model = CustomerSegmentationModel()
-    k_vals, wcss_vals = model.compute_elbow()
-    print("Elbow results:", list(zip(k_vals, wcss_vals)))
-    result = model.train(k=4)
-    print(f"Trained K=4: Silhouette Score = {result['silhouette_score']}")
-    for c in result["clusters"]:
-        print(f"Cluster {c['cluster_id']}: {c['label']} | {c['customer_count']} customers | Centroid: {c['centroid']}")
-    pred = model.predict(age=28, income=95.0, spending=85)
-    print("Prediction test:", pred)
-

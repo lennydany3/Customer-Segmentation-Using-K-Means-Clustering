@@ -1,6 +1,6 @@
 export interface Customer {
   customer_id: string;
-  age: number;
+  age: number | null;
   annual_income: number;
   spending_score: number;
   cluster?: number | null;
@@ -14,6 +14,7 @@ export interface DatasetResponse {
 export interface ElbowResponse {
   k_values: number[];
   wcss: number[];
+  recommended_k: number;
 }
 
 export interface ClusterSummary {
@@ -21,7 +22,7 @@ export interface ClusterSummary {
   label: string;
   customer_count: number;
   percentage: number;
-  avg_age: number;
+  avg_age: number | null;
   avg_income: number;
   avg_spending: number;
   centroid: [number, number];
@@ -31,7 +32,7 @@ export interface ClusterSummary {
 
 export interface Point {
   id: string;
-  age: number;
+  age: number | null;
   income: number;
   spending: number;
   cluster: number;
@@ -54,7 +55,7 @@ export interface ClusterResponse {
 }
 
 export interface PredictRequest {
-  age: number;
+  age?: number | null;
   income: number;
   spending_score: number;
 }
@@ -66,8 +67,20 @@ export interface PredictResponse {
   strategy: string;
   income: number;
   spending_score: number;
-  age: number;
+  age: number | null;
   nearest_centroid: [number, number];
+}
+
+export interface UploadResponse {
+  total_rows: number;
+  processed_rows: number;
+  skipped_rows: number;
+  detected_columns: {
+    id: string | null;
+    age: string | null;
+    income: string | null;
+    spending: string | null;
+  };
 }
 
 export interface HealthResponse {
