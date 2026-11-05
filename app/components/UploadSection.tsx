@@ -346,6 +346,15 @@ export const UploadSection: React.FC<UploadSectionProps> = ({
                 <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1.5 leading-relaxed">
                   Grouped into <strong>{clusteringData.k} clusters</strong> with a silhouette score of{" "}
                   <strong>{clusteringData.silhouette_score}</strong>.
+                  {clusteringData.accuracy !== null && clusteringData.accuracy !== undefined && (
+                    <>
+                      {" "}Accuracy against the true segments:{" "}
+                      <strong className="text-emerald-600 dark:text-emerald-400">
+                        {(clusteringData.accuracy * 100).toFixed(1)}%
+                      </strong>
+                      .
+                    </>
+                  )}
                 </p>
               </div>
               <div className="bg-slate-50 dark:bg-slate-800/80 p-3 rounded-lg text-xs space-y-1 border border-slate-100 dark:border-slate-800">
@@ -358,6 +367,12 @@ export const UploadSection: React.FC<UploadSectionProps> = ({
                   ID: <strong className="font-mono">{summary.detected_columns.id ?? "—"}</strong> · Age:{" "}
                   <strong className="font-mono">{summary.detected_columns.age ?? "—"}</strong>
                 </p>
+                {summary.detected_columns.label && (
+                  <p className="text-slate-500">
+                    True segments (for accuracy only):{" "}
+                    <strong className="font-mono">{summary.detected_columns.label}</strong>
+                  </p>
+                )}
               </div>
               {summary.skipped_rows > 0 && (
                 <p className="text-xs text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 rounded-lg p-2.5">

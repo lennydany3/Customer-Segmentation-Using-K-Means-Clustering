@@ -49,6 +49,12 @@ export interface ClusterResponse {
   k: number;
   total_customers: number;
   silhouette_score: number;
+  /** Present only when the upload has a ground-truth segment column (0 to 1). */
+  accuracy?: number | null;
+  ari?: number | null;
+  nmi?: number | null;
+  true_segments?: number | null;
+  labeled_customers?: number;
   clusters: ClusterSummary[];
   points: Point[];
   centroids: CentroidPoint[];
@@ -80,6 +86,7 @@ export interface UploadResponse {
     age: string | null;
     income: string | null;
     spending: string | null;
+    label?: string | null;
   };
 }
 

@@ -13,7 +13,13 @@ import numpy as np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
-from sklearn.metrics import silhouette_score
+from sklearn.metrics import (
+    adjusted_rand_score,
+    confusion_matrix,
+    normalized_mutual_info_score,
+    silhouette_score,
+)
+from scipy.optimize import linear_sum_assignment
 
 MIN_ROWS = 10      # K-Means up to K=8 and the silhouette score need a meaningful number of customers
 MAX_ROWS = 5000    # keeps the scatter plot and the JSON responses responsive
@@ -29,6 +35,22 @@ def _silhouette(X_scaled: np.ndarray, labels: np.ndarray) -> float:
         return 0.0
     sample = SILHOUETTE_SAMPLE if len(X_scaled) > SILHOUETTE_SAMPLE else None
     return float(silhouette_score(X_scaled, labels, sample_size=sample, random_state=42))
+
+
+# Normalized header names accepted as a ground-truth segment column (used only for scoring)
+LABEL_COLUMNS = ("truesegment", "segment", "truelabel", "label", "class", "target",
+                 "groundtruth", "actualsegment", "category")
+
+
+def _cluster_accuracy(true_labels: np.ndarray, pred_labels: np.ndarray) -> float:
+    """
+    Clustering accuracy: cluster ids are arbitrary, so each cluster is matched one-to-one to the
+    true segment it overlaps most (Hungarian algorithm), then the share of correctly grouped
+    customers is returned. Unmatched clusters/segments count as errors.
+    """
+    cm = confusion_matrix(true_labels, pred_labels)
+    rows, cols = linear_sum_assignment(-cm)
+    return float(cm[rows, cols].sum() / len(true_labels))
 
 
 def _round_or_none(value: Any, digits: int = 1) -> Optional[float]:
@@ -55,7 +77,7 @@ class CustomerSegmentationModel:
         Customer_ID / Age / Annual_Income / Spending_Score as well as the popular Kaggle
         Mall_Customers.csv headers ("Annual Income (k$)", "Spending Score (1-100)").
         """
-        resolved: Dict[str, Optional[str]] = {"id": None, "age": None, "income": None, "spending": None}
+        resolved: Dict[str, Optional[str]] = {"id": None, "age": None, "income": None, "spending": None, "label": None}
         for col in columns:
             norm = self._normalize_column(col)
             if resolved["id"] is None and norm in ("customerid", "id", "custid"):
@@ -66,6 +88,8 @@ class CustomerSegmentationModel:
                 resolved["income"] = col
             elif resolved["spending"] is None and (norm.startswith("spendingscore") or norm == "spending"):
                 resolved["spending"] = col
+            elif resolved["label"] is None and norm in LABEL_COLUMNS:
+                resolved["label"] = col
         return resolved
 
     def load_dataset(self, upload_df: pd.DataFrame) -> Dict[str, Any]:
@@ -99,6 +123,11 @@ class CustomerSegmentationModel:
             ),
             "Annual_Income": pd.to_numeric(upload_df[cols["income"]], errors="coerce").to_numpy(),
             "Spending_Score": pd.to_numeric(upload_df[cols["spending"]], errors="coerce").to_numpy(),
+            # Optional ground-truth segment: never used for clustering, only for scoring
+            "True_Segment": (
+                upload_df[cols["label"]].astype(str).str.strip().replace({"": np.nan, "nan": np.nan}).to_numpy()
+                if cols["label"] else np.full(total_rows, np.nan, dtype=object)
+            ),
         })
         work = work.replace([np.inf, -np.inf], np.nan).dropna(subset=["Annual_Income", "Spending_Score"])
         work = work.reset_index(drop=True)
@@ -231,6 +260,9 @@ class CustomerSegmentationModel:
         # Step 5: Calculate Silhouette Score (ranges from -1 to 1)
         sil_score = float(round(_silhouette(X_scaled, labels), 3))
 
+        # Step 5b: External accuracy, only when the upload carried a ground-truth segment column
+        evaluation = self._evaluate_against_labels(labels)
+
         # Step 6: Build per-cluster summaries
         cluster_metadata: Dict[int, Dict[str, Any]] = {}
         clusters_summary = []
@@ -299,9 +331,28 @@ class CustomerSegmentationModel:
             "k": k,
             "total_customers": total_customers,
             "silhouette_score": sil_score,
+            **evaluation,
             "clusters": clusters_summary,
             "points": points,
             "centroids": centroids_summary
+        }
+
+    def _evaluate_against_labels(self, labels: np.ndarray) -> Dict[str, Any]:
+        """Accuracy, ARI and NMI against the uploaded True_Segment column (None when absent)."""
+        empty = {"accuracy": None, "ari": None, "nmi": None, "true_segments": None, "labeled_customers": 0}
+        if "True_Segment" not in self.df.columns:
+            return empty
+        mask = self.df["True_Segment"].notna().to_numpy()
+        if mask.sum() < 2:
+            return empty
+        truth = pd.factorize(self.df.loc[mask, "True_Segment"])[0]
+        pred = labels[mask]
+        return {
+            "accuracy": round(_cluster_accuracy(truth, pred), 4),
+            "ari": round(float(adjusted_rand_score(truth, pred)), 4),
+            "nmi": round(float(normalized_mutual_info_score(truth, pred)), 4),
+            "true_segments": int(len(set(truth))),
+            "labeled_customers": int(mask.sum()),
         }
 
     # ------------------------------------------------------------------ inference

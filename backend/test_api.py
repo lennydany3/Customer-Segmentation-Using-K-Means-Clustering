@@ -92,5 +92,28 @@ def test_all_endpoints():
     print("\nAll FastAPI tests passed successfully!")
 
 
+def test_accuracy_with_true_segment_column():
+    """Uploads with a True_Segment column get accuracy/ARI/NMI; uploads without it get None."""
+    rows = ["Customer_ID,Annual_Income,Spending_Score,True_Segment"]
+    groups = [(95, 82, "VIP"), (90, 20, "Saver"), (28, 78, "Trend"), (28, 22, "Budget")]
+    rng = np.random.default_rng(1)
+    n = 1
+    for income, spending, name in groups:
+        for _ in range(30):
+            rows.append(f"{n},{rng.normal(income, 5):.1f},{rng.normal(spending, 5):.0f},{name}")
+            n += 1
+    r = post_csv("\n".join(rows) + "\n")
+    assert r.status_code == 200, r.text
+    assert r.json()["detected_columns"]["label"] == "True_Segment"
+    res = client.post("/api/cluster", json={"k": 4}).json()
+    assert res["accuracy"] == 1.0 and res["ari"] == 1.0 and res["true_segments"] == 4
+    assert res["labeled_customers"] == 120
+    # fewer clusters than true segments: accuracy must drop
+    assert client.post("/api/cluster", json={"k": 2}).json()["accuracy"] <= 0.5
+
+    assert post_csv(build_csv()).status_code == 200  # no label column
+    assert client.post("/api/cluster", json={"k": 4}).json()["accuracy"] is None
+
+
 if __name__ == "__main__":
     test_all_endpoints()

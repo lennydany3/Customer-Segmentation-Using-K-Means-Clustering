@@ -7,6 +7,7 @@ class DetectedColumns(BaseModel):
     age: Optional[str] = None
     income: Optional[str] = None
     spending: Optional[str] = None
+    label: Optional[str] = None
 
 class UploadResponse(BaseModel):
     total_rows: int
@@ -64,6 +65,11 @@ class ClusterResponse(BaseModel):
     k: int
     total_customers: int
     silhouette_score: float
+    accuracy: Optional[float] = Field(None, description="Clustering accuracy vs the uploaded true segment column (0 to 1)")
+    ari: Optional[float] = Field(None, description="Adjusted Rand Index vs the true segments")
+    nmi: Optional[float] = Field(None, description="Normalized Mutual Information vs the true segments")
+    true_segments: Optional[int] = Field(None, description="Number of distinct true segments in the upload")
+    labeled_customers: int = 0
     clusters: List[ClusterSummary]
     points: List[Point]
     centroids: List[CentroidPoint]

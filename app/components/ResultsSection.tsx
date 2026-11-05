@@ -19,6 +19,7 @@ import {
   Target,
   TrendingUp,
   ShoppingBag,
+  CheckCircle2,
 } from "lucide-react";
 import { ClusterResponse, Point } from "../lib/types";
 
@@ -165,12 +166,13 @@ export const ResultsSection: React.FC<ResultsSectionProps> = ({
 
   if (!clusteringData) return null;
 
-  const { k, total_customers, silhouette_score } = clusteringData;
+  const { k, total_customers, silhouette_score, accuracy, ari, nmi, true_segments, labeled_customers } = clusteringData;
+  const hasAccuracy = accuracy !== null && accuracy !== undefined;
 
   return (
     <div className="space-y-8">
       {/* 1. Stat Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div className={`grid grid-cols-1 sm:grid-cols-2 gap-4 ${hasAccuracy ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
         {/* Total Customers */}
         <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-xs flex items-center justify-between">
           <div>
@@ -226,6 +228,29 @@ export const ResultsSection: React.FC<ResultsSectionProps> = ({
             <Award className="w-6 h-6" />
           </div>
         </div>
+
+        {/* Accuracy (only when the dataset carries true segments) */}
+        {hasAccuracy && (
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-xs flex items-center justify-between">
+            <div>
+              <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider block">
+                Accuracy
+              </span>
+              <span className="text-2xl font-extrabold text-teal-600 dark:text-teal-400 mt-1 block">
+                {(accuracy * 100).toFixed(1)}%
+              </span>
+              <span className="text-xs text-slate-400 block">
+                vs {true_segments} true segments ({labeled_customers} labelled)
+              </span>
+              <span className="text-xs text-slate-400 block">
+                ARI {ari?.toFixed(3)} · NMI {nmi?.toFixed(3)}
+              </span>
+            </div>
+            <div className="w-12 h-12 rounded-xl bg-teal-50 dark:bg-teal-950/60 border border-teal-200 dark:border-teal-800 flex items-center justify-center text-teal-600 dark:text-teal-400">
+              <CheckCircle2 className="w-6 h-6" />
+            </div>
+          </div>
+        )}
       </div>
 
       {/* 2. Scatter Plot: Annual Income vs Spending Score */}

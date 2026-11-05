@@ -1,0 +1,1341 @@
+Customer_ID,Name,Gender,Age,City,Annual_Income,Spending_Score,Visits_Per_Month,Membership_Years,Preferred_Channel,True_Segment
+SM00001,Aarav A.,Female,44,Bengaluru,57.1,50,3,2.3,Mobile App,Regular Shopper
+SM00002,Diya H.,Male,47,Hyderabad,58.7,50,1,0.0,Mobile App,Regular Shopper
+SM00003,Ishaan O.,Female,30,Pune,30.2,49,4,0.9,Online,Regular Shopper
+SM00004,Meera V.,Female,59,Madurai,28.6,16,2,3.3,Mixed,Senior Budget
+SM00005,Rohan C.,Male,27,Pune,92.2,81,6,1.2,In-store,Premium Family
+SM00006,Sneha J.,Female,47,Coimbatore,111.9,20,2,1.0,Online,Thrifty High Earner
+SM00007,Arjun Q.,Female,63,Kolkata,30.2,15,2,2.7,In-store,Senior Budget
+SM00008,Kavya X.,Female,33,Madurai,83.7,29,4,6.7,In-store,Thrifty High Earner
+SM00009,Vikram E.,Female,39,Hyderabad,85.5,21,4,0.9,Online,Thrifty High Earner
+SM00010,Ananya L.,Female,59,Delhi,31.2,41,5,1.2,Online,Regular Shopper
+SM00011,Rahul S.,Male,20,Mumbai,17.7,72,7,0.0,In-store,Student Splurger
+SM00012,Priya Z.,Female,69,Mumbai,44.8,52,2,3.1,Online,Regular Shopper
+SM00013,Karthik G.,Female,46,Kochi,99.0,19,2,0.2,Online,Thrifty High Earner
+SM00014,Lakshmi N.,Female,37,Hyderabad,85.1,88,0,0.9,Mobile App,Premium Family
+SM00015,Nikhil U.,Male,69,Pune,18.0,15,1,1.5,Online,Senior Budget
+SM00016,Pooja B.,Female,19,Delhi,30.8,85,5,0.7,In-store,Student Splurger
+SM00017,Siddharth I.,Male,56,Delhi,17.3,19,0,0.0,In-store,Senior Budget
+SM00018,Divya P.,Male,68,Bengaluru,21.4,25,2,1.4,In-store,Senior Budget
+SM00019,Aditya W.,Female,40,Delhi,70.9,38,4,3.4,Mobile App,Regular Shopper
+SM00020,Nisha D.,Female,44,Kochi,97.8,6,3,2.3,Mobile App,Thrifty High Earner
+SM00021,Aarav K.,Female,46,Delhi,14.7,28,5,11.0,In-store,Senior Budget
+SM00022,Diya R.,Female,61,Bengaluru,87.4,12,1,0.1,In-store,Thrifty High Earner
+SM00023,Ishaan Y.,Female,54,Mumbai,105.7,21,1,3.8,In-store,Thrifty High Earner
+SM00024,Meera F.,Female,31,Delhi,42.1,57,4,0.4,Mixed,Regular Shopper
+SM00025,Rohan M.,Male,38,Delhi,84.7,16,2,0.4,Mixed,Thrifty High Earner
+SM00026,Sneha T.,Male,41,Hyderabad,89.9,77,6,5.3,Mixed,Premium Family
+SM00027,Arjun A.,Female,52,Kolkata,58.8,37,3,1.8,Mixed,Regular Shopper
+SM00028,Kavya H.,Male,34,Pune,99.6,28,5,3.2,Mobile App,Thrifty High Earner
+SM00029,Vikram O.,Female,70,Pune,111.0,26,4,4.9,In-store,Thrifty High Earner
+SM00030,Ananya V.,Female,25,Coimbatore,55.1,44,3,2.8,Online,Regular Shopper
+SM00031,Rahul C.,Male,27,Chennai,97.4,19,1,0.4,Mobile App,Thrifty High Earner
+SM00032,Priya J.,Female,46,Mumbai,96.9,33,3,12.1,Mixed,Thrifty High Earner
+SM00033,Karthik Q.,Male,42,Hyderabad,41.0,45,1,0.5,Mobile App,Regular Shopper
+SM00034,Lakshmi X.,Female,31,Kolkata,48.6,50,8,1.7,In-store,Regular Shopper
+SM00035,Nikhil E.,Female,45,Pune,49.5,43,3,0.9,Online,Regular Shopper
+SM00036,Pooja L.,Female,48,Madurai,39.0,28,6,1.5,Online,Senior Budget
+SM00037,Siddharth S.,Female,29,Kolkata,44.8,30,3,0.5,In-store,Regular Shopper
+SM00038,Divya Z.,Male,49,Kochi,65.5,25,4,3.4,Online,Thrifty High Earner
+SM00039,Aditya G.,Female,30,Madurai,64.0,61,6,2.9,Online,Regular Shopper
+SM00040,Nisha N.,Male,29,Kochi,18.8,75,6,1.8,Mixed,Student Splurger
+SM00041,Aarav U.,Female,18,Madurai,44.6,52,5,0.7,Online,Regular Shopper
+SM00042,Diya B.,Male,35,Pune,75.9,80,7,0.0,Mixed,Premium Family
+SM00043,Ishaan I.,Male,63,Hyderabad,21.5,21,3,0.2,Mobile App,Senior Budget
+SM00044,Meera P.,Female,34,Coimbatore,76.3,94,7,0.3,Mixed,Premium Family
+SM00045,Rohan W.,Female,44,Madurai,33.4,31,1,1.1,Mobile App,Regular Shopper
+SM00046,Sneha D.,Male,38,Pune,48.6,47,4,12.7,Mobile App,Regular Shopper
+SM00047,Arjun K.,Female,59,Chennai,20.4,15,1,3.7,Mobile App,Senior Budget
+SM00048,Kavya R.,Female,48,Kochi,43.0,58,8,0.6,In-store,Regular Shopper
+SM00049,Vikram Y.,Male,52,Madurai,84.3,16,2,0.1,In-store,Thrifty High Earner
+SM00050,Ananya F.,Female,52,Bengaluru,,56,2,3.2,In-store,Regular Shopper
+SM00051,Rahul M.,Male,61,Pune,22.2,31,4,7.3,In-store,Senior Budget
+SM00052,Priya T.,Female,53,Mumbai,51.7,51,4,0.9,Mixed,Regular Shopper
+SM00053,Karthik A.,Female,53,Chennai,56.0,47,2,3.8,Online,Regular Shopper
+SM00054,Lakshmi H.,Male,36,Kolkata,67.3,48,7,0.9,Mobile App,Regular Shopper
+SM00055,Nikhil O.,Female,66,Mumbai,45.9,56,5,0.6,Online,Regular Shopper
+SM00056,Pooja V.,Female,40,Hyderabad,66.5,50,9,0.5,Mobile App,Regular Shopper
+SM00057,Siddharth C.,Female,49,Chennai,85.6,73,6,4.1,Mixed,Premium Family
+SM00058,Divya J.,Male,51,Madurai,95.2,34,7,0.6,Mobile App,Thrifty High Earner
+SM00059,Aditya Q.,Female,74,Pune,68.8,57,3,0.9,Online,Regular Shopper
+SM00060,Nisha X.,Female,44,Kolkata,50.9,55,3,1.6,Mixed,Regular Shopper
+SM00061,Aarav E.,Female,27,Kochi,98.6,83,7,1.8,Mixed,Premium Family
+SM00062,Diya L.,Male,41,Madurai,81.7,81,9,0.7,Online,Premium Family
+SM00063,Ishaan S.,Male,54,Pune,44.7,37,7,2.0,Mixed,Regular Shopper
+SM00064,Meera Z.,Male,27,Hyderabad,9.2,85,4,5.7,Mixed,Student Splurger
+SM00065,Rohan G.,Female,18,Madurai,53.8,60,5,1.6,Online,Regular Shopper
+SM00066,Sneha N.,Female,56,Chennai,11.3,19,3,3.0,In-store,Senior Budget
+SM00067,Arjun U.,Male,42,Pune,51.0,31,0,0.1,Online,Regular Shopper
+SM00068,Kavya B.,Female,32,Hyderabad,18.6,77,10,0.3,Mobile App,Student Splurger
+SM00069,Vikram I.,Female,35,Delhi,114.2,75,6,1.3,In-store,Premium Family
+SM00070,Ananya P.,Female,24,Chennai,61.1,56,1,0.2,In-store,Regular Shopper
+SM00071,Rahul W.,Female,50,Kolkata,87.9,13,0,0.4,Online,Thrifty High Earner
+SM00072,Priya D.,Female,67,Delhi,10.7,21,2,6.9,Online,Senior Budget
+SM00073,Karthik K.,Male,53,Madurai,9.0,22,3,7.3,In-store,Senior Budget
+SM00074,Lakshmi R.,Male,25,Madurai,53.9,37,6,1.1,Online,Regular Shopper
+SM00075,Nikhil Y.,Male,46,Delhi,41.7,44,10,0.5,In-store,Regular Shopper
+SM00076,Pooja F.,Male,48,Kolkata,58.0,57,3,0.3,Mixed,Regular Shopper
+SM00077,Siddharth M.,Female,29,Mumbai,80.2,100,13,12.5,In-store,Premium Family
+SM00078,Divya T.,Female,30,Madurai,21.0,81,10,0.1,Mixed,Student Splurger
+SM00079,Aditya A.,Female,20,Mumbai,30.9,21,2,1.0,In-store,Regular Shopper
+SM00080,Nisha H.,Male,40,Kolkata,63.9,58,1,7.5,Mobile App,Regular Shopper
+SM00081,Aarav O.,Male,35,Hyderabad,11.0,30,3,0.4,Mixed,Senior Budget
+SM00082,Diya V.,Female,45,Kochi,73.2,65,6,1.2,In-store,Premium Family
+SM00083,Ishaan C.,Female,31,Mumbai,37.6,42,3,0.7,Mixed,Regular Shopper
+SM00084,Meera J.,Female,47,Delhi,34.2,16,0,0.2,In-store,Senior Budget
+SM00085,Rohan Q.,Female,54,Hyderabad,53.6,48,2,3.8,In-store,Regular Shopper
+SM00086,Sneha X.,Male,44,Kochi,81.1,84,8,4.8,Mobile App,Premium Family
+SM00087,Arjun E.,Female,39,Madurai,21.2,24,1,8.9,Mobile App,Senior Budget
+SM00088,Kavya L.,Male,37,Bengaluru,55.4,61,3,7.5,Online,Regular Shopper
+SM00089,Vikram S.,Female,54,Kolkata,100.2,33,2,2.2,Online,Thrifty High Earner
+SM00090,Ananya Z.,Male,55,Madurai,91.0,22,2,0.9,Mobile App,Thrifty High Earner
+SM00091,Rahul G.,Male,40,Madurai,38.8,55,5,1.5,Mixed,Regular Shopper
+SM00092,Priya N.,Male,18,Bengaluru,50.8,44,4,2.2,Online,Regular Shopper
+SM00093,Karthik U.,Female,35,Kochi,48.3,47,5,0.2,Mixed,Regular Shopper
+SM00094,Lakshmi B.,Female,30,Delhi,102.5,77,5,2.8,Online,Premium Family
+SM00095,Nikhil I.,Male,18,Kochi,87.6,63,3,0.0,Mixed,Premium Family
+SM00096,Pooja P.,Female,29,Chennai,48.3,43,1,0.9,Online,Regular Shopper
+SM00097,Siddharth W.,Male,34,Hyderabad,28.8,81,6,2.8,In-store,Student Splurger
+SM00098,Divya D.,Male,38,Coimbatore,62.4,57,2,7.4,Mobile App,Regular Shopper
+SM00099,Aditya K.,Female,30,Coimbatore,94.5,15,0,1.7,Online,Thrifty High Earner
+SM00100,Nisha R.,Female,42,Hyderabad,63.2,42,2,1.0,Online,Regular Shopper
+SM00101,Aarav Y.,Female,46,Kolkata,96.1,13,0,0.3,Mixed,Thrifty High Earner
+SM00102,Diya F.,Male,28,Delhi,77.1,28,5,1.0,Mobile App,Thrifty High Earner
+SM00103,Ishaan M.,Female,52,Madurai,83.0,23,2,6.5,Mixed,Thrifty High Earner
+SM00104,Meera T.,Female,65,Coimbatore,67.8,49,3,7.9,Mobile App,Regular Shopper
+SM00105,Rohan A.,Female,67,Coimbatore,32.4,29,2,0.0,Online,Senior Budget
+SM00106,Sneha H.,Male,37,Kolkata,111.4,99,7,1.6,Online,Premium Family
+SM00107,Arjun O.,Male,67,Chennai,28.2,22,2,3.3,In-store,Senior Budget
+SM00108,Kavya V.,Female,58,Chennai,11.5,12,1,0.9,Online,Senior Budget
+SM00109,Vikram C.,Female,73,Madurai,24.8,22,3,3.7,In-store,Senior Budget
+SM00110,Ananya J.,Female,45,Mumbai,32.9,15,1,1.5,Mobile App,Senior Budget
+SM00111,Rahul Q.,Female,50,Chennai,unknown,19,3,1.0,Mixed,Thrifty High Earner
+SM00112,Priya X.,Female,26,Coimbatore,50.2,40,2,0.7,Mobile App,Regular Shopper
+SM00113,Karthik E.,Male,69,Chennai,30.4,7,3,0.8,Online,Senior Budget
+SM00114,Lakshmi L.,Female,43,Bengaluru,43.4,42,2,1.7,Mixed,Regular Shopper
+SM00115,Nikhil S.,Male,29,Chennai,29.0,77,8,0.5,Online,Student Splurger
+SM00116,Pooja Z.,Female,24,Pune,26.3,91,4,2.5,In-store,Student Splurger
+SM00117,Siddharth G.,Male,50,Bengaluru,51.6,51,2,3.7,In-store,Regular Shopper
+SM00118,Divya N.,Male,66,Coimbatore,18.6,6,2,3.2,Mixed,Senior Budget
+SM00119,Aditya U.,Female,43,Mumbai,106.0,17,4,10.2,Mixed,Thrifty High Earner
+SM00120,Nisha B.,Female,62,Bengaluru,30.2,32,3,5.1,Online,Senior Budget
+SM00121,Aarav I.,Male,44,Hyderabad,30.9,45,3,0.8,Mobile App,Regular Shopper
+SM00122,Diya P.,Male,28,Delhi,60.4,44,4,0.8,Mobile App,Regular Shopper
+SM00123,Ishaan W.,Male,23,Bengaluru,51.3,36,4,2.4,Mobile App,Regular Shopper
+SM00124,Meera D.,Male,47,Madurai,46.4,44,3,1.8,Mobile App,Regular Shopper
+SM00125,Rohan K.,Male,32,Bengaluru,78.0,80,5,0.6,In-store,Premium Family
+SM00126,Sneha R.,Female,43,Madurai,51.4,67,2,4.1,Online,Regular Shopper
+SM00127,Arjun Y.,Male,46,Coimbatore,92.7,69,5,6.8,Mixed,Premium Family
+SM00128,Kavya F.,Male,48,Madurai,57.4,45,4,2.4,Mobile App,Regular Shopper
+SM00129,Vikram M.,Female,22,Mumbai,27.6,87,8,4.5,Mobile App,Student Splurger
+SM00130,Ananya T.,Female,25,Madurai,22.0,70,11,2.1,Online,Student Splurger
+SM00131,Rahul A.,Male,25,Kolkata,21.0,87,5,7.4,Mixed,Student Splurger
+SM00132,Priya H.,Male,37,Bengaluru,14.7,98,16,5.2,Mixed,Student Splurger
+SM00133,Karthik O.,Male,30,Kochi,53.9,46,2,0.1,Mobile App,Regular Shopper
+SM00134,Lakshmi V.,Female,34,Hyderabad,53.4,50,4,0.0,Mixed,Regular Shopper
+SM00135,Nikhil C.,Female,47,Mumbai,50.8,51,2,3.5,Mixed,Regular Shopper
+SM00136,Pooja J.,Female,47,Kolkata,24.9,27,0,0.4,Mobile App,Senior Budget
+SM00137,Siddharth Q.,Female,58,Kochi,51.2,43,1,5.0,Mobile App,Regular Shopper
+SM00138,Divya X.,Male,32,Chennai,47.3,53,4,4.9,Online,Regular Shopper
+SM00139,Aditya E.,Female,46,Coimbatore,45.1,53,7,7.6,In-store,Regular Shopper
+SM00140,Nisha L.,Male,43,Bengaluru,67.9,48,9,1.7,In-store,Regular Shopper
+SM00141,Aarav S.,Male,61,Kolkata,21.1,22,4,2.0,In-store,Senior Budget
+SM00142,Diya Z.,Female,56,Delhi,72.1,26,4,5.4,Mobile App,Thrifty High Earner
+SM00143,Ishaan G.,Male,35,Delhi,108.1,93,6,8.1,Mobile App,Premium Family
+SM00144,Meera N.,Male,52,Bengaluru,84.9,21,1,0.2,Mixed,Thrifty High Earner
+SM00145,Rohan U.,Female,18,Delhi,25.7,79,10,0.4,Mobile App,Student Splurger
+SM00146,Sneha B.,Female,50,Madurai,27.9,64,3,7.3,Mixed,Regular Shopper
+SM00147,Arjun I.,Female,37,Kolkata,89.0,18,2,13.5,In-store,Thrifty High Earner
+SM00148,Kavya P.,Male,75,Chennai,18.7,20,1,5.8,In-store,Senior Budget
+SM00149,Vikram W.,Male,57,Kochi,37.4,29,4,2.2,In-store,Senior Budget
+SM00150,Ananya D.,Male,75,Pune,22.0,16,4,2.5,Online,Senior Budget
+SM00151,Rahul K.,Male,68,Kochi,19.8,29,5,2.0,Mobile App,Senior Budget
+SM00152,Priya R.,Female,75,Pune,23.0,23,2,2.7,Mobile App,Senior Budget
+SM00153,Karthik Y.,Female,20,Chennai,58.1,56,3,0.9,Mobile App,Regular Shopper
+SM00154,Lakshmi F.,Male,44,Delhi,65.9,47,5,2.7,Mobile App,Regular Shopper
+SM00155,Nikhil M.,Female,44,Hyderabad,36.8,51,2,4.4,Mobile App,Regular Shopper
+SM00156,Pooja T.,Male,58,Hyderabad,38.7,32,9,0.3,Online,Senior Budget
+SM00157,Siddharth A.,Female,60,Kolkata,29.2,21,3,4.9,Mixed,Senior Budget
+SM00158,Divya H.,Male,25,Delhi,99.7,89,3,6.8,Online,Premium Family
+SM00159,Aditya O.,Female,63,Delhi,39.4,40,7,0.2,Mixed,Regular Shopper
+SM00160,Nisha V.,Female,38,Madurai,80.0,81,7,9.9,In-store,Premium Family
+SM00161,Aarav C.,Female,59,Delhi,75.5,7,0,2.5,In-store,Thrifty High Earner
+SM00162,Diya J.,Female,45,Kochi,53.3,48,4,0.6,Mobile App,Regular Shopper
+SM00163,Ishaan Q.,Male,61,Kochi,57.1,54,7,5.6,Online,Regular Shopper
+SM00164,Meera X.,Female,67,Mumbai,17.9,25,5,0.2,In-store,Senior Budget
+SM00165,Rohan E.,Male,45,Madurai,91.4,90,5,5.2,Online,Premium Family
+SM00166,Sneha L.,Female,49,Kolkata,64.4,37,6,0.8,In-store,Regular Shopper
+SM00167,Arjun S.,Male,58,Madurai,28.4,4,3,2.3,Mixed,Senior Budget
+SM00168,Kavya Z.,Male,28,Pune,51.4,53,5,1.7,Mixed,Regular Shopper
+SM00169,Vikram G.,Female,52,Bengaluru,17.2,18,1,4.7,Mobile App,Senior Budget
+SM00170,Ananya N.,Male,47,Kolkata,109.3,26,4,0.4,In-store,Thrifty High Earner
+SM00171,Rahul U.,Female,20,Hyderabad,56.6,48,1,1.5,Mobile App,Regular Shopper
+SM00172,Priya B.,Male,59,Madurai,35.9,33,4,2.3,Online,Senior Budget
+SM00173,Karthik I.,Female,61,Delhi,82.0,24,3,0.8,Mobile App,Thrifty High Earner
+SM00174,Lakshmi P.,Male,44,Mumbai,53.6,32,4,0.9,Mixed,Regular Shopper
+SM00175,Nikhil W.,Male,24,Hyderabad,101.4,74,3,0.5,In-store,Premium Family
+SM00176,Pooja D.,Male,52,Mumbai,99.1,21,2,0.3,Mixed,Thrifty High Earner
+SM00177,Siddharth K.,Male,18,Hyderabad,19.6,87,9,6.5,Online,Student Splurger
+SM00178,Divya R.,Female,40,Kolkata,16.0,22,3,3.3,Mobile App,Senior Budget
+SM00179,Aditya Y.,Female,34,Madurai,84.9,74,3,2.8,Mixed,Premium Family
+SM00180,Nisha F.,Female,33,Mumbai,25.2,80,5,6.7,Mixed,Student Splurger
+SM00181,Aarav M.,Female,18,Hyderabad,66.5,49,2,1.1,Mobile App,Regular Shopper
+SM00182,Diya T.,Female,45,Coimbatore,89.8,22,5,2.8,Mobile App,Thrifty High Earner
+SM00183,Ishaan A.,Female,40,Mumbai,97.6,26,0,0.2,Mixed,Thrifty High Earner
+SM00184,Meera H.,Female,41,Chennai,14.5,29,4,2.6,Mobile App,Senior Budget
+SM00185,Rohan O.,Female,56,Mumbai,29.6,27,8,6.4,Mobile App,Senior Budget
+SM00186,Sneha V.,Male,19,Chennai,22.7,75,10,4.2,Mobile App,Student Splurger
+SM00187,Arjun C.,Male,18,Pune,55.3,--,4,4.4,Mixed,Regular Shopper
+SM00188,Kavya J.,Female,54,Pune,85.2,83,9,8.8,Online,Premium Family
+SM00189,Vikram Q.,Female,58,Hyderabad,25.4,20,2,3.9,Mixed,Senior Budget
+SM00190,Ananya X.,Male,25,Delhi,53.4,35,4,6.2,Mixed,Regular Shopper
+SM00191,Rahul E.,Male,47,Bengaluru,93.5,5,1,4.5,Online,Thrifty High Earner
+SM00192,Priya L.,Male,49,Madurai,53.2,60,6,1.2,Mixed,Regular Shopper
+SM00193,Karthik S.,Male,57,Madurai,85.3,22,4,2.0,Online,Thrifty High Earner
+SM00194,Lakshmi Z.,Male,41,Madurai,61.4,63,3,2.2,Online,Regular Shopper
+SM00195,Nikhil G.,Female,28,Madurai,24.2,71,11,0.8,In-store,Student Splurger
+SM00196,Pooja N.,Male,43,Chennai,44.2,45,6,1.0,Online,Regular Shopper
+SM00197,Siddharth U.,Female,54,Pune,61.1,51,8,0.5,Mixed,Regular Shopper
+SM00198,Divya B.,Male,49,Madurai,108.7,30,3,0.1,In-store,Thrifty High Earner
+SM00199,Aditya I.,Female,35,Madurai,65.2,55,6,4.2,Mixed,Regular Shopper
+SM00200,Nisha P.,Female,36,Coimbatore,51.8,47,5,3.3,Mixed,Regular Shopper
+SM00201,Aarav W.,Female,74,Madurai,15.3,25,1,0.2,Mixed,Senior Budget
+SM00202,Diya D.,Female,54,Chennai,,16,5,3.2,Online,Senior Budget
+SM00203,Ishaan K.,Male,51,Coimbatore,28.8,19,2,6.7,Mobile App,Senior Budget
+SM00204,Meera R.,Male,46,Bengaluru,106.1,8,1,0.7,Online,Thrifty High Earner
+SM00205,Rohan Y.,Male,41,Chennai,97.5,27,1,7.7,In-store,Thrifty High Earner
+SM00206,Sneha F.,Male,62,Bengaluru,94.3,4,1,1.5,Mixed,Thrifty High Earner
+SM00207,Arjun M.,Male,21,Bengaluru,19.1,94,5,3.2,In-store,Student Splurger
+SM00208,Kavya T.,Male,52,Mumbai,120.5,21,4,4.4,Mixed,Thrifty High Earner
+SM00209,Vikram A.,Female,44,Kolkata,28.2,21,2,0.4,Online,Senior Budget
+SM00210,Ananya H.,Male,73,Bengaluru,115.7,44,5,1.4,Online,Thrifty High Earner
+SM00211,Rahul O.,Female,44,Kochi,37.4,44,2,7.6,In-store,Regular Shopper
+SM00212,Priya V.,Female,40,Kochi,30.0,21,2,0.8,Online,Senior Budget
+SM00213,Karthik C.,Female,43,Madurai,103.3,18,4,0.1,Online,Thrifty High Earner
+SM00214,Lakshmi J.,Female,66,Chennai,52.4,46,5,1.7,Online,Regular Shopper
+SM00215,Nikhil Q.,Female,38,Hyderabad,52.8,43,0,2.5,In-store,Regular Shopper
+SM00216,Pooja X.,Male,56,Bengaluru,49.8,65,2,4.6,Online,Regular Shopper
+SM00217,Siddharth E.,Male,30,Chennai,92.4,21,1,0.8,Mixed,Thrifty High Earner
+SM00218,Divya L.,Male,58,Kochi,30.2,18,2,0.6,In-store,Senior Budget
+SM00219,Aditya S.,Female,29,Bengaluru,53.2,61,6,1.1,Mixed,Regular Shopper
+SM00220,Nisha Z.,Male,50,Mumbai,32.2,29,3,2.2,In-store,Senior Budget
+SM00221,Aarav G.,Male,18,Kolkata,27.6,86,7,1.1,In-store,Student Splurger
+SM00222,Diya N.,Male,54,Kochi,32.6,49,5,1.6,Mobile App,Regular Shopper
+SM00223,Ishaan U.,Female,30,Delhi,57.9,50,2,9.9,Online,Regular Shopper
+SM00224,Meera B.,Female,41,Kolkata,97.4,14,2,4.3,In-store,Thrifty High Earner
+SM00225,Rohan I.,Male,34,Hyderabad,94.9,95,8,2.7,In-store,Premium Family
+SM00226,Sneha P.,Female,34,Hyderabad,60.9,58,4,2.7,In-store,Regular Shopper
+SM00227,Arjun W.,Female,54,Delhi,15.2,15,3,0.6,Mobile App,Senior Budget
+SM00228,Kavya D.,Male,35,Hyderabad,22.3,20,3,3.2,In-store,Senior Budget
+SM00229,Vikram K.,Female,55,Bengaluru,25.6,26,4,0.9,Mixed,Senior Budget
+SM00230,Ananya R.,Male,47,Pune,26.2,30,1,8.0,Mixed,Senior Budget
+SM00231,Rahul Y.,Male,56,Kolkata,44.1,48,3,3.2,Online,Regular Shopper
+SM00232,Priya F.,Male,55,Pune,60.4,37,4,3.8,Online,Regular Shopper
+SM00233,Karthik M.,Male,21,Hyderabad,52.9,48,1,2.1,Online,Regular Shopper
+SM00234,Lakshmi T.,Male,40,Delhi,60.8,30,1,0.7,Mixed,Regular Shopper
+SM00235,Nikhil A.,Female,27,Pune,84.8,94,2,4.5,Mixed,Premium Family
+SM00236,Pooja H.,Female,47,Kolkata,76.2,75,8,1.0,Online,Premium Family
+SM00237,Siddharth O.,Male,38,Bengaluru,79.4,69,3,0.2,Online,Premium Family
+SM00238,Divya V.,Female,68,Chennai,21.7,9,1,3.4,Mixed,Senior Budget
+SM00239,Aditya C.,Male,23,Kolkata,89.3,81,5,12.7,Online,Premium Family
+SM00240,Nisha J.,Female,23,Coimbatore,81.7,87,10,1.2,Online,Premium Family
+SM00241,Aarav Q.,Male,52,Chennai,79.4,64,11,2.9,Mixed,Premium Family
+SM00242,Diya X.,Female,35,Pune,63.4,47,8,4.1,In-store,Regular Shopper
+SM00243,Ishaan E.,Male,41,Chennai,51.5,56,6,2.0,Mixed,Regular Shopper
+SM00244,Meera L.,Male,44,Chennai,94.2,13,3,0.3,Mixed,Thrifty High Earner
+SM00245,Rohan S.,Female,42,Mumbai,44.2,32,4,4.9,Online,Regular Shopper
+SM00246,Sneha Z.,Male,48,Delhi,50.9,41,4,0.3,Online,Regular Shopper
+SM00247,Arjun G.,Male,62,Pune,28.0,16,3,1.8,Mobile App,Senior Budget
+SM00248,Kavya N.,Male,47,Kolkata,52.3,44,2,3.2,Mixed,Regular Shopper
+SM00249,Vikram U.,Male,47,Kolkata,46.9,53,3,1.8,Mobile App,Regular Shopper
+SM00250,Ananya B.,Female,51,Mumbai,56.7,47,2,1.2,Online,Regular Shopper
+SM00251,Rahul I.,Male,34,Hyderabad,48.7,44,5,3.6,Online,Regular Shopper
+SM00252,Priya P.,Female,38,Bengaluru,57.1,67,5,3.4,Online,Regular Shopper
+SM00253,Karthik W.,Female,28,Kolkata,30.1,82,8,0.8,In-store,Student Splurger
+SM00254,Lakshmi D.,Male,62,Kolkata,26.8,21,1,2.3,Online,Senior Budget
+SM00255,Nikhil K.,Female,44,Kochi,102.6,81,7,6.0,Online,Premium Family
+SM00256,Pooja R.,Female,25,Mumbai,60.8,64,11,0.2,In-store,Regular Shopper
+SM00257,Siddharth Y.,Female,55,Delhi,59.1,51,7,1.1,Mobile App,Regular Shopper
+SM00258,Divya F.,Female,35,Bengaluru,23.3,85,3,0.4,Online,Student Splurger
+SM00259,Aditya M.,Male,21,Kochi,76.1,55,9,1.6,Online,Regular Shopper
+SM00260,Nisha T.,Male,51,Kochi,36.5,14,0,5.9,Mobile App,Senior Budget
+SM00261,Aarav A.,Male,52,Kochi,42.7,45,3,0.4,Mixed,Regular Shopper
+SM00262,Diya H.,Male,53,Kochi,24.3,16,3,2.8,Mobile App,Senior Budget
+SM00263,Ishaan O.,Male,40,Kochi,51.1,41,6,0.9,Online,Regular Shopper
+SM00264,Meera V.,Female,49,Coimbatore,49.1,38,5,1.4,Mixed,Regular Shopper
+SM00265,Rohan C.,Male,33,Hyderabad,99.1,71,4,0.0,Mixed,Premium Family
+SM00266,Sneha J.,Female,55,Mumbai,25.4,--,3,1.2,Mixed,Senior Budget
+SM00267,Arjun Q.,Female,35,Coimbatore,52.9,41,1,4.7,Mixed,Regular Shopper
+SM00268,Kavya X.,Female,30,Bengaluru,52.5,57,4,7.0,Mobile App,Regular Shopper
+SM00269,Vikram E.,Female,22,Delhi,50.1,54,6,2.1,In-store,Regular Shopper
+SM00270,Ananya L.,Female,28,Bengaluru,58.0,44,6,0.5,In-store,Regular Shopper
+SM00271,Rahul S.,Female,31,Pune,34.5,88,3,0.0,In-store,Student Splurger
+SM00272,Priya Z.,Male,29,Kolkata,79.4,29,3,3.2,Mixed,Thrifty High Earner
+SM00273,Karthik G.,Male,45,Kochi,43.1,49,5,0.2,Mobile App,Regular Shopper
+SM00274,Lakshmi N.,Male,32,Coimbatore,17.8,78,5,2.0,Mixed,Student Splurger
+SM00275,Nikhil U.,Male,47,Hyderabad,90.9,92,7,2.0,Mobile App,Premium Family
+SM00276,Pooja B.,Male,38,Madurai,93.4,21,3,0.2,In-store,Thrifty High Earner
+SM00277,Siddharth I.,Female,28,Madurai,27.3,83,6,1.5,In-store,Student Splurger
+SM00278,Divya P.,Male,51,Coimbatore,45.9,55,4,3.6,Mixed,Regular Shopper
+SM00279,Aditya W.,Female,51,Coimbatore,31.5,48,3,0.7,Mobile App,Regular Shopper
+SM00280,Nisha D.,Female,29,Pune,33.3,77,2,12.9,Online,Student Splurger
+SM00281,Aarav K.,Male,53,Delhi,19.4,11,2,2.2,Online,Senior Budget
+SM00282,Diya R.,Male,44,Hyderabad,100.4,85,7,7.9,Mobile App,Premium Family
+SM00283,Ishaan Y.,Female,52,Kochi,79.3,37,6,3.3,Mobile App,Thrifty High Earner
+SM00284,Meera F.,Female,75,Kochi,26.0,35,3,3.2,Mixed,Senior Budget
+SM00285,Rohan M.,Male,35,Delhi,54.6,62,9,0.1,Mobile App,Regular Shopper
+SM00286,Sneha T.,Male,41,Pune,95.0,84,7,1.5,Mixed,Premium Family
+SM00287,Arjun A.,Female,34,Chennai,107.6,75,7,2.0,In-store,Premium Family
+SM00288,Kavya H.,Male,27,Coimbatore,86.5,86,5,0.2,Mobile App,Premium Family
+SM00289,Vikram O.,Male,44,Bengaluru,46.4,43,2,3.2,Mixed,Regular Shopper
+SM00290,Ananya V.,Male,55,Kochi,101.3,27,3,6.3,In-store,Thrifty High Earner
+SM00291,Rahul C.,Female,42,Bengaluru,44.0,45,4,2.5,Online,Regular Shopper
+SM00292,Priya J.,Female,54,Madurai,34.3,47,3,0.6,Online,Regular Shopper
+SM00293,Karthik Q.,Female,36,Hyderabad,91.5,89,5,2.6,Mixed,Premium Family
+SM00294,Lakshmi X.,Male,23,Bengaluru,54.4,--,3,11.0,In-store,Regular Shopper
+SM00295,Nikhil E.,Female,48,Hyderabad,47.1,46,4,3.6,In-store,Regular Shopper
+SM00296,Pooja L.,Female,48,Kolkata,28.0,25,2,4.3,Online,Senior Budget
+SM00297,Siddharth S.,Male,50,Pune,65.4,57,7,2.8,In-store,Regular Shopper
+SM00298,Divya Z.,Male,34,Coimbatore,40.8,41,7,1.3,Online,Regular Shopper
+SM00299,Aditya G.,Female,39,Bengaluru,51.6,54,1,1.2,In-store,Regular Shopper
+SM00300,Nisha N.,Male,51,Mumbai,21.2,14,1,0.3,Mixed,Senior Budget
+SM00301,Aarav U.,Female,39,Delhi,53.4,73,6,0.3,Mobile App,Regular Shopper
+SM00302,Diya B.,Male,40,Kolkata,104.7,26,2,0.3,Mobile App,Thrifty High Earner
+SM00303,Ishaan I.,Male,34,Kolkata,92.9,70,6,0.3,Mobile App,Premium Family
+SM00304,Meera P.,Male,75,Chennai,23.9,28,2,4.3,Online,Senior Budget
+SM00305,Rohan W.,Male,63,Mumbai,17.4,23,0,2.9,Mixed,Senior Budget
+SM00306,Sneha D.,Male,28,Bengaluru,47.2,45,7,1.1,Online,Regular Shopper
+SM00307,Arjun K.,Male,32,Kochi,21.1,84,4,2.9,Online,Student Splurger
+SM00308,Kavya R.,Female,25,Kolkata,91.2,79,12,1.6,Mixed,Premium Family
+SM00309,Vikram Y.,Female,41,Bengaluru,39.7,49,3,1.6,Mobile App,Regular Shopper
+SM00310,Ananya F.,Male,60,Kochi,42.9,38,6,2.7,Online,Regular Shopper
+SM00311,Rahul M.,Female,27,Kolkata,53.9,59,3,0.1,Mixed,Regular Shopper
+SM00312,Priya T.,Female,47,Madurai,35.2,49,2,0.0,Mobile App,Regular Shopper
+SM00313,Karthik A.,Female,28,Kochi,91.5,76,7,3.1,Mixed,Premium Family
+SM00314,Lakshmi H.,Male,39,Hyderabad,97.6,34,3,4.1,Online,Thrifty High Earner
+SM00315,Nikhil O.,Female,29,Madurai,56.0,47,4,4.0,Mobile App,Regular Shopper
+SM00316,Pooja V.,Female,50,Kochi,12.4,31,3,7.1,Mixed,Senior Budget
+SM00317,Siddharth C.,Male,32,Kolkata,40.8,52,5,0.6,Mixed,Regular Shopper
+SM00318,Divya J.,Male,43,Kochi,88.6,26,7,9.3,Mixed,Thrifty High Earner
+SM00319,Aditya Q.,Male,31,Bengaluru,55.6,37,6,3.0,Online,Regular Shopper
+SM00320,Nisha X.,Male,44,Delhi,21.6,13,2,3.8,Online,Senior Budget
+SM00321,Aarav E.,Male,41,Pune,92.6,27,4,1.0,In-store,Thrifty High Earner
+SM00322,Diya L.,Male,31,Chennai,44.4,48,4,5.3,Online,Regular Shopper
+SM00323,Ishaan S.,Male,49,Coimbatore,18.7,8,1,3.4,In-store,Senior Budget
+SM00324,Meera Z.,Male,51,Kolkata,20.6,18,3,4.7,Mixed,Senior Budget
+SM00325,Rohan G.,Male,51,Kolkata,45.0,47,2,2.8,Mixed,Regular Shopper
+SM00326,Sneha N.,Female,20,Madurai,45.2,46,4,8.6,Online,Regular Shopper
+SM00327,Arjun U.,Male,33,Madurai,93.7,35,7,4.2,Mixed,Thrifty High Earner
+SM00328,Kavya B.,Female,30,Kochi,55.5,38,2,1.3,Mobile App,Regular Shopper
+SM00329,Vikram I.,Male,51,Madurai,86.6,38,2,0.8,In-store,Thrifty High Earner
+SM00330,Ananya P.,Female,74,Chennai,13.8,26,3,0.9,In-store,Senior Budget
+SM00331,Rahul W.,Male,65,Kochi,52.7,57,4,2.0,Online,Regular Shopper
+SM00332,Priya D.,Male,55,Kolkata,24.4,24,3,7.6,Mixed,Senior Budget
+SM00333,Karthik K.,Male,31,Madurai,106.7,5,2,2.1,Mixed,Thrifty High Earner
+SM00334,Lakshmi R.,Male,47,Mumbai,55.1,36,2,2.5,Mixed,Regular Shopper
+SM00335,Nikhil Y.,Female,54,Bengaluru,43.4,43,4,1.6,In-store,Regular Shopper
+SM00336,Pooja F.,Male,73,Hyderabad,16.1,11,0,1.0,Mixed,Senior Budget
+SM00337,Siddharth M.,Male,44,Pune,81.9,25,5,0.6,Online,Thrifty High Earner
+SM00338,Divya T.,Male,57,Coimbatore,94.3,27,6,4.6,Mixed,Thrifty High Earner
+SM00339,Aditya A.,Male,59,Pune,111.2,23,1,10.5,In-store,Thrifty High Earner
+SM00340,Nisha H.,Female,35,Kolkata,44.2,45,3,4.5,Online,Regular Shopper
+SM00341,Aarav O.,Male,32,Bengaluru,59.1,51,5,3.0,Mixed,Regular Shopper
+SM00342,Diya V.,Female,26,Delhi,53.2,45,1,1.5,In-store,Regular Shopper
+SM00343,Ishaan C.,Female,37,Delhi,57.0,46,6,1.7,Online,Regular Shopper
+SM00344,Meera J.,Male,39,Bengaluru,40.8,42,4,3.8,Mixed,Regular Shopper
+SM00345,Rohan Q.,Female,47,Chennai,112.8,17,7,0.4,Online,Thrifty High Earner
+SM00346,Sneha X.,Female,27,Pune,21.9,88,9,8.5,Mobile App,Student Splurger
+SM00347,Arjun E.,Female,30,Pune,90.2,1,0,7.7,Mobile App,Thrifty High Earner
+SM00348,Kavya L.,Male,37,Chennai,23.0,79,5,0.8,Online,Student Splurger
+SM00349,Vikram S.,Female,71,Hyderabad,23.5,--,3,1.6,Online,Senior Budget
+SM00350,Ananya Z.,Male,54,Madurai,50.4,42,8,0.5,Mixed,Regular Shopper
+SM00351,Rahul G.,Male,28,Delhi,27.6,91,11,0.7,In-store,Student Splurger
+SM00352,Priya N.,Male,30,Chennai,97.0,86,1,1.0,Online,Premium Family
+SM00353,Karthik U.,Female,18,Chennai,27.1,72,8,6.5,In-store,Student Splurger
+SM00354,Lakshmi B.,Male,41,Chennai,42.2,48,1,5.6,Online,Regular Shopper
+SM00355,Nikhil I.,Male,66,Madurai,16.2,14,1,0.8,In-store,Senior Budget
+SM00356,Pooja P.,Female,43,Mumbai,111.4,24,2,3.2,In-store,Thrifty High Earner
+SM00357,Siddharth W.,Female,75,Coimbatore,25.7,17,2,1.2,In-store,Senior Budget
+SM00358,Divya D.,Female,71,Madurai,12.0,6,0,2.1,In-store,Senior Budget
+SM00359,Aditya K.,Female,53,Chennai,25.0,3,2,2.5,Mobile App,Senior Budget
+SM00360,Nisha R.,Male,26,Madurai,29.2,91,7,1.5,Mixed,Student Splurger
+SM00361,Aarav Y.,Male,44,Madurai,63.5,50,1,2.6,Mobile App,Regular Shopper
+SM00362,Diya F.,Female,39,Madurai,98.9,21,5,3.5,Online,Thrifty High Earner
+SM00363,Ishaan M.,Male,75,Kolkata,22.4,31,4,0.1,Online,Senior Budget
+SM00364,Meera T.,Female,55,Kochi,21.9,29,1,0.7,Online,Senior Budget
+SM00365,Rohan A.,Male,56,Kolkata,27.0,17,3,4.5,Mobile App,Senior Budget
+SM00366,Sneha H.,Female,34,Pune,71.6,94,7,1.7,Mobile App,Premium Family
+SM00367,Arjun O.,Male,25,Kolkata,20.4,82,8,1.6,In-store,Student Splurger
+SM00368,Kavya V.,Female,26,Hyderabad,32.0,66,6,3.1,Mobile App,Student Splurger
+SM00369,Vikram C.,Male,64,Madurai,25.5,16,4,0.7,Online,Senior Budget
+SM00370,Ananya J.,Male,67,Madurai,51.8,45,3,3.0,In-store,Regular Shopper
+SM00371,Rahul Q.,Female,75,Pune,31.3,26,0,7.2,Mixed,Senior Budget
+SM00372,Priya X.,Female,25,Kolkata,26.1,79,11,2.7,Mixed,Student Splurger
+SM00373,Karthik E.,Male,38,Bengaluru,96.9,66,6,0.9,Mixed,Premium Family
+SM00374,Lakshmi L.,Female,45,Delhi,51.7,39,3,0.6,Mobile App,Regular Shopper
+SM00375,Nikhil S.,Male,64,Mumbai,97.5,22,0,6.5,In-store,Thrifty High Earner
+SM00376,Pooja Z.,Female,21,Kolkata,52.0,57,6,0.5,Mixed,Regular Shopper
+SM00377,Siddharth G.,Female,43,Madurai,80.3,55,7,14.5,In-store,Regular Shopper
+SM00378,Divya N.,Male,26,Kochi,94.3,88,4,0.6,Online,Premium Family
+SM00379,Aditya U.,Female,44,Pune,16.3,8,0,0.7,Mobile App,Senior Budget
+SM00380,Nisha B.,Male,33,Chennai,41.6,59,6,1.6,Online,Regular Shopper
+SM00381,Aarav I.,Male,41,Mumbai,28.4,34,3,2.8,Mixed,Senior Budget
+SM00382,Diya P.,Male,41,Mumbai,64.8,39,3,3.4,In-store,Regular Shopper
+SM00383,Ishaan W.,Male,23,Hyderabad,38.4,29,3,0.8,Online,Regular Shopper
+SM00384,Meera D.,Female,18,Coimbatore,70.6,45,2,2.8,In-store,Regular Shopper
+SM00385,Rohan K.,Male,44,Coimbatore,49.9,36,5,0.0,Mobile App,Regular Shopper
+SM00386,Sneha R.,Male,28,Mumbai,31.1,77,5,0.5,In-store,Student Splurger
+SM00387,Arjun Y.,Female,27,Delhi,90.7,85,3,1.1,Online,Premium Family
+SM00388,Kavya F.,Female,25,Chennai,19.2,46,5,4.7,Mobile App,Regular Shopper
+SM00389,Vikram M.,Male,59,Delhi,42.2,45,1,0.6,Online,Regular Shopper
+SM00390,Ananya T.,Female,73,Pune,28.5,24,5,2.2,In-store,Senior Budget
+SM00391,Rahul A.,Male,45,Pune,81.6,20,3,1.8,Mixed,Thrifty High Earner
+SM00392,Priya H.,Male,38,Kolkata,84.3,92,5,1.0,Online,Premium Family
+SM00393,Karthik O.,Male,29,Kolkata,25.5,76,3,11.4,Mobile App,Student Splurger
+SM00394,Lakshmi V.,Female,29,Bengaluru,26.4,89,10,1.2,Mixed,Student Splurger
+SM00395,Nikhil C.,Male,25,Chennai,60.2,48,6,0.0,Mobile App,Regular Shopper
+SM00396,Pooja J.,Male,40,Pune,50.2,41,1,12.4,In-store,Regular Shopper
+SM00397,Siddharth Q.,Female,38,Hyderabad,94.5,76,5,3.0,Online,Premium Family
+SM00398,Divya X.,Female,44,Bengaluru,95.6,21,4,0.5,In-store,Thrifty High Earner
+SM00399,Aditya E.,Female,57,Hyderabad,26.8,21,1,1.1,Mixed,Senior Budget
+SM00400,Nisha L.,Female,18,Coimbatore,54.0,47,4,2.9,Online,Regular Shopper
+SM00401,Aarav S.,Female,32,Chennai,49.2,59,3,3.0,Mixed,Regular Shopper
+SM00402,Diya Z.,Male,34,Mumbai,104.7,79,6,3.5,Mobile App,Premium Family
+SM00403,Ishaan G.,Female,64,Kolkata,82.1,N/A,4,3.6,Mobile App,Thrifty High Earner
+SM00404,Meera N.,Female,26,Delhi,51.6,57,9,3.9,In-store,Regular Shopper
+SM00405,Rohan U.,Male,65,Madurai,95.1,19,1,1.4,Mobile App,Thrifty High Earner
+SM00406,Sneha B.,Female,34,Coimbatore,81.3,80,8,4.6,Mixed,Premium Family
+SM00407,Arjun I.,Male,39,Chennai,103.6,81,8,1.0,Mobile App,Premium Family
+SM00408,Kavya P.,Male,30,Pune,79.8,84,8,0.3,Mixed,Premium Family
+SM00409,Vikram W.,Female,59,Chennai,49.9,52,3,5.3,In-store,Regular Shopper
+SM00410,Ananya D.,Male,22,Pune,59.2,51,3,0.1,In-store,Regular Shopper
+SM00411,Rahul K.,Male,46,Bengaluru,65.4,50,7,12.3,Online,Regular Shopper
+SM00412,Priya R.,Female,37,Mumbai,113.4,24,3,1.5,Online,Thrifty High Earner
+SM00413,Karthik Y.,Male,40,Chennai,105.2,96,6,0.5,Mixed,Premium Family
+SM00414,Lakshmi F.,Male,51,Kolkata,54.6,39,4,0.3,Mobile App,Regular Shopper
+SM00415,Nikhil M.,Female,29,Pune,61.6,46,5,1.4,In-store,Regular Shopper
+SM00416,Pooja T.,Female,47,Kolkata,42.0,55,5,2.0,Online,Regular Shopper
+SM00417,Siddharth A.,Male,57,Pune,101.0,11,4,4.8,Mobile App,Thrifty High Earner
+SM00418,Divya H.,Female,45,Bengaluru,109.9,80,10,4.5,In-store,Premium Family
+SM00419,Aditya O.,Female,50,Coimbatore,71.0,44,5,7.0,In-store,Regular Shopper
+SM00420,Nisha V.,Female,75,Bengaluru,24.4,10,4,2.1,Online,Senior Budget
+SM00421,Aarav C.,Female,38,Kolkata,97.9,79,7,1.0,Online,Premium Family
+SM00422,Diya J.,Male,46,Pune,81.0,83,6,5.7,Mobile App,Premium Family
+SM00423,Ishaan Q.,Female,18,Mumbai,96.8,77,10,0.8,Online,Premium Family
+SM00424,Meera X.,Male,31,Chennai,48.0,47,5,4.3,Online,Regular Shopper
+SM00425,Rohan E.,Female,41,Bengaluru,93.2,9,0,0.6,Online,Thrifty High Earner
+SM00426,Sneha L.,Male,22,Delhi,22.5,93,10,1.3,In-store,Student Splurger
+SM00427,Arjun S.,Male,41,Pune,36.0,58,4,1.0,Mixed,Regular Shopper
+SM00428,Kavya Z.,Female,57,Coimbatore,56.5,61,3,5.5,Mixed,Regular Shopper
+SM00429,Vikram G.,Male,41,Coimbatore,14.1,23,2,4.0,Online,Senior Budget
+SM00430,Ananya N.,Female,50,Chennai,89.1,89,6,5.6,In-store,Premium Family
+SM00431,Rahul U.,Female,56,Bengaluru,97.6,22,0,2.8,Online,Thrifty High Earner
+SM00432,Priya B.,Female,41,Coimbatore,83.9,34,2,0.3,Online,Thrifty High Earner
+SM00433,Karthik I.,Female,30,Bengaluru,12.7,80,10,2.3,Online,Student Splurger
+SM00434,Lakshmi P.,Male,38,Bengaluru,83.1,15,1,9.2,In-store,Thrifty High Earner
+SM00435,Nikhil W.,Male,30,Delhi,68.5,48,5,4.5,Mixed,Regular Shopper
+SM00436,Pooja D.,Female,33,Mumbai,25.4,62,4,0.3,Mobile App,Student Splurger
+SM00437,Siddharth K.,Male,35,Kolkata,97.7,79,6,2.3,Mobile App,Premium Family
+SM00438,Divya R.,Male,53,Kochi,16.4,15,0,0.1,In-store,Senior Budget
+SM00439,Aditya Y.,Female,30,Kolkata,18.1,84,7,0.2,Online,Student Splurger
+SM00440,Nisha F.,Female,45,Bengaluru,46.0,49,5,1.1,In-store,Regular Shopper
+SM00441,Aarav M.,Female,43,Delhi,39.4,17,3,1.5,Mixed,Senior Budget
+SM00442,Diya T.,Male,40,Kochi,52.5,45,2,0.5,Mixed,Regular Shopper
+SM00443,Ishaan A.,Male,55,Kolkata,89.5,23,4,2.6,Mixed,Thrifty High Earner
+SM00444,Meera H.,Female,54,Kolkata,9.6,12,2,1.0,Mobile App,Senior Budget
+SM00445,Rohan O.,Female,43,Delhi,98.6,82,7,0.0,In-store,Premium Family
+SM00446,Sneha V.,Male,57,Bengaluru,18.4,31,4,1.1,Mobile App,Senior Budget
+SM00447,Arjun C.,Female,75,Kolkata,11.7,18,3,2.4,In-store,Senior Budget
+SM00448,Kavya J.,Female,38,Kochi,47.3,57,7,1.3,Online,Regular Shopper
+SM00449,Vikram Q.,Female,35,Hyderabad,100.3,88,7,5.7,Mixed,Premium Family
+SM00450,Ananya X.,Female,50,Pune,50.4,54,1,1.5,Mobile App,Regular Shopper
+SM00451,Rahul E.,Male,35,Coimbatore,48.6,51,7,2.1,Online,Regular Shopper
+SM00452,Priya L.,Female,22,Mumbai,22.5,84,3,0.4,Mobile App,Student Splurger
+SM00453,Karthik S.,Female,62,Pune,16.5,11,0,5.0,In-store,Senior Budget
+SM00454,Lakshmi Z.,Male,64,Delhi,15.5,10,1,2.5,In-store,Senior Budget
+SM00455,Nikhil G.,Female,34,Delhi,27.8,47,7,1.3,Mixed,Regular Shopper
+SM00456,Pooja N.,Female,50,Bengaluru,23.4,35,5,1.7,In-store,Senior Budget
+SM00457,Siddharth U.,Female,32,Delhi,55.9,56,6,5.2,Mobile App,Regular Shopper
+SM00458,Divya B.,Male,19,Kolkata,22.2,79,7,3.2,Mixed,Student Splurger
+SM00459,Aditya I.,Female,25,Bengaluru,26.1,73,3,2.9,Mobile App,Student Splurger
+SM00460,Nisha P.,Male,48,Madurai,108.7,22,4,4.4,In-store,Thrifty High Earner
+SM00461,Aarav W.,Male,61,Madurai,98.5,20,3,4.2,Online,Thrifty High Earner
+SM00462,Diya D.,Female,47,Delhi,22.2,28,0,1.4,Mobile App,Senior Budget
+SM00463,Ishaan K.,Female,50,Kolkata,96.2,30,1,1.3,Online,Thrifty High Earner
+SM00464,Meera R.,Male,49,Madurai,110.0,91,8,3.3,Mixed,Premium Family
+SM00465,Rohan Y.,Male,40,Kochi,82.1,83,7,0.7,In-store,Premium Family
+SM00466,Sneha F.,Female,63,Hyderabad,116.4,21,3,2.6,In-store,Thrifty High Earner
+SM00467,Arjun M.,Male,36,Mumbai,66.6,49,7,1.2,In-store,Regular Shopper
+SM00468,Kavya T.,Female,68,Hyderabad,11.6,22,1,2.4,In-store,Senior Budget
+SM00469,Vikram A.,Female,37,Chennai,92.2,N/A,1,5.8,Mixed,Thrifty High Earner
+SM00470,Ananya H.,Male,53,Pune,116.5,23,1,8.2,In-store,Thrifty High Earner
+SM00471,Rahul O.,Male,42,Kolkata,89.3,22,2,0.7,In-store,Thrifty High Earner
+SM00472,Priya V.,Female,35,Mumbai,22.3,92,7,3.8,In-store,Student Splurger
+SM00473,Karthik C.,Male,49,Bengaluru,33.3,15,0,6.2,Mobile App,Senior Budget
+SM00474,Lakshmi J.,Female,44,Kolkata,51.7,59,5,1.9,Online,Regular Shopper
+SM00475,Nikhil Q.,Female,22,Hyderabad,11.2,89,12,2.7,Online,Student Splurger
+SM00476,Pooja X.,Male,35,Chennai,45.9,44,1,4.3,In-store,Regular Shopper
+SM00477,Siddharth E.,Male,34,Madurai,65.9,37,5,0.3,Online,Regular Shopper
+SM00478,Divya L.,Female,27,Pune,58.7,44,8,2.0,Mobile App,Regular Shopper
+SM00479,Aditya S.,Female,48,Kochi,53.4,43,8,0.7,Mixed,Regular Shopper
+SM00480,Nisha Z.,Male,33,Kolkata,20.4,87,5,3.8,Online,Student Splurger
+SM00481,Aarav G.,Female,50,Madurai,88.1,30,4,8.3,Online,Thrifty High Earner
+SM00482,Diya N.,Male,28,Kolkata,56.9,30,1,3.7,Online,Regular Shopper
+SM00483,Ishaan U.,Female,44,Bengaluru,67.8,52,7,0.1,Mobile App,Regular Shopper
+SM00484,Meera B.,Male,49,Kolkata,41.6,54,4,6.5,Mobile App,Regular Shopper
+SM00485,Rohan I.,Male,31,Delhi,79.4,69,4,3.2,Mixed,Premium Family
+SM00486,Sneha P.,Female,34,Chennai,25.7,84,8,0.7,Mobile App,Student Splurger
+SM00487,Arjun W.,Female,30,Kolkata,49.9,38,2,2.9,In-store,Regular Shopper
+SM00488,Kavya D.,Female,39,Kolkata,48.2,45,4,6.7,Mixed,Regular Shopper
+SM00489,Vikram K.,Male,33,Kolkata,94.3,92,7,0.4,Mobile App,Premium Family
+SM00490,Ananya R.,Male,29,Kochi,55.2,50,4,4.0,In-store,Regular Shopper
+SM00491,Rahul Y.,Male,23,Kolkata,60.1,49,1,3.2,Mixed,Regular Shopper
+SM00492,Priya F.,Female,54,Delhi,26.4,19,0,4.8,Mixed,Senior Budget
+SM00493,Karthik M.,Male,46,Pune,30.0,--,2,10.2,In-store,Senior Budget
+SM00494,Lakshmi T.,Female,50,Madurai,71.8,48,5,1.4,Mobile App,Regular Shopper
+SM00495,Nikhil A.,Male,53,Kolkata,59.4,45,3,1.4,Online,Regular Shopper
+SM00496,Pooja H.,Female,55,Mumbai,57.4,56,3,5.2,Online,Regular Shopper
+SM00497,Siddharth O.,Female,35,Delhi,86.2,29,3,9.6,Mixed,Thrifty High Earner
+SM00498,Divya V.,Female,42,Mumbai,71.2,8,2,1.0,In-store,Thrifty High Earner
+SM00499,Aditya C.,Female,28,Mumbai,31.5,86,9,7.1,Online,Student Splurger
+SM00500,Nisha J.,Female,34,Pune,52.1,53,4,4.9,In-store,Regular Shopper
+SM00501,Aarav Q.,Female,29,Hyderabad,24.3,88,9,0.7,Mobile App,Student Splurger
+SM00502,Diya X.,Female,25,Delhi,52.5,49,7,0.5,Mixed,Regular Shopper
+SM00503,Ishaan E.,Female,36,Chennai,91.7,87,6,0.3,Online,Premium Family
+SM00504,Meera L.,Female,41,Delhi,99.1,84,2,2.4,Online,Premium Family
+SM00505,Rohan S.,Male,56,Mumbai,21.6,16,2,2.8,Online,Senior Budget
+SM00506,Sneha Z.,Male,27,Madurai,29.0,29,4,7.7,Online,Regular Shopper
+SM00507,Arjun G.,Female,45,Kochi,11.2,--,1,0.1,Online,Senior Budget
+SM00508,Kavya N.,Female,75,Kochi,25.8,25,0,1.9,Mixed,Senior Budget
+SM00509,Vikram U.,Female,37,Chennai,99.6,85,7,3.1,Mobile App,Premium Family
+SM00510,Ananya B.,Male,48,Madurai,90.0,67,3,2.1,Online,Premium Family
+SM00511,Rahul I.,Female,18,Chennai,17.0,87,8,3.3,Online,Student Splurger
+SM00512,Priya P.,Male,52,Delhi,91.6,23,3,1.8,Mobile App,Thrifty High Earner
+SM00513,Karthik W.,Female,32,Kochi,107.6,26,1,17.3,Mobile App,Thrifty High Earner
+SM00514,Lakshmi D.,Female,75,Chennai,17.1,23,1,3.7,In-store,Senior Budget
+SM00515,Nikhil K.,Female,37,Kochi,101.4,67,10,3.9,Mixed,Premium Family
+SM00516,Pooja R.,Male,23,Bengaluru,57.2,55,8,0.7,Mixed,Regular Shopper
+SM00517,Siddharth Y.,Female,36,Kochi,50.1,59,4,4.8,Mobile App,Regular Shopper
+SM00518,Divya F.,Male,23,Kolkata,22.3,94,7,2.1,In-store,Student Splurger
+SM00519,Aditya M.,Female,61,Pune,77.6,18,3,6.3,Online,Thrifty High Earner
+SM00520,Nisha T.,Male,25,Kolkata,29.3,83,4,4.6,Mixed,Student Splurger
+SM00521,Aarav A.,Male,18,Chennai,45.6,51,5,0.2,Online,Regular Shopper
+SM00522,Diya H.,Male,58,Delhi,18.6,16,5,0.4,Online,Senior Budget
+SM00523,Ishaan O.,Male,43,Hyderabad,12.0,18,2,0.9,Mobile App,Senior Budget
+SM00524,Meera V.,Male,19,Coimbatore,56.1,56,6,2.8,Mixed,Regular Shopper
+SM00525,Rohan C.,Female,55,Kochi,106.2,31,2,1.6,Mixed,Thrifty High Earner
+SM00526,Sneha J.,Female,60,Chennai,95.3,22,2,4.1,Online,Thrifty High Earner
+SM00527,Arjun Q.,Female,51,Kolkata,65.0,44,1,0.6,Online,Regular Shopper
+SM00528,Kavya X.,Male,43,Delhi,57.3,53,4,0.7,Mobile App,Regular Shopper
+SM00529,Vikram E.,Male,36,Hyderabad,94.4,25,5,0.2,In-store,Thrifty High Earner
+SM00530,Ananya L.,Female,73,Kolkata,46.2,47,4,2.4,Mobile App,Regular Shopper
+SM00531,Rahul S.,Female,29,Pune,13.9,76,8,1.5,Mobile App,Student Splurger
+SM00532,Priya Z.,Male,54,Chennai,81.3,19,2,2.6,In-store,Thrifty High Earner
+SM00533,Karthik G.,Male,75,Pune,13.2,20,4,0.0,Mobile App,Senior Budget
+SM00534,Lakshmi N.,Female,66,Coimbatore,13.7,21,0,0.3,Mobile App,Senior Budget
+SM00535,Nikhil U.,Female,24,Coimbatore,16.1,79,7,1.4,Mobile App,Student Splurger
+SM00536,Pooja B.,Female,53,Kolkata,29.9,16,3,2.7,In-store,Senior Budget
+SM00537,Siddharth I.,Female,38,Chennai,61.5,57,3,3.8,Mobile App,Regular Shopper
+SM00538,Divya P.,Male,35,Hyderabad,47.6,43,1,0.3,Online,Regular Shopper
+SM00539,Aditya W.,Male,65,Kolkata,17.3,10,0,6.2,Mixed,Senior Budget
+SM00540,Nisha D.,Female,28,Mumbai,54.7,41,3,4.3,Online,Regular Shopper
+SM00541,Aarav K.,Male,38,Kochi,41.2,58,4,4.9,Mixed,Regular Shopper
+SM00542,Diya R.,Female,29,Delhi,55.1,57,4,1.7,Mixed,Regular Shopper
+SM00543,Ishaan Y.,Female,53,Chennai,94.0,11,1,0.3,Mixed,Thrifty High Earner
+SM00544,Meera F.,Female,59,Bengaluru,50.2,45,7,4.8,Online,Regular Shopper
+SM00545,Rohan M.,Male,73,Kolkata,22.5,21,5,0.4,Online,Senior Budget
+SM00546,Sneha T.,Female,32,Pune,25.1,73,9,1.4,In-store,Student Splurger
+SM00547,Arjun A.,Male,27,Hyderabad,50.4,59,4,2.5,Mixed,Regular Shopper
+SM00548,Kavya H.,Male,46,Kochi,44.1,54,3,0.6,Online,Regular Shopper
+SM00549,Vikram O.,Male,48,Delhi,64.9,47,5,4.1,In-store,Regular Shopper
+SM00550,Ananya V.,Female,46,Chennai,86.2,69,5,2.2,Mixed,Premium Family
+SM00551,Rahul C.,Male,57,Delhi,8.0,7,3,0.5,Mobile App,Senior Budget
+SM00552,Priya J.,Female,44,Hyderabad,40.6,46,3,0.1,In-store,Regular Shopper
+SM00553,Karthik Q.,Female,34,Pune,23.6,12,1,0.4,In-store,Senior Budget
+SM00554,Lakshmi X.,Male,70,Coimbatore,unknown,17,3,0.5,Online,Senior Budget
+SM00555,Nikhil E.,Female,60,Madurai,84.7,18,0,0.7,In-store,Thrifty High Earner
+SM00556,Pooja L.,Male,39,Mumbai,84.5,86,7,2.7,In-store,Premium Family
+SM00557,Siddharth S.,Female,48,Hyderabad,58.6,34,3,0.4,In-store,Regular Shopper
+SM00558,Divya Z.,Male,62,Madurai,23.9,22,2,1.2,Online,Senior Budget
+SM00559,Aditya G.,Female,39,Kochi,81.3,74,5,3.3,In-store,Premium Family
+SM00560,Nisha N.,Female,28,Chennai,19.1,87,10,2.9,Mixed,Student Splurger
+SM00561,Aarav U.,Female,38,Hyderabad,19.9,80,8,1.9,In-store,Student Splurger
+SM00562,Diya B.,Female,62,Bengaluru,23.4,20,1,0.4,Mobile App,Senior Budget
+SM00563,Ishaan I.,Female,67,Delhi,18.6,17,2,10.5,Mixed,Senior Budget
+SM00564,Meera P.,Female,19,Madurai,37.3,40,3,3.2,Online,Regular Shopper
+SM00565,Rohan W.,Female,35,Pune,83.0,81,11,3.7,In-store,Premium Family
+SM00566,Sneha D.,Male,56,Kolkata,23.6,23,1,2.9,Mobile App,Senior Budget
+SM00567,Arjun K.,Female,61,Pune,26.3,25,2,1.9,Online,Senior Budget
+SM00568,Kavya R.,Female,43,Kolkata,21.0,61,6,2.4,Mobile App,Regular Shopper
+SM00569,Vikram Y.,Male,58,Pune,29.0,33,3,2.5,Mixed,Senior Budget
+SM00570,Ananya F.,Male,54,Madurai,30.4,31,0,0.4,In-store,Senior Budget
+SM00571,Rahul M.,Male,28,Delhi,20.5,78,9,0.9,Online,Student Splurger
+SM00572,Priya T.,Female,61,Chennai,28.2,14,4,7.9,Online,Senior Budget
+SM00573,Karthik A.,Male,21,Pune,9.2,78,4,2.6,In-store,Student Splurger
+SM00574,Lakshmi H.,Male,60,Mumbai,25.3,21,3,5.5,Mixed,Senior Budget
+SM00575,Nikhil O.,Male,31,Chennai,72.1,56,1,2.3,In-store,Regular Shopper
+SM00576,Pooja V.,Male,21,Hyderabad,44.9,47,5,7.0,In-store,Regular Shopper
+SM00577,Siddharth C.,Male,65,Hyderabad,56.5,41,3,9.4,Mobile App,Regular Shopper
+SM00578,Divya J.,Male,53,Hyderabad,43.7,37,4,4.6,In-store,Regular Shopper
+SM00579,Aditya Q.,Female,43,Mumbai,32.6,7,4,1.1,In-store,Senior Budget
+SM00580,Nisha X.,Female,29,Madurai,63.4,36,4,0.0,Mixed,Regular Shopper
+SM00581,Aarav E.,Female,51,Kochi,100.8,12,2,1.3,Mixed,Thrifty High Earner
+SM00582,Diya L.,Female,55,Delhi,54.5,43,4,1.2,Mobile App,Regular Shopper
+SM00583,Ishaan S.,Female,33,Pune,80.2,12,1,1.3,Mobile App,Thrifty High Earner
+SM00584,Meera Z.,Female,24,Pune,49.1,48,7,7.4,Mixed,Regular Shopper
+SM00585,Rohan G.,Female,44,Coimbatore,120.0,19,2,6.5,In-store,Thrifty High Earner
+SM00586,Sneha N.,Female,39,Madurai,115.9,97,8,3.6,In-store,Premium Family
+SM00587,Arjun U.,Female,48,Hyderabad,50.6,48,3,0.1,In-store,Regular Shopper
+SM00588,Kavya B.,Male,71,Madurai,18.7,20,3,0.2,Mixed,Senior Budget
+SM00589,Vikram I.,Female,31,Chennai,56.2,47,3,3.5,Mixed,Regular Shopper
+SM00590,Ananya P.,Male,56,Coimbatore,66.5,14,2,0.1,Mixed,Thrifty High Earner
+SM00591,Rahul W.,Female,29,Kolkata,49.7,37,3,0.6,In-store,Regular Shopper
+SM00592,Priya D.,Female,57,Mumbai,31.4,17,1,22.8,Mobile App,Senior Budget
+SM00593,Karthik K.,Female,56,Kochi,92.2,N/A,0,1.4,Online,Thrifty High Earner
+SM00594,Lakshmi R.,Male,72,Kochi,20.3,15,1,2.1,Online,Senior Budget
+SM00595,Nikhil Y.,Male,35,Hyderabad,,57,4,3.8,Online,Regular Shopper
+SM00596,Pooja F.,Male,52,Hyderabad,52.7,48,6,10.6,In-store,Regular Shopper
+SM00597,Siddharth M.,Female,23,Madurai,59.0,32,2,4.8,Mobile App,Regular Shopper
+SM00598,Divya T.,Female,63,Coimbatore,16.9,16,0,1.2,Mixed,Senior Budget
+SM00599,Aditya A.,Male,18,Chennai,17.2,81,10,5.3,Online,Student Splurger
+SM00600,Nisha H.,Male,32,Kolkata,27.5,89,7,0.7,Online,Student Splurger
+SM00601,Aarav O.,Male,58,Delhi,111.0,26,2,3.4,Mobile App,Thrifty High Earner
+SM00602,Diya V.,Female,65,Bengaluru,31.7,12,0,2.2,Mobile App,Senior Budget
+SM00603,Ishaan C.,Female,19,Bengaluru,38.5,43,4,0.6,Mixed,Regular Shopper
+SM00604,Meera J.,Male,62,Madurai,72.3,53,3,9.1,Mobile App,Regular Shopper
+SM00605,Rohan Q.,Female,55,Mumbai,16.9,36,3,2.2,Online,Senior Budget
+SM00606,Sneha X.,Female,22,Kochi,69.1,62,1,0.5,Mixed,Regular Shopper
+SM00607,Arjun E.,Male,75,Kolkata,30.2,25,6,9.0,Online,Senior Budget
+SM00608,Kavya L.,Male,36,Kolkata,53.6,39,1,1.6,Online,Regular Shopper
+SM00609,Vikram S.,Female,37,Chennai,48.0,50,1,2.6,In-store,Regular Shopper
+SM00610,Ananya Z.,Male,71,Chennai,69.1,45,4,4.9,Mixed,Regular Shopper
+SM00611,Rahul G.,Female,51,Hyderabad,32.2,32,2,7.6,Mixed,Senior Budget
+SM00612,Priya N.,Female,52,Kochi,65.8,57,6,3.4,Online,Regular Shopper
+SM00613,Karthik U.,Female,35,Coimbatore,34.6,78,7,2.3,Mixed,Student Splurger
+SM00614,Lakshmi B.,Female,75,Pune,22.7,9,2,5.6,Mobile App,Senior Budget
+SM00615,Nikhil I.,Male,36,Mumbai,66.4,34,1,1.1,Mixed,Regular Shopper
+SM00616,Pooja P.,Female,50,Pune,63.3,N/A,5,6.3,In-store,Regular Shopper
+SM00617,Siddharth W.,Male,40,Delhi,58.5,60,2,0.4,Online,Regular Shopper
+SM00618,Divya D.,Female,24,Bengaluru,64.6,51,7,1.1,Mixed,Regular Shopper
+SM00619,Aditya K.,Male,63,Kochi,41.6,52,6,2.2,Mixed,Regular Shopper
+SM00620,Nisha R.,Male,47,Bengaluru,57.3,48,4,0.3,Online,Regular Shopper
+SM00621,Aarav Y.,Male,20,Kolkata,85.7,67,6,1.9,Online,Premium Family
+SM00622,Diya F.,Female,30,Kochi,31.3,87,4,2.6,Mobile App,Student Splurger
+SM00623,Ishaan M.,Male,53,Delhi,47.5,35,3,1.2,Mobile App,Regular Shopper
+SM00624,Meera T.,Male,70,Chennai,11.0,26,2,3.2,Mixed,Senior Budget
+SM00625,Rohan A.,Female,47,Chennai,21.3,15,1,3.1,Online,Senior Budget
+SM00626,Sneha H.,Female,65,Coimbatore,15.2,15,2,3.1,Mobile App,Senior Budget
+SM00627,Arjun O.,Female,35,Delhi,105.2,77,6,1.7,In-store,Premium Family
+SM00628,Kavya V.,Female,24,Coimbatore,114.1,16,3,0.1,Mixed,Thrifty High Earner
+SM00629,Vikram C.,Male,54,Hyderabad,27.4,16,2,0.2,Mixed,Senior Budget
+SM00630,Ananya J.,Male,21,Madurai,119.8,78,11,8.4,Mixed,Premium Family
+SM00631,Rahul Q.,Female,29,Kochi,52.9,N/A,5,2.8,In-store,Regular Shopper
+SM00632,Priya X.,Male,51,Mumbai,49.7,43,6,0.1,In-store,Regular Shopper
+SM00633,Karthik E.,Female,21,Chennai,51.3,52,1,1.3,Mixed,Regular Shopper
+SM00634,Lakshmi L.,Female,40,Pune,46.0,40,4,6.6,In-store,Regular Shopper
+SM00635,Nikhil S.,Male,62,Madurai,22.3,19,1,0.6,Mobile App,Senior Budget
+SM00636,Pooja Z.,Male,46,Bengaluru,55.9,51,2,3.2,Mobile App,Regular Shopper
+SM00637,Siddharth G.,Male,37,Kochi,45.0,50,3,5.3,Mobile App,Regular Shopper
+SM00638,Divya N.,Male,46,Mumbai,49.2,58,7,1.4,Online,Regular Shopper
+SM00639,Aditya U.,Female,52,Kolkata,59.0,53,6,0.3,In-store,Regular Shopper
+SM00640,Nisha B.,Male,37,Chennai,82.6,88,6,2.6,In-store,Premium Family
+SM00641,Aarav I.,Female,40,Kolkata,52.3,39,4,0.1,Online,Regular Shopper
+SM00642,Diya P.,Male,38,Chennai,56.1,48,3,0.6,Online,Regular Shopper
+SM00643,Ishaan W.,Male,50,Coimbatore,78.8,52,7,0.1,Online,Regular Shopper
+SM00644,Meera D.,Female,20,Mumbai,22.1,70,4,1.2,Mobile App,Student Splurger
+SM00645,Rohan K.,Male,20,Delhi,20.8,83,8,9.3,Mobile App,Student Splurger
+SM00646,Sneha R.,Male,47,Mumbai,80.8,22,2,1.7,Mixed,Thrifty High Earner
+SM00647,Arjun Y.,Male,52,Madurai,93.6,29,0,0.6,In-store,Thrifty High Earner
+SM00648,Kavya F.,Male,23,Hyderabad,53.3,57,6,4.8,Online,Regular Shopper
+SM00649,Vikram M.,Male,33,Madurai,,18,6,4.9,In-store,Thrifty High Earner
+SM00650,Ananya T.,Male,28,Delhi,61.0,50,6,2.5,Online,Regular Shopper
+SM00651,Rahul A.,Female,54,Chennai,54.3,52,3,1.0,Online,Regular Shopper
+SM00652,Priya H.,Male,37,Chennai,97.5,17,1,0.8,In-store,Thrifty High Earner
+SM00653,Karthik O.,Female,38,Kolkata,62.0,44,3,0.6,In-store,Regular Shopper
+SM00654,Lakshmi V.,Female,66,Delhi,16.7,8,1,9.7,Online,Senior Budget
+SM00655,Nikhil C.,Female,36,Kochi,68.3,54,4,1.6,In-store,Regular Shopper
+SM00656,Pooja J.,Female,48,Delhi,23.1,33,4,3.5,In-store,Senior Budget
+SM00657,Siddharth Q.,Female,40,Madurai,103.7,41,4,2.4,Mobile App,Thrifty High Earner
+SM00658,Divya X.,Female,57,Chennai,100.2,25,3,0.6,Mixed,Thrifty High Earner
+SM00659,Aditya E.,Female,57,Pune,105.1,31,1,8.3,Mixed,Thrifty High Earner
+SM00660,Nisha L.,Female,34,Madurai,78.5,79,5,0.0,Mobile App,Premium Family
+SM00661,Aarav S.,Male,62,Madurai,16.7,20,4,0.2,Mobile App,Senior Budget
+SM00662,Diya Z.,Male,31,Delhi,56.7,62,3,0.5,Online,Regular Shopper
+SM00663,Ishaan G.,Female,52,Kochi,108.8,25,3,0.2,Mobile App,Thrifty High Earner
+SM00664,Meera N.,Male,66,Chennai,30.7,28,3,0.2,Mixed,Senior Budget
+SM00665,Rohan U.,Female,49,Pune,18.4,39,3,1.0,In-store,Senior Budget
+SM00666,Sneha B.,Female,33,Madurai,17.3,25,2,2.6,Mobile App,Senior Budget
+SM00667,Arjun I.,Male,66,Pune,64.1,42,4,3.6,Mobile App,Regular Shopper
+SM00668,Kavya P.,Male,46,Pune,43.2,59,6,4.0,Online,Regular Shopper
+SM00669,Vikram W.,Female,44,Mumbai,49.9,50,8,6.4,In-store,Regular Shopper
+SM00670,Ananya D.,Female,31,Hyderabad,98.2,28,3,4.6,Mixed,Thrifty High Earner
+SM00671,Rahul K.,Female,27,Kolkata,58.3,52,5,0.3,Mixed,Regular Shopper
+SM00672,Priya R.,Female,55,Madurai,89.8,20,5,1.3,In-store,Thrifty High Earner
+SM00673,Karthik Y.,Female,33,Coimbatore,100.1,67,8,1.3,Mobile App,Premium Family
+SM00674,Lakshmi F.,Male,56,Kolkata,55.2,44,3,4.3,Online,Regular Shopper
+SM00675,Nikhil M.,Male,28,Kolkata,30.2,52,5,5.5,Mixed,Regular Shopper
+SM00676,Pooja T.,Female,55,Kolkata,27.4,17,1,0.6,Mixed,Senior Budget
+SM00677,Siddharth A.,Female,46,Bengaluru,26.2,35,3,0.8,Mobile App,Senior Budget
+SM00678,Divya H.,Male,20,Chennai,105.5,N/A,8,7.1,Online,Premium Family
+SM00679,Aditya O.,Male,44,Madurai,57.3,53,8,3.5,In-store,Regular Shopper
+SM00680,Nisha V.,Female,45,Coimbatore,18.0,23,2,1.8,Mixed,Senior Budget
+SM00681,Aarav C.,Female,60,Chennai,14.7,22,3,1.4,Online,Senior Budget
+SM00682,Diya J.,Male,52,Coimbatore,101.6,13,0,3.4,In-store,Thrifty High Earner
+SM00683,Ishaan Q.,Female,30,Bengaluru,22.1,84,8,1.4,In-store,Student Splurger
+SM00684,Meera X.,Female,43,Delhi,89.2,84,5,2.3,In-store,Premium Family
+SM00685,Rohan E.,Male,30,Kochi,42.4,34,2,4.8,In-store,Regular Shopper
+SM00686,Sneha L.,Male,43,Hyderabad,60.2,55,6,4.2,Mobile App,Regular Shopper
+SM00687,Arjun S.,Female,55,Chennai,16.0,21,4,3.4,Mobile App,Senior Budget
+SM00688,Kavya Z.,Female,54,Mumbai,10.5,18,3,5.5,In-store,Senior Budget
+SM00689,Vikram G.,Female,53,Madurai,45.1,57,9,14.6,Mixed,Regular Shopper
+SM00690,Ananya N.,Female,69,Pune,19.0,27,3,1.0,Online,Senior Budget
+SM00691,Rahul U.,Female,45,Mumbai,59.9,49,3,4.7,Mobile App,Regular Shopper
+SM00692,Priya B.,Male,35,Hyderabad,94.5,84,7,2.8,Online,Premium Family
+SM00693,Karthik I.,Female,33,Pune,90.8,79,5,6.8,Mobile App,Premium Family
+SM00694,Lakshmi P.,Male,49,Coimbatore,113.3,15,2,1.9,Mixed,Thrifty High Earner
+SM00695,Nikhil W.,Female,32,Hyderabad,21.0,88,6,1.4,Online,Student Splurger
+SM00696,Pooja D.,Female,38,Coimbatore,59.7,48,5,1.2,Online,Regular Shopper
+SM00697,Siddharth K.,Female,42,Bengaluru,63.9,45,5,1.8,Mobile App,Regular Shopper
+SM00698,Divya R.,Male,53,Kolkata,62.8,40,2,8.2,Mobile App,Regular Shopper
+SM00699,Aditya Y.,Male,19,Kolkata,19.1,73,3,7.0,Mixed,Student Splurger
+SM00700,Nisha F.,Male,61,Kochi,97.9,23,3,0.6,Mobile App,Thrifty High Earner
+SM00701,Aarav M.,Male,20,Kolkata,19.2,75,10,9.3,In-store,Student Splurger
+SM00702,Diya T.,Female,69,Coimbatore,17.0,17,1,0.0,Mixed,Senior Budget
+SM00703,Ishaan A.,Female,37,Bengaluru,65.5,41,4,11.3,Online,Regular Shopper
+SM00704,Meera H.,Female,45,Kolkata,85.6,13,3,0.7,Mobile App,Thrifty High Earner
+SM00705,Rohan O.,Male,51,Bengaluru,48.6,27,2,3.7,Mixed,Regular Shopper
+SM00706,Sneha V.,Male,57,Hyderabad,91.2,30,5,0.0,In-store,Thrifty High Earner
+SM00707,Arjun C.,Female,28,Kochi,25.2,78,3,2.6,Online,Student Splurger
+SM00708,Kavya J.,Male,52,Delhi,24.7,21,2,0.9,Online,Senior Budget
+SM00709,Vikram Q.,Male,75,Kolkata,25.9,20,0,5.0,Online,Senior Budget
+SM00710,Ananya X.,Female,65,Bengaluru,15.5,14,1,5.4,Mobile App,Senior Budget
+SM00711,Rahul E.,Male,70,Hyderabad,unknown,28,0,0.6,Mobile App,Senior Budget
+SM00712,Priya L.,Female,64,Delhi,28.2,25,1,0.1,In-store,Senior Budget
+SM00713,Karthik S.,Female,36,Coimbatore,89.8,16,1,7.9,Online,Thrifty High Earner
+SM00714,Lakshmi Z.,Male,33,Kochi,61.0,48,4,10.9,Online,Regular Shopper
+SM00715,Nikhil G.,Female,40,Bengaluru,,49,4,5.3,Mobile App,Regular Shopper
+SM00716,Pooja N.,Female,28,Kochi,31.7,79,2,4.5,Mixed,Student Splurger
+SM00717,Siddharth U.,Female,52,Chennai,51.0,55,3,1.1,In-store,Regular Shopper
+SM00718,Divya B.,Female,21,Chennai,22.5,69,6,0.6,Online,Student Splurger
+SM00719,Aditya I.,Female,43,Madurai,97.3,76,4,5.9,Online,Premium Family
+SM00720,Nisha P.,Female,48,Madurai,15.7,29,3,0.4,Online,Senior Budget
+SM00721,Aarav W.,Male,25,Pune,92.4,7,1,2.7,In-store,Thrifty High Earner
+SM00722,Diya D.,Female,32,Madurai,65.1,40,2,0.4,Online,Regular Shopper
+SM00723,Ishaan K.,Male,51,Chennai,21.7,26,4,1.7,In-store,Senior Budget
+SM00724,Meera R.,Female,46,Pune,48.1,41,1,2.3,Mixed,Regular Shopper
+SM00725,Rohan Y.,Female,42,Kolkata,49.4,30,5,1.8,In-store,Regular Shopper
+SM00726,Sneha F.,Female,26,Chennai,44.9,50,0,5.3,In-store,Regular Shopper
+SM00727,Arjun M.,Female,53,Kolkata,55.7,39,3,1.9,In-store,Regular Shopper
+SM00728,Kavya T.,Female,32,Mumbai,98.7,7,1,10.2,Online,Thrifty High Earner
+SM00729,Vikram A.,Male,26,Bengaluru,26.4,4,1,2.3,Mixed,Senior Budget
+SM00730,Ananya H.,Male,44,Pune,52.1,37,7,15.4,Mobile App,Regular Shopper
+SM00731,Rahul O.,Female,19,Coimbatore,80.0,76,10,2.5,Online,Premium Family
+SM00732,Priya V.,Female,59,Coimbatore,20.1,28,2,4.9,In-store,Senior Budget
+SM00733,Karthik C.,Female,18,Pune,53.5,55,9,4.4,Mobile App,Regular Shopper
+SM00734,Lakshmi J.,Male,61,Hyderabad,96.5,25,3,2.9,Online,Thrifty High Earner
+SM00735,Nikhil Q.,Male,30,Madurai,45.9,47,3,3.8,Mobile App,Regular Shopper
+SM00736,Pooja X.,Male,52,Pune,36.0,48,6,0.2,Mixed,Regular Shopper
+SM00737,Siddharth E.,Female,30,Pune,53.9,42,5,0.1,In-store,Regular Shopper
+SM00738,Divya L.,Female,51,Delhi,64.0,44,6,2.6,In-store,Regular Shopper
+SM00739,Aditya S.,Female,54,Madurai,15.7,25,3,6.1,Mobile App,Senior Budget
+SM00740,Nisha Z.,Male,39,Pune,9.8,10,1,0.6,Online,Senior Budget
+SM00741,Aarav G.,Female,25,Pune,28.7,76,8,2.5,Mixed,Student Splurger
+SM00742,Diya N.,Male,39,Kolkata,57.1,53,5,4.9,Mobile App,Regular Shopper
+SM00743,Ishaan U.,Female,69,Chennai,75.6,60,4,3.0,Mobile App,Regular Shopper
+SM00744,Meera B.,Male,40,Hyderabad,55.9,49,2,6.8,Mobile App,Regular Shopper
+SM00745,Rohan I.,Female,51,Hyderabad,98.4,1,0,2.8,In-store,Thrifty High Earner
+SM00746,Sneha P.,Male,43,Kochi,80.7,88,5,5.0,In-store,Premium Family
+SM00747,Arjun W.,Male,41,Chennai,21.9,25,0,2.6,Mobile App,Senior Budget
+SM00748,Kavya D.,Male,58,Kochi,53.2,45,4,0.1,Mobile App,Regular Shopper
+SM00749,Vikram K.,Female,49,Delhi,54.3,38,3,6.6,In-store,Regular Shopper
+SM00750,Ananya R.,Male,29,Bengaluru,52.5,54,7,5.1,Mobile App,Regular Shopper
+SM00751,Rahul Y.,Female,42,Pune,61.5,47,5,0.7,Online,Regular Shopper
+SM00752,Priya F.,Female,21,Kolkata,96.7,16,2,3.0,Mobile App,Thrifty High Earner
+SM00753,Karthik M.,Male,36,Pune,54.2,44,5,11.8,Online,Regular Shopper
+SM00754,Lakshmi T.,Male,54,Coimbatore,58.3,42,4,5.9,Mobile App,Regular Shopper
+SM00755,Nikhil A.,Female,33,Delhi,54.1,44,6,2.1,Mixed,Regular Shopper
+SM00756,Pooja H.,Female,36,Hyderabad,96.9,79,7,2.1,Mobile App,Premium Family
+SM00757,Siddharth O.,Male,36,Pune,88.6,91,7,1.3,In-store,Premium Family
+SM00758,Divya V.,Female,40,Pune,80.3,23,7,2.2,Online,Thrifty High Earner
+SM00759,Aditya C.,Female,41,Bengaluru,40.4,44,2,1.0,Online,Regular Shopper
+SM00760,Nisha J.,Male,19,Coimbatore,47.1,56,5,2.3,In-store,Regular Shopper
+SM00761,Aarav Q.,Male,28,Delhi,28.2,75,7,4.6,Mixed,Student Splurger
+SM00762,Diya X.,Female,50,Hyderabad,76.9,12,3,2.2,In-store,Thrifty High Earner
+SM00763,Ishaan E.,Female,40,Kochi,37.6,42,4,3.4,Mixed,Regular Shopper
+SM00764,Meera L.,Female,35,Delhi,88.8,18,2,1.0,In-store,Thrifty High Earner
+SM00765,Rohan S.,Male,52,Hyderabad,46.6,44,3,1.1,Mobile App,Regular Shopper
+SM00766,Sneha Z.,Female,42,Mumbai,40.6,18,1,1.0,Mixed,Senior Budget
+SM00767,Arjun G.,Female,55,Delhi,90.5,13,3,0.5,Online,Thrifty High Earner
+SM00768,Kavya N.,Female,65,Kolkata,22.7,25,2,0.0,Online,Senior Budget
+SM00769,Vikram U.,Female,27,Delhi,101.9,85,8,4.9,In-store,Premium Family
+SM00770,Ananya B.,Male,46,Bengaluru,107.2,19,0,0.7,Mobile App,Thrifty High Earner
+SM00771,Rahul I.,Male,36,Mumbai,23.4,19,2,2.1,Mixed,Senior Budget
+SM00772,Priya P.,Male,49,Kolkata,54.2,59,5,2.7,In-store,Regular Shopper
+SM00773,Karthik W.,Female,47,Mumbai,80.4,9,2,2.6,Mobile App,Thrifty High Earner
+SM00774,Lakshmi D.,Male,39,Pune,99.5,34,3,4.2,Online,Thrifty High Earner
+SM00775,Nikhil K.,Female,28,Delhi,27.5,78,8,5.7,Mobile App,Student Splurger
+SM00776,Pooja R.,Female,31,Kochi,,84,10,8.3,In-store,Student Splurger
+SM00777,Siddharth Y.,Male,50,Coimbatore,105.5,18,4,3.1,In-store,Thrifty High Earner
+SM00778,Divya F.,Female,45,Bengaluru,87.6,7,3,4.5,In-store,Thrifty High Earner
+SM00779,Aditya M.,Male,31,Delhi,44.3,66,2,3.8,Online,Regular Shopper
+SM00780,Nisha T.,Female,24,Kolkata,21.9,89,3,1.4,In-store,Student Splurger
+SM00781,Aarav A.,Male,53,Kolkata,67.2,53,3,3.7,Mobile App,Regular Shopper
+SM00782,Diya H.,Female,43,Madurai,19.7,16,2,0.4,Mixed,Senior Budget
+SM00783,Ishaan O.,Female,35,Delhi,84.5,74,5,1.9,Mixed,Premium Family
+SM00784,Meera V.,Male,24,Mumbai,8.0,81,6,0.0,Online,Student Splurger
+SM00785,Rohan C.,Male,30,Bengaluru,52.7,52,4,7.2,Mixed,Regular Shopper
+SM00786,Sneha J.,Male,48,Hyderabad,63.5,46,6,0.9,Online,Regular Shopper
+SM00787,Arjun Q.,Male,22,Bengaluru,27.9,82,3,0.0,Online,Student Splurger
+SM00788,Kavya X.,Female,45,Kochi,84.7,75,3,0.5,Online,Premium Family
+SM00789,Vikram E.,Male,29,Kolkata,98.2,90,3,0.8,In-store,Premium Family
+SM00790,Ananya L.,Female,51,Bengaluru,93.4,32,2,0.9,Online,Thrifty High Earner
+SM00791,Rahul S.,Male,27,Chennai,47.9,33,4,0.3,In-store,Regular Shopper
+SM00792,Priya Z.,Male,45,Chennai,77.8,14,1,1.9,In-store,Thrifty High Earner
+SM00793,Karthik G.,Male,75,Pune,18.6,17,2,11.8,Online,Senior Budget
+SM00794,Lakshmi N.,Male,51,Delhi,16.5,24,7,5.6,Mixed,Senior Budget
+SM00795,Nikhil U.,Female,52,Delhi,19.3,15,5,12.5,Mixed,Senior Budget
+SM00796,Pooja B.,Female,61,Hyderabad,102.9,11,3,2.3,Mixed,Thrifty High Earner
+SM00797,Siddharth I.,Female,57,Kolkata,65.9,45,4,1.0,Online,Regular Shopper
+SM00798,Divya P.,Male,18,Kochi,40.5,60,2,3.8,Mixed,Regular Shopper
+SM00799,Aditya W.,Female,25,Kochi,83.3,88,9,6.2,Online,Premium Family
+SM00800,Nisha D.,Male,50,Kolkata,22.4,19,0,2.8,Online,Senior Budget
+SM00801,Aarav K.,Female,35,Madurai,54.8,42,3,0.2,Online,Regular Shopper
+SM00802,Diya R.,Female,18,Mumbai,45.9,43,3,1.2,Online,Regular Shopper
+SM00803,Ishaan Y.,Female,67,Kolkata,17.3,19,6,2.8,In-store,Senior Budget
+SM00804,Meera F.,Male,38,Chennai,70.2,47,5,0.2,In-store,Regular Shopper
+SM00805,Rohan M.,Male,70,Kochi,30.8,24,4,1.4,In-store,Senior Budget
+SM00806,Sneha T.,Male,32,Kochi,44.8,53,5,4.0,In-store,Regular Shopper
+SM00807,Arjun A.,Female,18,Pune,54.6,53,7,0.7,Online,Regular Shopper
+SM00808,Kavya H.,Male,31,Mumbai,50.8,48,5,8.3,Mixed,Regular Shopper
+SM00809,Vikram O.,Female,33,Chennai,97.5,91,5,4.3,In-store,Premium Family
+SM00810,Ananya V.,Male,51,Kochi,28.3,22,1,0.9,Mobile App,Senior Budget
+SM00811,Rahul C.,Female,65,Chennai,44.6,52,7,0.0,Mixed,Regular Shopper
+SM00812,Priya J.,Male,23,Madurai,21.5,80,6,2.9,Mobile App,Student Splurger
+SM00813,Karthik Q.,Female,70,Madurai,17.8,--,1,0.1,Mobile App,Senior Budget
+SM00814,Lakshmi X.,Male,45,Kochi,40.5,47,3,2.4,Mixed,Regular Shopper
+SM00815,Nikhil E.,Male,46,Delhi,41.3,46,4,1.1,Online,Regular Shopper
+SM00816,Pooja L.,Male,43,Coimbatore,,51,3,1.0,Mixed,Regular Shopper
+SM00817,Siddharth S.,Male,57,Kolkata,118.6,54,10,10.4,In-store,Thrifty High Earner
+SM00818,Divya Z.,Female,28,Kolkata,15.7,71,3,3.1,Online,Student Splurger
+SM00819,Aditya G.,Female,63,Madurai,47.5,40,3,3.7,Mobile App,Regular Shopper
+SM00820,Nisha N.,Male,40,Coimbatore,107.1,19,2,0.3,In-store,Thrifty High Earner
+SM00821,Aarav U.,Female,30,Chennai,57.7,43,1,0.0,In-store,Regular Shopper
+SM00822,Diya B.,Male,72,Delhi,21.5,25,1,7.4,Mixed,Senior Budget
+SM00823,Ishaan I.,Female,44,Coimbatore,58.6,36,2,5.6,Mobile App,Regular Shopper
+SM00824,Meera P.,Female,53,Mumbai,21.7,15,2,0.5,Mixed,Senior Budget
+SM00825,Rohan W.,Male,43,Chennai,18.8,21,2,1.9,Online,Senior Budget
+SM00826,Sneha D.,Female,40,Mumbai,88.9,22,4,0.1,In-store,Thrifty High Earner
+SM00827,Arjun K.,Male,42,Madurai,46.1,51,9,5.2,Online,Regular Shopper
+SM00828,Kavya R.,Male,25,Kochi,17.8,74,5,1.3,Mixed,Student Splurger
+SM00829,Vikram Y.,Male,23,Mumbai,58.7,49,2,3.4,In-store,Regular Shopper
+SM00830,Ananya F.,Female,51,Hyderabad,99.9,23,1,0.8,Mixed,Thrifty High Earner
+SM00831,Rahul M.,Female,33,Madurai,50.4,60,3,0.7,Mixed,Regular Shopper
+SM00832,Priya T.,Female,41,Madurai,39.9,53,2,7.1,Online,Regular Shopper
+SM00833,Karthik A.,Female,43,Hyderabad,52.5,48,6,5.7,Mobile App,Regular Shopper
+SM00834,Lakshmi H.,Female,46,Coimbatore,75.9,54,5,1.6,Mixed,Regular Shopper
+SM00835,Nikhil O.,Male,52,Pune,47.0,49,4,1.3,Online,Regular Shopper
+SM00836,Pooja V.,Female,58,Coimbatore,51.2,46,4,10.1,Mobile App,Regular Shopper
+SM00837,Siddharth C.,Male,57,Kochi,95.0,27,2,0.1,Mixed,Thrifty High Earner
+SM00838,Divya J.,Male,35,Kochi,98.1,79,6,0.9,Mixed,Premium Family
+SM00839,Aditya Q.,Female,31,Kolkata,52.1,56,3,9.0,Mobile App,Regular Shopper
+SM00840,Nisha X.,Female,38,Hyderabad,55.9,60,8,1.1,Mixed,Regular Shopper
+SM00841,Aarav E.,Male,35,Pune,44.2,44,9,1.9,In-store,Regular Shopper
+SM00842,Diya L.,Male,26,Coimbatore,54.5,41,1,0.5,Online,Regular Shopper
+SM00843,Ishaan S.,Female,40,Madurai,31.0,20,1,0.1,Mixed,Senior Budget
+SM00844,Meera Z.,Male,18,Coimbatore,43.5,49,3,0.8,Mobile App,Regular Shopper
+SM00845,Rohan G.,Male,23,Hyderabad,45.9,51,6,5.6,Online,Regular Shopper
+SM00846,Sneha N.,Male,67,Delhi,92.0,23,2,0.2,Online,Thrifty High Earner
+SM00847,Arjun U.,Female,47,Bengaluru,,42,5,5.5,Mixed,Regular Shopper
+SM00848,Kavya B.,Female,21,Pune,18.5,76,8,1.2,Mobile App,Student Splurger
+SM00849,Vikram I.,Male,22,Kolkata,20.0,81,4,1.1,In-store,Student Splurger
+SM00850,Ananya P.,Male,35,Bengaluru,55.6,48,4,1.5,Online,Regular Shopper
+SM00851,Rahul W.,Male,67,Pune,22.2,19,1,3.3,Mixed,Senior Budget
+SM00852,Priya D.,Male,43,Delhi,65.2,40,1,2.0,Online,Regular Shopper
+SM00853,Karthik K.,Male,40,Pune,56.1,70,4,4.0,Mobile App,Regular Shopper
+SM00854,Lakshmi R.,Male,49,Kochi,94.3,18,2,0.4,Mobile App,Thrifty High Earner
+SM00855,Nikhil Y.,Female,31,Chennai,30.0,53,6,0.0,Mobile App,Regular Shopper
+SM00856,Pooja F.,Female,64,Pune,20.0,16,3,0.1,Mobile App,Senior Budget
+SM00857,Siddharth M.,Female,64,Pune,25.8,26,2,0.0,Mixed,Senior Budget
+SM00858,Divya T.,Male,30,Kolkata,37.2,45,4,0.2,Mixed,Regular Shopper
+SM00859,Aditya A.,Male,23,Kolkata,22.5,84,7,3.6,Mobile App,Student Splurger
+SM00860,Nisha H.,Male,31,Madurai,79.6,90,5,3.1,In-store,Premium Family
+SM00861,Aarav O.,Female,36,Chennai,93.2,76,6,3.8,Mixed,Premium Family
+SM00862,Diya V.,Female,75,Pune,19.8,11,1,1.5,Online,Senior Budget
+SM00863,Ishaan C.,Female,47,Kolkata,51.6,48,3,0.5,In-store,Regular Shopper
+SM00864,Meera J.,Male,36,Kochi,83.1,88,7,0.6,Mobile App,Premium Family
+SM00865,Rohan Q.,Male,75,Bengaluru,29.3,44,3,3.8,Online,Regular Shopper
+SM00866,Sneha X.,Female,31,Kolkata,54.1,31,2,1.5,Mobile App,Regular Shopper
+SM00867,Arjun E.,Male,51,Kochi,98.1,80,8,7.1,Online,Premium Family
+SM00868,Kavya L.,Female,56,Coimbatore,61.7,64,8,12.9,Online,Regular Shopper
+SM00869,Vikram S.,Male,27,Hyderabad,unknown,56,5,2.6,Mixed,Regular Shopper
+SM00870,Ananya Z.,Female,55,Hyderabad,28.5,34,2,5.4,Mixed,Senior Budget
+SM00871,Rahul G.,Female,33,Delhi,51.1,39,0,2.1,Mixed,Regular Shopper
+SM00872,Priya N.,Male,39,Mumbai,110.2,29,3,0.5,Mobile App,Thrifty High Earner
+SM00873,Karthik U.,Male,35,Mumbai,54.2,64,6,10.4,In-store,Regular Shopper
+SM00874,Lakshmi B.,Male,28,Chennai,44.3,32,4,1.7,Mobile App,Regular Shopper
+SM00875,Nikhil I.,Female,35,Pune,126.8,72,5,1.0,Mobile App,Premium Family
+SM00876,Pooja P.,Male,28,Bengaluru,80.6,68,6,1.0,In-store,Premium Family
+SM00877,Siddharth W.,Male,55,Chennai,12.3,20,1,2.2,Mixed,Senior Budget
+SM00878,Divya D.,Male,31,Kolkata,11.9,70,3,0.1,Mixed,Student Splurger
+SM00879,Aditya K.,Male,32,Hyderabad,19.5,85,9,3.3,Online,Student Splurger
+SM00880,Nisha R.,Female,49,Coimbatore,108.2,10,1,3.5,In-store,Thrifty High Earner
+SM00881,Aarav Y.,Male,34,Coimbatore,45.6,46,3,5.8,Mobile App,Regular Shopper
+SM00882,Diya F.,Male,64,Mumbai,15.8,25,2,2.3,Mobile App,Senior Budget
+SM00883,Ishaan M.,Female,45,Madurai,44.7,31,3,1.4,Mixed,Regular Shopper
+SM00884,Meera T.,Female,42,Madurai,95.8,30,4,8.4,Mixed,Thrifty High Earner
+SM00885,Rohan A.,Female,54,Chennai,unknown,8,3,1.0,Mixed,Thrifty High Earner
+SM00886,Sneha H.,Male,46,Kochi,27.5,12,1,10.0,Online,Senior Budget
+SM00887,Arjun O.,Male,34,Mumbai,87.6,25,2,3.7,In-store,Thrifty High Earner
+SM00888,Kavya V.,Male,33,Delhi,101.3,85,5,0.5,Mixed,Premium Family
+SM00889,Vikram C.,Male,34,Chennai,61.9,53,4,2.1,Online,Regular Shopper
+SM00890,Ananya J.,Male,64,Coimbatore,47.7,60,3,1.0,Mixed,Regular Shopper
+SM00891,Rahul Q.,Male,60,Chennai,15.5,14,1,12.2,Mixed,Senior Budget
+SM00892,Priya X.,Male,37,Hyderabad,49.4,47,2,2.0,Mixed,Regular Shopper
+SM00893,Karthik E.,Male,30,Hyderabad,54.0,31,3,0.2,Mixed,Regular Shopper
+SM00894,Lakshmi L.,Female,69,Madurai,43.7,42,1,3.0,Mixed,Regular Shopper
+SM00895,Nikhil S.,Female,32,Delhi,46.1,35,10,3.3,In-store,Regular Shopper
+SM00896,Pooja Z.,Female,35,Kochi,63.3,54,2,0.3,Mobile App,Regular Shopper
+SM00897,Siddharth G.,Female,18,Bengaluru,20.8,77,8,0.1,Mixed,Student Splurger
+SM00898,Divya N.,Female,47,Kolkata,20.8,15,3,0.6,Online,Senior Budget
+SM00899,Aditya U.,Male,30,Madurai,20.0,77,7,0.7,In-store,Student Splurger
+SM00900,Nisha B.,Female,32,Hyderabad,59.9,55,0,10.8,Mixed,Regular Shopper
+SM00901,Aarav I.,Male,60,Bengaluru,21.2,35,4,0.5,In-store,Senior Budget
+SM00902,Diya P.,Male,32,Coimbatore,25.8,80,9,7.0,In-store,Student Splurger
+SM00903,Ishaan W.,Male,66,Coimbatore,48.9,49,7,1.9,Online,Regular Shopper
+SM00904,Meera D.,Female,52,Coimbatore,111.8,30,3,3.4,Mobile App,Thrifty High Earner
+SM00905,Rohan K.,Male,63,Kochi,50.9,47,4,2.4,Mixed,Regular Shopper
+SM00906,Sneha R.,Female,42,Kolkata,56.9,49,1,5.2,Online,Regular Shopper
+SM00907,Arjun Y.,Male,29,Mumbai,15.8,66,7,2.2,Mixed,Student Splurger
+SM00908,Kavya F.,Female,44,Coimbatore,19.6,20,3,2.9,Online,Senior Budget
+SM00909,Vikram M.,Female,68,Madurai,14.1,14,0,0.6,In-store,Senior Budget
+SM00910,Ananya T.,Male,57,Madurai,12.1,17,0,2.8,Mobile App,Senior Budget
+SM00911,Rahul A.,Female,27,Mumbai,105.0,33,4,0.7,Mixed,Thrifty High Earner
+SM00912,Priya H.,Male,36,Mumbai,87.4,70,12,2.5,Online,Premium Family
+SM00913,Karthik O.,Male,58,Kochi,14.7,25,1,2.3,Mixed,Senior Budget
+SM00914,Lakshmi V.,Female,56,Pune,73.1,13,3,3.1,Mobile App,Thrifty High Earner
+SM00915,Nikhil C.,Male,41,Madurai,86.4,92,7,3.7,Mixed,Premium Family
+SM00916,Pooja J.,Female,39,Coimbatore,90.1,80,8,10.6,Online,Premium Family
+SM00917,Siddharth Q.,Male,30,Pune,71.7,41,5,2.3,Mixed,Regular Shopper
+SM00918,Divya X.,Male,74,Chennai,26.9,24,0,1.7,In-store,Senior Budget
+SM00919,Aditya E.,Female,61,Chennai,19.5,18,1,5.5,Mixed,Senior Budget
+SM00920,Nisha L.,Female,31,Mumbai,96.8,21,3,4.0,Online,Thrifty High Earner
+SM00921,Aarav S.,Female,46,Chennai,80.8,85,7,3.1,Mobile App,Premium Family
+SM00922,Diya Z.,Male,39,Delhi,26.2,80,9,0.4,Mobile App,Student Splurger
+SM00923,Ishaan G.,Male,68,Chennai,20.6,31,5,6.9,Mobile App,Senior Budget
+SM00924,Meera N.,Female,36,Mumbai,29.3,72,5,0.3,Online,Student Splurger
+SM00925,Rohan U.,Female,22,Chennai,22.1,87,7,0.2,Mobile App,Student Splurger
+SM00926,Sneha B.,Male,49,Kochi,57.1,52,2,0.4,Online,Regular Shopper
+SM00927,Arjun I.,Female,62,Bengaluru,118.3,40,4,6.7,Mobile App,Thrifty High Earner
+SM00928,Kavya P.,Male,35,Coimbatore,50.0,54,5,7.0,Mobile App,Regular Shopper
+SM00929,Vikram W.,Female,48,Chennai,109.3,23,4,1.2,Mobile App,Thrifty High Earner
+SM00930,Ananya D.,Male,34,Madurai,20.2,89,6,1.5,Online,Student Splurger
+SM00931,Rahul K.,Female,55,Hyderabad,14.1,11,1,4.6,In-store,Senior Budget
+SM00932,Priya R.,Male,75,Chennai,19.3,21,1,2.6,Mobile App,Senior Budget
+SM00933,Karthik Y.,Female,60,Mumbai,27.4,5,3,1.1,In-store,Senior Budget
+SM00934,Lakshmi F.,Male,30,Coimbatore,106.2,37,2,6.8,Online,Thrifty High Earner
+SM00935,Nikhil M.,Male,41,Hyderabad,38.7,38,3,6.1,Online,Regular Shopper
+SM00936,Pooja T.,Female,71,Coimbatore,24.7,28,2,0.7,Mixed,Senior Budget
+SM00937,Siddharth A.,Female,29,Delhi,85.9,26,4,1.6,In-store,Thrifty High Earner
+SM00938,Divya H.,Male,39,Kolkata,66.6,60,9,2.1,In-store,Regular Shopper
+SM00939,Aditya O.,Female,60,Madurai,17.1,21,3,7.0,Mobile App,Senior Budget
+SM00940,Nisha V.,Female,58,Kolkata,55.7,39,3,2.6,Mixed,Regular Shopper
+SM00941,Aarav C.,Female,18,Pune,65.7,14,2,2.6,Mobile App,Regular Shopper
+SM00942,Diya J.,Female,55,Coimbatore,60.0,49,3,1.2,Online,Regular Shopper
+SM00943,Ishaan Q.,Male,48,Pune,39.0,44,4,6.1,In-store,Regular Shopper
+SM00944,Meera X.,Male,35,Bengaluru,16.0,19,2,2.4,Mobile App,Senior Budget
+SM00945,Rohan E.,Male,60,Hyderabad,21.0,18,4,0.1,Online,Senior Budget
+SM00946,Sneha L.,Female,35,Kochi,97.9,21,4,1.5,In-store,Thrifty High Earner
+SM00947,Arjun S.,Male,34,Kolkata,22.5,73,7,2.4,Online,Student Splurger
+SM00948,Kavya Z.,Female,26,Delhi,74.8,9,3,6.1,Mobile App,Thrifty High Earner
+SM00949,Vikram G.,Female,41,Coimbatore,46.5,51,5,2.7,Online,Regular Shopper
+SM00950,Ananya N.,Male,50,Madurai,56.3,57,2,2.8,Mobile App,Regular Shopper
+SM00951,Rahul U.,Female,42,Coimbatore,84.8,13,3,0.5,Mixed,Thrifty High Earner
+SM00952,Priya B.,Male,28,Bengaluru,89.1,86,4,1.4,In-store,Premium Family
+SM00953,Karthik I.,Male,36,Chennai,91.7,70,2,4.9,Mobile App,Premium Family
+SM00954,Lakshmi P.,Female,33,Bengaluru,91.1,26,2,0.8,Online,Thrifty High Earner
+SM00955,Nikhil W.,Female,37,Pune,69.4,45,4,2.4,Mixed,Regular Shopper
+SM00956,Pooja D.,Female,32,Kolkata,58.5,47,4,3.4,Online,Regular Shopper
+SM00957,Siddharth K.,Male,19,Bengaluru,34.5,90,7,1.5,Mixed,Student Splurger
+SM00958,Divya R.,Male,41,Kolkata,93.1,19,2,0.2,Mixed,Thrifty High Earner
+SM00959,Aditya Y.,Female,59,Delhi,45.3,38,2,1.9,In-store,Regular Shopper
+SM00960,Nisha F.,Male,25,Chennai,92.8,80,8,3.4,Mixed,Premium Family
+SM00961,Aarav M.,Female,28,Mumbai,47.6,42,5,2.1,Mixed,Regular Shopper
+SM00962,Diya T.,Male,23,Hyderabad,59.3,50,4,0.0,Mixed,Regular Shopper
+SM00963,Ishaan A.,Female,30,Delhi,100.9,66,1,1.5,Mobile App,Premium Family
+SM00964,Meera H.,Male,47,Coimbatore,37.2,--,4,3.2,Mixed,Regular Shopper
+SM00965,Rohan O.,Female,35,Hyderabad,93.4,83,7,2.4,In-store,Premium Family
+SM00966,Sneha V.,Female,66,Hyderabad,34.2,13,2,1.5,Online,Senior Budget
+SM00967,Arjun C.,Female,65,Chennai,26.9,16,1,9.5,Mixed,Senior Budget
+SM00968,Kavya J.,Male,56,Kochi,28.0,40,0,1.4,Mobile App,Senior Budget
+SM00969,Vikram Q.,Female,53,Hyderabad,52.2,63,1,1.2,Mobile App,Regular Shopper
+SM00970,Ananya X.,Male,51,Coimbatore,105.4,60,7,2.6,In-store,Premium Family
+SM00971,Rahul E.,Female,43,Kochi,48.4,52,5,7.9,Mixed,Regular Shopper
+SM00972,Priya L.,Female,52,Mumbai,74.4,18,4,3.4,Online,Thrifty High Earner
+SM00973,Karthik S.,Male,39,Coimbatore,80.9,33,5,2.5,Mixed,Thrifty High Earner
+SM00974,Lakshmi Z.,Male,63,Madurai,22.9,19,0,1.2,Mixed,Senior Budget
+SM00975,Nikhil G.,Male,22,Mumbai,91.6,80,9,0.8,Mixed,Premium Family
+SM00976,Pooja N.,Female,61,Bengaluru,37.8,43,5,6.4,Mixed,Regular Shopper
+SM00977,Siddharth U.,Female,31,Kochi,80.9,80,7,2.7,Mobile App,Premium Family
+SM00978,Divya B.,Male,35,Bengaluru,38.7,46,6,2.5,Online,Regular Shopper
+SM00979,Aditya I.,Female,69,Madurai,21.7,24,3,0.3,In-store,Senior Budget
+SM00980,Nisha P.,Female,36,Bengaluru,91.2,88,5,1.4,In-store,Premium Family
+SM00981,Aarav W.,Male,32,Coimbatore,unknown,25,2,0.7,Online,Regular Shopper
+SM00982,Diya D.,Male,18,Kochi,21.7,89,9,1.0,Mobile App,Student Splurger
+SM00983,Ishaan K.,Male,54,Delhi,42.2,52,3,0.1,In-store,Regular Shopper
+SM00984,Meera R.,Female,66,Kochi,18.8,--,0,2.9,Online,Senior Budget
+SM00985,Rohan Y.,Male,60,Mumbai,23.7,9,4,0.4,Mobile App,Senior Budget
+SM00986,Sneha F.,Male,44,Coimbatore,69.6,51,2,5.7,Mixed,Regular Shopper
+SM00987,Arjun M.,Female,65,Bengaluru,20.2,14,4,0.9,Mixed,Senior Budget
+SM00988,Kavya T.,Male,31,Delhi,29.6,81,7,0.6,Online,Student Splurger
+SM00989,Vikram A.,Female,45,Bengaluru,27.9,28,2,1.8,In-store,Senior Budget
+SM00990,Ananya H.,Male,69,Delhi,59.6,60,7,6.0,Mixed,Regular Shopper
+SM00991,Rahul O.,Male,18,Bengaluru,21.3,80,11,1.5,Online,Student Splurger
+SM00992,Priya V.,Female,75,Mumbai,14.5,15,0,0.4,Online,Senior Budget
+SM00993,Karthik C.,Female,48,Hyderabad,56.0,41,6,4.7,Mixed,Regular Shopper
+SM00994,Lakshmi J.,Female,18,Kolkata,12.9,17,5,0.9,Mixed,Senior Budget
+SM00995,Nikhil Q.,Male,20,Coimbatore,62.2,48,2,2.9,In-store,Regular Shopper
+SM00996,Pooja X.,Male,52,Mumbai,27.2,18,3,5.1,Mobile App,Senior Budget
+SM00997,Siddharth E.,Male,45,Delhi,104.2,18,2,0.8,In-store,Thrifty High Earner
+SM00998,Divya L.,Female,28,Hyderabad,93.2,26,2,5.0,Online,Thrifty High Earner
+SM00999,Aditya S.,Female,31,Chennai,18.9,70,6,0.9,Mobile App,Student Splurger
+SM01000,Nisha Z.,Female,18,Kolkata,41.8,56,3,11.2,In-store,Regular Shopper
+SM01001,Aarav G.,Male,23,Chennai,25.9,87,10,1.9,In-store,Student Splurger
+SM01002,Diya N.,Male,26,Kochi,45.4,46,4,8.6,In-store,Regular Shopper
+SM01003,Ishaan U.,Male,28,Madurai,34.5,81,10,1.2,In-store,Student Splurger
+SM01004,Meera B.,Female,45,Delhi,61.1,60,1,0.4,In-store,Regular Shopper
+SM01005,Rohan I.,Male,39,Kochi,8.0,26,1,0.4,Mobile App,Senior Budget
+SM01006,Sneha P.,Female,53,Bengaluru,52.9,52,5,1.4,Online,Regular Shopper
+SM01007,Arjun W.,Male,31,Kochi,83.6,88,6,2.9,In-store,Premium Family
+SM01008,Kavya D.,Male,68,Chennai,12.1,31,2,6.2,In-store,Senior Budget
+SM01009,Vikram K.,Male,18,Coimbatore,61.6,36,2,0.5,Online,Regular Shopper
+SM01010,Ananya R.,Female,69,Kolkata,15.8,16,1,4.3,Mobile App,Senior Budget
+SM01011,Rahul Y.,Female,71,Mumbai,23.8,19,2,0.6,Mobile App,Senior Budget
+SM01012,Priya F.,Male,35,Madurai,30.9,54,8,3.9,In-store,Regular Shopper
+SM01013,Karthik M.,Male,22,Madurai,56.1,43,2,1.6,Mixed,Regular Shopper
+SM01014,Lakshmi T.,Female,75,Kolkata,12.7,2,0,0.6,Mixed,Senior Budget
+SM01015,Nikhil A.,Male,43,Kochi,35.1,47,4,0.5,Online,Regular Shopper
+SM01016,Pooja H.,Female,63,Bengaluru,29.7,8,3,2.4,In-store,Senior Budget
+SM01017,Siddharth O.,Male,69,Coimbatore,20.4,16,1,2.2,Online,Senior Budget
+SM01018,Divya V.,Male,61,Kochi,22.1,23,1,7.5,Mixed,Senior Budget
+SM01019,Aditya C.,Female,32,Kolkata,68.0,73,11,6.7,Mixed,Premium Family
+SM01020,Nisha J.,Male,32,Chennai,91.3,20,1,3.0,Online,Thrifty High Earner
+SM01021,Aarav Q.,Male,66,Delhi,72.9,59,8,0.9,Mixed,Regular Shopper
+SM01022,Diya X.,Female,58,Madurai,58.2,45,4,2.1,Online,Regular Shopper
+SM01023,Ishaan E.,Male,72,Kochi,29.4,28,1,2.3,Mixed,Senior Budget
+SM01024,Meera L.,Female,31,Kochi,89.8,77,4,2.7,Mixed,Premium Family
+SM01025,Rohan S.,Female,24,Chennai,46.2,55,3,2.6,Mixed,Regular Shopper
+SM01026,Sneha Z.,Male,20,Chennai,17.0,80,8,0.9,Mobile App,Student Splurger
+SM01027,Arjun G.,Male,28,Pune,22.7,80,6,1.9,Mixed,Student Splurger
+SM01028,Kavya N.,Male,27,Bengaluru,48.3,58,6,1.0,Mobile App,Regular Shopper
+SM01029,Vikram U.,Male,44,Coimbatore,48.4,48,4,1.2,Mobile App,Regular Shopper
+SM01030,Ananya B.,Female,21,Coimbatore,57.8,39,0,2.0,In-store,Regular Shopper
+SM01031,Rahul I.,Female,31,Hyderabad,88.6,69,6,4.3,Mobile App,Premium Family
+SM01032,Priya P.,Male,50,Hyderabad,97.3,17,1,2.7,Mobile App,Thrifty High Earner
+SM01033,Karthik W.,Female,42,Kochi,66.1,46,6,4.1,Mobile App,Regular Shopper
+SM01034,Lakshmi D.,Female,56,Kochi,87.3,23,3,2.4,In-store,Thrifty High Earner
+SM01035,Nikhil K.,Male,26,Coimbatore,24.6,82,8,4.6,Mobile App,Student Splurger
+SM01036,Pooja R.,Female,32,Madurai,53.3,56,8,1.8,Mixed,Regular Shopper
+SM01037,Siddharth Y.,Female,48,Kochi,90.5,20,2,7.6,Online,Thrifty High Earner
+SM01038,Divya F.,Male,18,Delhi,39.4,48,3,1.7,Mixed,Regular Shopper
+SM01039,Aditya M.,Female,56,Chennai,23.7,14,1,1.2,Mobile App,Senior Budget
+SM01040,Nisha T.,Female,20,Kochi,14.0,78,7,9.8,Mobile App,Student Splurger
+SM01041,Aarav A.,Female,37,Hyderabad,40.6,53,6,0.1,Mixed,Regular Shopper
+SM01042,Diya H.,Male,51,Pune,42.4,50,3,1.1,Online,Regular Shopper
+SM01043,Ishaan O.,Female,42,Pune,103.1,1,1,6.3,Mixed,Thrifty High Earner
+SM01044,Meera V.,Male,66,Bengaluru,26.6,5,1,0.9,Online,Senior Budget
+SM01045,Rohan C.,Female,18,Delhi,103.1,81,8,5.0,Mixed,Premium Family
+SM01046,Sneha J.,Male,44,Kochi,106.7,77,9,3.2,Mobile App,Premium Family
+SM01047,Arjun Q.,Male,20,Madurai,unknown,69,5,1.4,In-store,Student Splurger
+SM01048,Kavya X.,Male,54,Hyderabad,92.0,29,3,1.4,Online,Thrifty High Earner
+SM01049,Vikram E.,Female,34,Kolkata,57.6,46,4,5.7,In-store,Regular Shopper
+SM01050,Ananya L.,Female,38,Bengaluru,87.2,21,1,0.8,Mobile App,Thrifty High Earner
+SM01051,Rahul S.,Male,59,Coimbatore,92.8,34,3,2.2,Online,Thrifty High Earner
+SM01052,Priya Z.,Female,47,Bengaluru,81.2,5,2,5.1,In-store,Thrifty High Earner
+SM01053,Karthik G.,Female,49,Madurai,29.0,38,2,0.1,Mobile App,Senior Budget
+SM01054,Lakshmi N.,Male,35,Madurai,55.3,51,4,0.3,Mobile App,Regular Shopper
+SM01055,Nikhil U.,Male,18,Hyderabad,54.7,57,4,0.6,Online,Regular Shopper
+SM01056,Pooja B.,Female,40,Kochi,74.8,19,3,0.5,Online,Thrifty High Earner
+SM01057,Siddharth I.,Male,29,Kolkata,48.8,53,1,2.6,In-store,Regular Shopper
+SM01058,Divya P.,Female,40,Kochi,48.4,45,6,1.3,Online,Regular Shopper
+SM01059,Aditya W.,Male,48,Coimbatore,103.2,27,2,0.6,Mobile App,Thrifty High Earner
+SM01060,Nisha D.,Female,73,Chennai,24.4,11,3,6.9,Online,Senior Budget
+SM01061,Aarav K.,Male,67,Delhi,29.4,35,2,4.3,In-store,Senior Budget
+SM01062,Diya R.,Male,24,Pune,77.4,72,6,4.9,In-store,Premium Family
+SM01063,Ishaan Y.,Male,66,Delhi,14.4,15,2,2.7,In-store,Senior Budget
+SM01064,Meera F.,Male,69,Kolkata,23.8,14,2,10.5,Mixed,Senior Budget
+SM01065,Rohan M.,Female,61,Mumbai,33.0,19,2,0.1,Online,Senior Budget
+SM01066,Sneha T.,Female,40,Kochi,27.5,26,3,0.1,Online,Senior Budget
+SM01067,Arjun A.,Male,32,Coimbatore,108.9,13,1,4.7,In-store,Thrifty High Earner
+SM01068,Kavya H.,Male,51,Coimbatore,28.2,22,5,3.0,Mixed,Senior Budget
+SM01069,Vikram O.,Female,50,Kolkata,22.1,15,3,3.6,Online,Senior Budget
+SM01070,Ananya V.,Female,55,Hyderabad,20.9,19,2,4.2,In-store,Senior Budget
+SM01071,Rahul C.,Female,38,Delhi,54.5,76,5,1.8,Mixed,Regular Shopper
+SM01072,Priya J.,Female,48,Kochi,95.6,29,1,2.7,Online,Thrifty High Earner
+SM01073,Karthik Q.,Male,33,Delhi,61.0,46,4,0.7,Online,Regular Shopper
+SM01074,Lakshmi X.,Male,48,Delhi,15.9,22,3,0.0,Mixed,Senior Budget
+SM01075,Nikhil E.,Female,58,Madurai,25.3,35,7,11.9,Online,Senior Budget
+SM01076,Pooja L.,Female,59,Pune,23.2,29,4,0.9,Online,Senior Budget
+SM01077,Siddharth S.,Female,33,Chennai,38.2,77,2,0.7,Mobile App,Student Splurger
+SM01078,Divya Z.,Female,32,Delhi,62.0,50,2,4.2,Mixed,Regular Shopper
+SM01079,Aditya G.,Female,24,Kochi,46.5,51,1,5.4,Mixed,Regular Shopper
+SM01080,Nisha N.,Male,55,Bengaluru,67.9,64,2,3.4,Mobile App,Regular Shopper
+SM01081,Aarav U.,Male,31,Madurai,42.6,49,1,2.9,Mobile App,Regular Shopper
+SM01082,Diya B.,Male,35,Mumbai,50.0,49,6,6.0,Online,Regular Shopper
+SM01083,Ishaan I.,Male,31,Delhi,53.9,52,5,2.4,Online,Regular Shopper
+SM01084,Meera P.,Female,52,Kolkata,8.0,15,2,4.0,In-store,Senior Budget
+SM01085,Rohan W.,Male,55,Mumbai,91.1,N/A,3,1.6,In-store,Thrifty High Earner
+SM01086,Sneha D.,Female,35,Mumbai,104.6,24,1,4.9,Online,Thrifty High Earner
+SM01087,Arjun K.,Female,62,Kochi,18.9,9,0,1.0,In-store,Senior Budget
+SM01088,Kavya R.,Female,53,Bengaluru,50.1,42,7,15.4,Mobile App,Regular Shopper
+SM01089,Vikram Y.,Male,70,Madurai,15.5,25,1,0.2,Online,Senior Budget
+SM01090,Ananya F.,Female,62,Madurai,39.1,35,3,4.5,In-store,Regular Shopper
+SM01091,Rahul M.,Male,67,Madurai,17.9,24,2,0.4,Mixed,Senior Budget
+SM01092,Priya T.,Female,56,Kochi,25.1,10,2,2.6,Online,Senior Budget
+SM01093,Karthik A.,Male,33,Coimbatore,94.7,71,5,0.4,In-store,Premium Family
+SM01094,Lakshmi H.,Female,43,Hyderabad,35.0,44,1,17.0,Mobile App,Regular Shopper
+SM01095,Nikhil O.,Female,62,Kochi,18.3,19,2,9.0,Mixed,Senior Budget
+SM01096,Pooja V.,Male,23,Coimbatore,33.7,32,0,6.1,Mobile App,Regular Shopper
+SM01097,Siddharth C.,Female,52,Madurai,79.2,38,2,4.8,In-store,Thrifty High Earner
+SM01098,Divya J.,Female,74,Kochi,24.1,13,1,3.7,In-store,Senior Budget
+SM01099,Aditya Q.,Male,69,Pune,23.8,23,3,2.9,Mixed,Senior Budget
+SM01100,Nisha X.,Male,47,Hyderabad,unknown,14,4,0.3,Mixed,Thrifty High Earner
+SM01101,Aarav E.,Female,50,Hyderabad,23.7,20,3,3.3,Mixed,Senior Budget
+SM01102,Diya L.,Male,33,Chennai,39.2,49,6,0.7,Mobile App,Regular Shopper
+SM01103,Ishaan S.,Female,46,Kolkata,59.4,60,8,0.2,Online,Regular Shopper
+SM01104,Meera Z.,Male,71,Madurai,25.2,27,2,0.6,In-store,Senior Budget
+SM01105,Rohan G.,Male,22,Delhi,20.2,94,9,7.4,Mixed,Student Splurger
+SM01106,Sneha N.,Male,40,Coimbatore,63.6,38,2,5.2,Mobile App,Regular Shopper
+SM01107,Arjun U.,Male,30,Chennai,58.2,35,0,0.2,Online,Regular Shopper
+SM01108,Kavya B.,Female,55,Mumbai,87.0,27,4,0.1,Online,Thrifty High Earner
+SM01109,Vikram I.,Female,47,Madurai,18.1,19,1,0.5,Mobile App,Senior Budget
+SM01110,Ananya P.,Male,54,Mumbai,50.2,50,3,2.4,Online,Regular Shopper
+SM01111,Rahul W.,Female,21,Bengaluru,28.1,N/A,9,3.1,Online,Student Splurger
+SM01112,Priya D.,Male,75,Pune,27.6,39,4,4.1,In-store,Senior Budget
+SM01113,Karthik K.,Male,36,Chennai,46.7,41,5,4.0,Mobile App,Regular Shopper
+SM01114,Lakshmi R.,Male,50,Pune,19.3,26,3,4.1,In-store,Senior Budget
+SM01115,Nikhil Y.,Male,18,Pune,65.0,47,2,0.1,In-store,Regular Shopper
+SM01116,Pooja F.,Female,48,Bengaluru,42.0,33,3,0.4,Mixed,Regular Shopper
+SM01117,Siddharth M.,Female,34,Kolkata,78.4,56,5,2.6,In-store,Regular Shopper
+SM01118,Divya T.,Female,53,Chennai,99.9,27,3,5.2,Online,Thrifty High Earner
+SM01119,Aditya A.,Female,61,Madurai,48.6,57,5,0.3,Mixed,Regular Shopper
+SM01120,Nisha H.,Female,48,Pune,49.9,35,8,8.6,Mixed,Regular Shopper
+SM01121,Aarav O.,Male,39,Pune,106.3,32,3,1.9,Online,Thrifty High Earner
+SM01122,Diya V.,Female,34,Hyderabad,92.0,22,4,6.1,Online,Thrifty High Earner
+SM01123,Ishaan C.,Male,50,Kolkata,47.4,49,2,5.8,In-store,Regular Shopper
+SM01124,Meera J.,Female,29,Pune,82.6,10,2,2.7,Online,Thrifty High Earner
+SM01125,Rohan Q.,Female,39,Kochi,15.1,67,9,1.0,Online,Student Splurger
+SM01126,Sneha X.,Male,41,Mumbai,96.3,86,14,0.5,In-store,Premium Family
+SM01127,Arjun E.,Female,43,Bengaluru,28.8,4,2,7.5,Online,Senior Budget
+SM01128,Kavya L.,Male,26,Chennai,25.2,96,7,0.1,Mobile App,Student Splurger
+SM01129,Vikram S.,Female,44,Kochi,86.5,18,5,1.0,Mobile App,Thrifty High Earner
+SM01130,Ananya Z.,Male,57,Hyderabad,19.7,10,4,10.2,Mobile App,Senior Budget
+SM01131,Rahul G.,Male,38,Kolkata,67.1,59,5,2.2,Online,Regular Shopper
+SM01132,Priya N.,Male,70,Hyderabad,22.1,32,2,0.4,Mixed,Senior Budget
+SM01133,Karthik U.,Female,35,Bengaluru,68.3,52,4,0.6,In-store,Regular Shopper
+SM01134,Lakshmi B.,Female,46,Bengaluru,50.2,54,3,1.1,Mobile App,Regular Shopper
+SM01135,Nikhil I.,Female,26,Pune,62.6,45,5,0.5,Online,Regular Shopper
+SM01136,Pooja P.,Female,57,Chennai,36.7,55,3,2.7,Mobile App,Regular Shopper
+SM01137,Siddharth W.,Female,75,Bengaluru,23.0,16,0,0.4,Mixed,Senior Budget
+SM01138,Divya D.,Female,61,Kolkata,29.1,20,0,5.9,Online,Senior Budget
+SM01139,Aditya K.,Female,33,Mumbai,115.0,22,3,0.4,Online,Thrifty High Earner
+SM01140,Nisha R.,Male,58,Pune,16.4,24,6,0.5,Online,Senior Budget
+SM01141,Aarav Y.,Male,44,Kochi,51.4,37,4,0.7,Mixed,Regular Shopper
+SM01142,Diya F.,Female,41,Hyderabad,26.9,24,0,3.2,In-store,Senior Budget
+SM01143,Ishaan M.,Male,48,Pune,26.3,16,3,0.5,Mixed,Senior Budget
+SM01144,Meera T.,Female,47,Coimbatore,14.7,30,2,2.6,Mixed,Senior Budget
+SM01145,Rohan A.,Female,51,Kolkata,19.2,14,0,1.7,Mobile App,Senior Budget
+SM01146,Sneha H.,Male,68,Pune,66.8,43,7,3.0,In-store,Regular Shopper
+SM01147,Arjun O.,Male,75,Pune,19.8,7,0,0.8,Online,Senior Budget
+SM01148,Kavya V.,Female,56,Kochi,39.5,67,8,2.3,Mobile App,Regular Shopper
+SM01149,Vikram C.,Female,71,Coimbatore,92.2,24,1,0.5,Mixed,Thrifty High Earner
+SM01150,Ananya J.,Male,70,Kochi,25.0,13,3,2.7,Online,Senior Budget
+SM01151,Rahul Q.,Female,46,Bengaluru,40.2,38,5,0.5,Online,Regular Shopper
+SM01152,Priya X.,Female,44,Pune,71.2,74,6,6.6,Online,Premium Family
+SM01153,Karthik E.,Female,51,Kolkata,23.8,17,0,4.2,Mixed,Senior Budget
+SM01154,Lakshmi L.,Male,53,Coimbatore,13.8,20,3,1.6,Mixed,Senior Budget
+SM01155,Nikhil S.,Male,18,Mumbai,28.8,92,14,3.7,Online,Student Splurger
+SM01156,Pooja Z.,Female,23,Chennai,19.4,72,7,6.6,In-store,Student Splurger
+SM01157,Siddharth G.,Female,47,Delhi,55.3,36,5,8.2,In-store,Regular Shopper
+SM01158,Divya N.,Male,62,Delhi,20.7,24,2,1.3,Online,Senior Budget
+SM01159,Aditya U.,Female,57,Kolkata,33.4,46,7,1.4,Mixed,Regular Shopper
+SM01160,Nisha B.,Male,43,Kochi,79.7,35,2,1.5,Mobile App,Thrifty High Earner
+SM01161,Aarav I.,Male,50,Hyderabad,47.4,61,6,0.7,Online,Regular Shopper
+SM01162,Diya P.,Male,31,Delhi,60.4,48,3,8.1,Mobile App,Regular Shopper
+SM01163,Ishaan W.,Female,26,Mumbai,101.6,85,5,0.4,Mobile App,Premium Family
+SM01164,Meera D.,Male,74,Hyderabad,33.3,12,2,1.6,In-store,Senior Budget
+SM01165,Rohan K.,Male,55,Kolkata,88.1,18,1,1.1,Online,Thrifty High Earner
+SM01166,Sneha R.,Female,18,Delhi,23.4,78,9,1.5,Mixed,Student Splurger
+SM01167,Arjun Y.,Female,75,Delhi,22.5,23,4,1.0,Mixed,Senior Budget
+SM01168,Kavya F.,Female,60,Mumbai,94.3,14,3,2.7,Mobile App,Thrifty High Earner
+SM01169,Vikram M.,Male,48,Kolkata,64.7,36,3,0.2,Mixed,Regular Shopper
+SM01170,Ananya T.,Female,33,Madurai,45.7,39,5,0.5,Mobile App,Regular Shopper
+SM01171,Rahul A.,Male,18,Madurai,20.6,84,4,6.3,Online,Student Splurger
+SM01172,Priya H.,Female,32,Pune,40.5,48,4,2.5,In-store,Regular Shopper
+SM01173,Karthik O.,Female,44,Mumbai,33.6,30,1,1.8,In-store,Senior Budget
+SM01174,Lakshmi V.,Male,52,Coimbatore,unknown,27,4,0.7,In-store,Senior Budget
+SM01175,Nikhil C.,Female,45,Coimbatore,104.4,32,3,2.1,Online,Thrifty High Earner
+SM01176,Pooja J.,Male,46,Bengaluru,48.2,45,5,12.5,Mixed,Regular Shopper
+SM01177,Siddharth Q.,Male,50,Coimbatore,32.4,53,1,2.9,Mixed,Regular Shopper
+SM01178,Divya X.,Male,63,Kolkata,15.8,16,3,2.3,In-store,Senior Budget
+SM01179,Aditya E.,Male,24,Pune,34.7,28,5,5.1,Mixed,Regular Shopper
+SM01180,Nisha L.,Male,43,Kochi,74.3,10,0,4.1,Mixed,Thrifty High Earner
+SM01181,Aarav S.,Male,37,Madurai,119.3,16,4,3.2,Mixed,Thrifty High Earner
+SM01182,Diya Z.,Male,46,Chennai,29.4,16,1,2.1,In-store,Senior Budget
+SM01183,Ishaan G.,Female,27,Bengaluru,48.6,53,7,5.3,Mobile App,Regular Shopper
+SM01184,Meera N.,Male,54,Coimbatore,14.2,22,4,0.7,Mixed,Senior Budget
+SM01185,Rohan U.,Male,65,Kolkata,25.4,16,2,0.4,In-store,Senior Budget
+SM01186,Sneha B.,Male,57,Pune,20.4,46,7,16.2,Mobile App,Senior Budget
+SM01187,Arjun I.,Male,40,Bengaluru,110.0,31,2,5.3,Mobile App,Thrifty High Earner
+SM01188,Kavya P.,Male,35,Kochi,24.7,67,10,2.6,Online,Student Splurger
+SM01189,Vikram W.,Male,27,Bengaluru,54.4,45,5,4.9,Mobile App,Regular Shopper
+SM01190,Ananya D.,Male,60,Chennai,84.6,23,1,12.9,Mobile App,Thrifty High Earner
+SM01191,Rahul K.,Male,30,Kolkata,83.3,N/A,1,1.0,Mixed,Thrifty High Earner
+SM01192,Priya R.,Female,75,Pune,22.3,8,2,0.3,Mobile App,Senior Budget
+SM01193,Karthik Y.,Male,46,Mumbai,40.0,58,4,0.6,Online,Regular Shopper
+SM01194,Lakshmi F.,Female,33,Kochi,28.9,84,4,0.6,In-store,Student Splurger
+SM01195,Nikhil M.,Female,57,Bengaluru,15.7,13,3,8.1,In-store,Senior Budget
+SM01196,Pooja T.,Male,53,Kolkata,25.5,19,0,0.6,Online,Senior Budget
+SM01197,Siddharth A.,Female,34,Kolkata,102.8,91,5,10.5,Mobile App,Premium Family
+SM01198,Divya H.,Female,53,Chennai,114.0,20,3,0.6,Mixed,Thrifty High Earner
+SM01199,Aditya O.,Male,44,Bengaluru,89.9,71,10,1.4,Mobile App,Premium Family
+SM01200,Nisha V.,Female,62,Madurai,29.1,44,8,0.6,Mobile App,Senior Budget
+SM01201,Aarav C.,Male,29,Chennai,65.5,53,7,8.0,In-store,Regular Shopper
+SM01202,Diya J.,Female,51,Chennai,45.1,55,4,0.8,Mobile App,Regular Shopper
+SM01203,Ishaan Q.,Female,40,Delhi,71.0,24,3,0.2,In-store,Thrifty High Earner
+SM01204,Meera X.,Male,62,Hyderabad,23.3,25,3,1.9,Online,Senior Budget
+SM01205,Rohan E.,Female,26,Pune,84.2,85,3,2.0,Online,Premium Family
+SM01206,Sneha L.,Male,60,Kochi,27.1,25,1,6.3,Mixed,Senior Budget
+SM01207,Arjun S.,Female,64,Kochi,31.3,17,2,9.5,In-store,Senior Budget
+SM01208,Kavya Z.,Female,59,Pune,26.5,23,4,0.0,In-store,Senior Budget
+SM01209,Vikram G.,Female,48,Pune,24.4,3,3,6.3,Mixed,Senior Budget
+SM01210,Ananya N.,Female,40,Bengaluru,48.4,50,3,0.2,Mixed,Regular Shopper
+SM01211,Rahul U.,Female,27,Bengaluru,106.5,77,9,3.6,In-store,Premium Family
+SM01212,Priya B.,Female,73,Hyderabad,25.3,24,1,0.2,Mixed,Senior Budget
+SM01213,Karthik I.,Female,56,Hyderabad,24.6,14,1,1.3,Online,Senior Budget
+SM01214,Lakshmi P.,Female,75,Delhi,26.3,19,4,6.4,In-store,Senior Budget
+SM01215,Nikhil W.,Female,69,Hyderabad,19.0,14,1,16.0,In-store,Senior Budget
+SM01216,Pooja D.,Female,27,Coimbatore,85.8,93,4,7.9,In-store,Premium Family
+SM01217,Siddharth K.,Female,44,Kochi,96.7,73,9,0.9,In-store,Premium Family
+SM01218,Divya R.,Male,57,Kolkata,21.6,15,0,1.3,In-store,Senior Budget
+SM01219,Aditya Y.,Female,31,Chennai,55.4,50,5,1.0,Mobile App,Regular Shopper
+SM01220,Nisha F.,Male,68,Chennai,12.3,37,3,12.6,Mixed,Senior Budget
+SM01221,Aarav M.,Female,63,Mumbai,80.5,4,0,11.1,In-store,Thrifty High Earner
+SM01222,Diya T.,Female,29,Bengaluru,34.5,74,1,0.6,Online,Student Splurger
+SM01223,Ishaan A.,Female,28,Coimbatore,48.4,59,8,10.1,Mobile App,Regular Shopper
+SM01224,Meera H.,Female,37,Kolkata,35.6,22,2,0.8,Mixed,Regular Shopper
+SM01225,Rohan O.,Male,35,Bengaluru,109.5,33,3,0.6,Mixed,Thrifty High Earner
+SM01226,Sneha V.,Male,18,Coimbatore,51.7,41,1,1.0,Online,Regular Shopper
+SM01227,Arjun C.,Female,51,Kochi,49.4,46,4,2.1,Online,Regular Shopper
+SM01228,Kavya J.,Female,61,Kolkata,63.9,44,2,0.7,Mobile App,Regular Shopper
+SM01229,Vikram Q.,Male,18,Bengaluru,42.5,47,5,1.1,Online,Regular Shopper
+SM01230,Ananya X.,Male,40,Hyderabad,,48,6,1.5,In-store,Regular Shopper
+SM01231,Rahul E.,Male,39,Coimbatore,80.1,41,4,2.9,Mixed,Thrifty High Earner
+SM01232,Priya L.,Male,30,Coimbatore,32.0,32,3,2.4,Mobile App,Regular Shopper
+SM01233,Karthik S.,Female,20,Bengaluru,22.4,83,7,6.9,In-store,Student Splurger
+SM01234,Lakshmi Z.,Female,58,Chennai,18.3,20,9,12.0,Mobile App,Senior Budget
+SM01235,Nikhil G.,Female,33,Bengaluru,40.7,50,5,3.0,Mixed,Regular Shopper
+SM01236,Pooja N.,Male,42,Bengaluru,23.4,11,1,3.6,Mixed,Senior Budget
+SM01237,Siddharth U.,Male,62,Mumbai,58.4,62,4,1.2,Mobile App,Regular Shopper
+SM01238,Divya B.,Female,59,Hyderabad,61.6,48,3,1.7,Online,Regular Shopper
+SM01239,Aditya I.,Female,28,Kochi,93.6,70,5,13.3,Mobile App,Premium Family
+SM01240,Nisha P.,Female,41,Pune,36.8,52,6,3.7,Mobile App,Regular Shopper
+SM01241,Aarav W.,Male,51,Pune,47.1,41,4,1.9,In-store,Regular Shopper
+SM01242,Diya D.,Male,58,Delhi,54.0,47,4,4.1,In-store,Regular Shopper
+SM01243,Ishaan K.,Female,40,Delhi,14.7,20,4,3.2,Mixed,Senior Budget
+SM01244,Meera R.,Female,34,Pune,93.1,81,8,4.1,Online,Premium Family
+SM01245,Rohan Y.,Female,51,Mumbai,50.4,48,4,5.7,Mixed,Regular Shopper
+SM01246,Sneha F.,Female,51,Hyderabad,61.6,40,1,1.9,Mixed,Regular Shopper
+SM01247,Arjun M.,Female,60,Kochi,22.0,14,0,1.5,Online,Senior Budget
+SM01248,Kavya T.,Male,30,Bengaluru,95.8,14,2,8.6,Online,Thrifty High Earner
+SM01249,Vikram A.,Female,53,Mumbai,22.0,29,4,0.4,Mobile App,Senior Budget
+SM01250,Ananya H.,Male,49,Delhi,111.0,32,3,0.6,Mixed,Thrifty High Earner
+SM01251,Rahul O.,Male,52,Kochi,52.7,38,3,4.1,Mixed,Regular Shopper
+SM01252,Priya V.,Female,36,Bengaluru,58.7,42,0,0.3,In-store,Regular Shopper
+SM01253,Karthik C.,Female,65,Pune,14.9,19,3,1.2,In-store,Senior Budget
+SM01254,Lakshmi J.,Female,51,Pune,46.9,42,2,0.1,Mixed,Regular Shopper
+SM01255,Nikhil Q.,Female,42,Bengaluru,89.9,28,2,4.8,In-store,Thrifty High Earner
+SM01256,Pooja X.,Male,24,Delhi,52.7,55,5,0.8,In-store,Regular Shopper
+SM01257,Siddharth E.,Female,18,Madurai,43.3,41,8,6.3,Mixed,Regular Shopper
+SM01258,Divya L.,Female,52,Pune,8.7,20,2,1.4,Mobile App,Senior Budget
+SM01259,Aditya S.,Female,33,Bengaluru,79.1,80,7,6.6,Online,Premium Family
+SM01260,Nisha Z.,Female,54,Delhi,91.7,29,2,14.6,Online,Thrifty High Earner
+SM01261,Aarav G.,Female,42,Coimbatore,88.8,18,2,3.7,Online,Thrifty High Earner
+SM01262,Diya N.,Male,33,Kochi,48.0,35,1,2.1,Mixed,Regular Shopper
+SM01263,Ishaan U.,Female,66,Kolkata,17.6,18,4,0.4,Mixed,Senior Budget
+SM01264,Meera B.,Male,61,Hyderabad,22.5,14,1,11.8,Mobile App,Senior Budget
+SM01265,Rohan I.,Female,67,Pune,18.5,29,1,1.5,In-store,Senior Budget
+SM01266,Sneha P.,Female,30,Pune,60.0,66,6,9.7,Mixed,Regular Shopper
+SM01267,Arjun W.,Male,24,Kolkata,34.4,47,3,9.2,In-store,Regular Shopper
+SM01268,Kavya D.,Female,54,Bengaluru,17.0,15,2,0.7,In-store,Senior Budget
+SM01269,Vikram K.,Female,43,Hyderabad,87.0,21,5,1.6,Online,Thrifty High Earner
+SM01270,Ananya R.,Female,40,Bengaluru,43.8,55,4,1.0,Mobile App,Regular Shopper
+SM01271,Rahul Y.,Male,43,Kochi,89.6,84,6,0.5,In-store,Premium Family
+SM01272,Priya F.,Male,51,Mumbai,42.4,43,3,1.8,Online,Regular Shopper
+SM01273,Karthik M.,Female,47,Chennai,27.7,25,2,3.0,Online,Senior Budget
+SM01274,Lakshmi T.,Male,22,Chennai,35.6,54,2,4.7,Online,Regular Shopper
+SM01275,Nikhil A.,Female,35,Kochi,79.1,83,4,1.7,In-store,Premium Family
+SM01276,Pooja H.,Female,25,Mumbai,,87,5,0.6,Online,Premium Family
+SM01277,Siddharth O.,Female,22,Madurai,36.3,83,14,12.3,In-store,Student Splurger
+SM01278,Divya V.,Male,35,Bengaluru,85.9,71,8,6.3,In-store,Premium Family
+SM01279,Aditya C.,Male,30,Coimbatore,103.6,37,1,2.5,Mixed,Thrifty High Earner
+SM01280,Nisha J.,Male,49,Kolkata,50.9,47,3,1.9,Mobile App,Regular Shopper
+SM01281,Aarav Q.,Female,40,Kolkata,90.3,26,3,1.3,In-store,Thrifty High Earner
+SM01282,Diya X.,Female,64,Delhi,64.9,49,6,0.8,Mobile App,Regular Shopper
+SM01283,Ishaan E.,Female,47,Delhi,47.9,45,3,2.2,Mobile App,Regular Shopper
+SM01284,Meera L.,Male,51,Bengaluru,100.3,29,5,0.6,In-store,Thrifty High Earner
+SM01285,Rohan S.,Male,29,Mumbai,16.9,93,9,0.7,In-store,Student Splurger
+SM01286,Sneha Z.,Male,56,Delhi,8.0,25,2,5.5,Online,Senior Budget
+SM01287,Arjun G.,Female,57,Kochi,22.8,16,1,2.5,In-store,Senior Budget
+SM01288,Kavya N.,Male,56,Chennai,26.4,23,4,2.2,In-store,Senior Budget
+SM01289,Vikram U.,Female,55,Pune,100.4,28,1,1.4,Mobile App,Thrifty High Earner
+SM01290,Ananya B.,Female,18,Hyderabad,14.5,78,3,2.4,Mobile App,Student Splurger
+SM01291,Rahul I.,Male,35,Kochi,102.0,95,13,5.0,Mixed,Premium Family
+SM01292,Priya P.,Male,70,Bengaluru,13.7,N/A,1,0.7,Mixed,Senior Budget
+SM01293,Karthik W.,Female,35,Coimbatore,20.1,92,6,2.1,Mixed,Student Splurger
+SM01294,Lakshmi D.,Male,49,Pune,91.9,17,0,4.1,Online,Thrifty High Earner
+SM01295,Nikhil K.,Female,41,Bengaluru,97.3,78,7,3.8,Online,Premium Family
+SM01296,Pooja R.,Male,34,Kochi,68.3,84,4,1.7,In-store,Premium Family
+SM01297,Siddharth Y.,Male,59,Chennai,15.8,12,1,0.4,Mobile App,Senior Budget
+SM01298,Divya F.,Female,27,Hyderabad,65.2,38,1,0.1,Mixed,Regular Shopper
+SM01299,Aditya M.,Female,38,Kochi,87.7,20,0,0.9,In-store,Thrifty High Earner
+SM01300,Nisha T.,Male,33,Kolkata,38.4,42,6,0.5,Mobile App,Regular Shopper
+SM01301,Aarav A.,Female,48,Madurai,16.9,24,3,5.1,In-store,Senior Budget
+SM01302,Diya H.,Female,18,Chennai,unknown,57,2,4.7,Mixed,Regular Shopper
+SM01303,Ishaan O.,Male,26,Madurai,51.1,41,6,6.3,Mixed,Regular Shopper
+SM01304,Meera V.,Male,28,Kolkata,68.9,49,5,2.8,In-store,Regular Shopper
+SM01305,Rohan C.,Female,46,Kolkata,49.9,41,5,1.1,Mobile App,Regular Shopper
+SM01306,Sneha J.,Female,31,Coimbatore,56.9,43,3,1.8,In-store,Regular Shopper
+SM01307,Arjun Q.,Female,47,Delhi,43.8,55,6,3.6,Mixed,Regular Shopper
+SM01308,Kavya X.,Female,34,Kochi,33.8,80,7,1.2,Online,Student Splurger
+SM01309,Vikram E.,Female,46,Coimbatore,107.8,24,2,0.1,Online,Thrifty High Earner
+SM01310,Ananya L.,Male,18,Hyderabad,52.6,56,3,5.3,In-store,Regular Shopper
+SM01311,Rahul S.,Female,47,Kochi,53.5,57,3,7.2,Online,Regular Shopper
+SM01312,Priya Z.,Male,66,Kochi,21.5,19,0,1.6,Online,Senior Budget
+SM01313,Karthik G.,Male,28,Coimbatore,27.7,79,7,1.1,Online,Student Splurger
+SM01314,Lakshmi N.,Male,56,Hyderabad,49.1,44,3,4.3,Mobile App,Regular Shopper
+SM01315,Nikhil U.,Male,46,Delhi,100.4,29,2,2.7,Mixed,Thrifty High Earner
+SM01316,Pooja B.,Female,34,Bengaluru,14.3,21,1,2.9,Online,Senior Budget
+SM01317,Siddharth I.,Male,59,Kolkata,13.7,20,1,0.3,In-store,Senior Budget
+SM01318,Divya P.,Male,73,Bengaluru,8.0,27,3,1.9,Online,Senior Budget
+SM01319,Aditya W.,Female,28,Madurai,90.7,73,5,3.0,Online,Premium Family
+SM01320,Nisha D.,Male,57,Kochi,25.4,17,2,3.4,Mixed,Senior Budget
+SM01321,Aarav K.,Female,35,Delhi,97.4,74,9,0.4,Online,Premium Family
+SM01322,Diya R.,Male,68,Mumbai,88.3,30,3,3.6,Online,Thrifty High Earner
+SM01323,Ishaan Y.,Male,39,Kochi,28.8,25,4,5.3,In-store,Senior Budget
+SM01324,Meera F.,Female,50,Delhi,65.2,52,4,2.1,Mixed,Regular Shopper
+SM01325,Rohan M.,Female,46,Delhi,104.8,11,0,1.4,In-store,Thrifty High Earner
+SM01326,Sneha T.,Female,71,Kochi,23.3,16,5,0.8,Online,Senior Budget
+SM01327,Arjun A.,Female,27,Delhi,33.3,86,6,3.6,Mixed,Student Splurger
+SM01328,Kavya H.,Male,46,Kolkata,46.4,50,5,5.6,Mobile App,Regular Shopper
+SM01329,Vikram O.,Male,30,Mumbai,94.6,--,9,4.1,Online,Premium Family
+SM01330,Ananya V.,Female,52,Chennai,23.9,15,1,0.7,In-store,Senior Budget
+SM01331,Rahul C.,Male,29,Delhi,39.6,40,1,4.7,In-store,Regular Shopper
+SM01332,Priya J.,Female,54,Kochi,25.3,24,2,8.4,Online,Senior Budget
+SM01333,Karthik Q.,Male,37,Kolkata,87.8,90,17,2.3,Online,Premium Family
+SM01334,Lakshmi X.,Male,33,Chennai,117.2,15,2,8.0,Mixed,Thrifty High Earner
+SM01335,Nikhil E.,Female,55,Bengaluru,66.5,7,1,0.8,Online,Thrifty High Earner
+SM01336,Pooja L.,Female,35,Delhi,54.6,42,5,5.6,Mobile App,Regular Shopper
+SM01337,Siddharth S.,Male,62,Delhi,56.7,40,5,19.4,In-store,Regular Shopper
+SM01338,Divya Z.,Female,39,Hyderabad,96.2,71,6,0.2,In-store,Premium Family
+SM01339,Aditya G.,Male,66,Madurai,46.4,45,5,0.3,In-store,Regular Shopper
+SM01340,Nisha N.,Male,21,Delhi,56.3,49,3,9.5,In-store,Regular Shopper
